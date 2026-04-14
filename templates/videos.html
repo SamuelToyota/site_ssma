@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Vídeos | Consultor Interno{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container center-text">
+        <span class="section-tag">Conteúdo em vídeo</span>
+        <h1>Vídeos e conteúdos da formação</h1>
+        <p>
+            Uma experiência visual mais robusta para apresentar aulas, demonstrações,
+            conteúdos introdutórios e materiais complementares.
+        </p>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container videos-layout">
+        <article class="video-panel">
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 1" allowfullscreen></iframe>
+            </div>
+            <div class="video-description">
+                <h3>Módulo 1 — Introdução à atuação estratégica</h3>
+                <p>
+                    Uma visão introdutória sobre o posicionamento do profissional de SSMA
+                    como agente de influência, análise e transformação dentro da organização.
+                </p>
+            </div>
+        </article>
+
+        <article class="video-panel">
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 2" allowfullscreen></iframe>
+            </div>
+            <div class="video-description">
+                <h3>Módulo 2 — Cultura de segurança e comportamento</h3>
+                <p>
+                    Entenda como a cultura de segurança pode ser fortalecida com base em valores,
+                    comportamentos consistentes e liderança engajada.
+                </p>
+            </div>
+        </article>
+
+        <article class="video-panel">
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 3" allowfullscreen></iframe>
+            </div>
+            <div class="video-description">
+                <h3>Módulo 3 — Engajamento, impacto e sustentação</h3>
+                <p>
+                    Estratégias para comunicar impacto, fortalecer programas sustentáveis
+                    e consolidar uma atuação mais estratégica em SSMA.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

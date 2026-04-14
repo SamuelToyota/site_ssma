@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Consultor Interno{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrapper">
+            <a href="{% url 'home' %}" class="logo-wrap">
+                <img src="{% static 'images/logo.png' %}" alt="Logo Consultor Interno" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Consultor Interno</span>
+                    <span class="logo-subtitle">
+                        Consultoria em SSMA & ESG | Performance & Resultados Sustentáveis
+                    </span>
+                </div>
+            </a>
+
+            <nav class="navbar">
+                <a href="{% url 'home' %}">Início</a>
+                <a href="{% url 'formacao' %}">Formação</a>
+                <a href="{% url 'videos' %}">Vídeos</a>
+                <a href="{% url 'contato' %}">Mentoria</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrapper">
+            <div class="footer-brand">
+                <h3>Consultor Interno</h3>
+                <p>
+                    Consultoria em SSMA & ESG | Performance & Resultados Sustentáveis |
+                    Compliance & Governança | Desenvolvimento Profissional, Autoridade Técnica
+                    e Crescimento de Carreira | Posicionamento estratégico
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="{% url 'home' %}">Início</a>
+                <a href="{% url 'formacao' %}">Formação</a>
+                <a href="{% url 'videos' %}">Vídeos</a>
+                <a href="{% url 'contato' %}">Mentoria</a>
+                <a href="https://www.instagram.com/consultorinterno/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.linkedin.com/in/consultor-interno/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

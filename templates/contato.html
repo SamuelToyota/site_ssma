@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Mentoria Gratuita | Consultor Interno{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container center-text">
+        <span class="section-tag">Mentoria Diagnóstica</span>
+        <h1>Solicite sua Mentoria Gratuita</h1>
+        <p>
+            Preencha seus dados para iniciar uma conversa estratégica sobre sua atuação,
+            seus desafios atuais e as oportunidades de desenvolvimento na área de SSMA e ESG.
+        </p>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container contact-grid">
+        <div class="contact-info-card">
+            <span class="section-tag">Por que solicitar</span>
+            <h2>Uma conversa inicial com foco em clareza, posicionamento e evolução profissional</h2>
+            <p>
+                A mentoria diagnóstica foi pensada para profissionais que desejam compreender melhor
+                seu momento atual, identificar oportunidades de crescimento e direcionar sua atuação
+                para um nível mais estratégico.
+            </p>
+
+            <ul class="custom-list">
+                <li>Entendimento inicial do seu contexto profissional</li>
+                <li>Clareza sobre desafios, prioridades e próximos passos</li>
+                <li>Direcionamento para crescimento em SSMA, ESG e cultura de segurança</li>
+            </ul>
+        </div>
+
+        <div class="form-wrapper premium-form-wrapper">
+            <form method="post" class="contact-form">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label for="{{ form.nome.id_for_label }}">Nome completo</label>
+                    {{ form.nome }}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.email.id_for_label }}">E-mail profissional</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.mensagem.id_for_label }}">Mensagem</label>
+                    {{ form.mensagem }}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-form">
+                    Solicitar mentoria gratuita
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

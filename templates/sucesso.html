@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Mensagem enviada | Consultor Interno{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container center-text">
+        <span class="section-tag">Mensagem enviada</span>
+        <h1>Sua solicitação foi recebida com sucesso</h1>
+        <p>
+            Obrigado pelo contato. Em breve você poderá analisar sua solicitação
+            e dar continuidade ao atendimento.
+        </p>
+        <div style="margin-top: 24px;">
+            <a href="{% url 'home' %}" class="btn btn-primary">Voltar ao início</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Início | Consultor Interno{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <span class="hero-badge">Formação | Mentoria | Cultura</span>
+            <h1>Desenvolva influência, método e atuação estratégica mesmo sem cargo de liderança</h1>
+            <p>
+                Esta formação foi desenvolvida para profissionais de SSMA e líderes que desejam ir além do compliance
+                e construir uma cultura de segurança genuína, sustentada por valores, comportamento e engajamento real.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'formacao' %}" class="btn btn-primary">Conhecer a formação</a>
+                <a href="{% url 'contato' %}" class="btn btn-outline">Solicitar mentoria gratuita</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <strong>+25 anos</strong>
+                    <span>de experiência prática</span>
+                </div>
+                <div class="stat-box">
+                    <strong>SSMA & ESG</strong>
+                    <span>visão estratégica, cultural e aplicada</span>
+                </div>
+                <div class="stat-box">
+                    <strong>4 a 6 semanas</strong>
+                    <span>de imersão prática</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image-card">
+            <img src="{% static 'images/foto_1.png' %}" alt="Profissional atuando em segurança" class="hero-photo">
+            <div class="floating-card">
+                <span class="small-label">Formação em destaque</span>
+                <h3>Consultor Interno em Cultura de Segurança</h3>
+                <p>
+                    Aulas gravadas, mentorias ao vivo, exercícios aplicados e metodologia
+                    orientada para transformação cultural e resultados sustentáveis.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container section-intro center-text">
+        <span class="section-tag">Sobre a formação</span>
+        <h2>Uma jornada criada para transformar segurança em valor organizacional</h2>
+        <p>
+            Ao longo da formação, você desenvolverá competências para transformar a segurança
+            em um valor intrínseco da organização, e não apenas em uma regra a ser seguida.
+        </p>
+    </div>
+</section>
+
+<section class="section-default dark-panel">
+    <div class="container image-text-grid">
+        <div>
+            <span class="section-tag">Diferencial</span>
+            <h2 class="section-title-left">Uma abordagem profissional, prática e estrategicamente aplicável</h2>
+            <p class="section-left-text">
+                A metodologia foi estruturada para conectar cultura, liderança, comportamento,
+                valores organizacionais e posicionamento técnico em uma proposta de desenvolvimento
+                profissional consistente.
+            </p>
+        </div>
+        <div class="side-image-card">
+            <img src="{% static 'images/foto_2.png' %}" alt="Profissional em ambiente corporativo de segurança" class="section-photo">
+        </div>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container">
+        <div class="section-intro center-text">
+            <span class="section-tag">O que você vai dominar</span>
+            <h2>Competências essenciais para atuação estratégica em SSMA</h2>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-box">Diagnóstico da cultura de segurança atual da organização</div>
+            <div class="benefit-box">Identificação de valores pessoais e organizacionais que influenciam o comportamento</div>
+            <div class="benefit-box">Estratégias para engajar líderes e equipes de forma consistente</div>
+            <div class="benefit-box">Desenvolvimento de programas de segurança comportamental sustentáveis</div>
+            <div class="benefit-box">Métodos para medir, comunicar e demonstrar impacto real</div>
+            <div class="benefit-box">Posicionamento como agente de mudança estratégica em SSMA</div>
+        </div>
+    </div>
+</section>
+
+<section class="section-default authority-section">
+    <div class="container authority-grid">
+        <div class="authority-image-box">
+            <img src="{% static 'images/foto_3.png' %}" alt="Profissional trabalhando com segurança" class="section-photo tall-photo">
+        </div>
+
+        <div class="authority-text">
+            <span class="section-tag">Para quem é esta formação</span>
+            <h2>Profissionais que desejam ampliar influência, reconhecimento e resultado</h2>
+            <ul class="custom-list">
+                <li>Profissionais de SSMA que querem ampliar impacto e influência</li>
+                <li>Líderes que buscam engajamento real em segurança</li>
+                <li>Quem deseja sair da atuação normativa para a cultural</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section-default cta-section">
+    <div class="container cta-box">
+        <div>
+            <span class="section-tag">Próximo passo</span>
+            <h2>Solicite sua Mentoria Diagnóstica Gratuita</h2>
+            <p>
+                Receba direcionamento inicial, compreenda o estágio atual da sua atuação
+                e descubra qual caminho faz mais sentido para o seu momento profissional.
+            </p>
+        </div>
+
+        <a href="{% url 'contato' %}" class="btn btn-primary">Quero solicitar</a>
+    </div>
+</section>
+{% endblock %}
