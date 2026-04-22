@@ -1,0 +1,62 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}{{ modulo.titulo }}{% endblock %}
+{% block aluno_title %}{{ modulo.titulo }}{% endblock %}
+
+{% block aluno_content %}
+<div class="module-detail-card">
+    <span class="section-tag">Detalhes do módulo</span>
+    <h2>{{ modulo.titulo }}</h2>
+    <p>{{ modulo.descricao|default:"Descrição do módulo ainda não cadastrada." }}</p>
+</div>
+
+<div class="lesson-list">
+    {% for aula in aulas %}
+        <article class="lesson-card lesson-card-column">
+            <div class="lesson-main">
+                <span class="modulo-badge">Aula {{ aula.ordem }}</span>
+                <h3>{{ aula.titulo }}</h3>
+                <p>{{ aula.descricao|default:"Descrição da aula ainda não cadastrada." }}</p>
+            </div>
+
+            <div class="lesson-video-area">
+                {% if aula.video_url %}
+                    <div class="video-frame">
+                        <iframe
+                            src="{{ aula.video_url }}"
+                            title="{{ aula.titulo }}"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                {% else %}
+                    <div class="video-placeholder-box">
+                        <span>Vídeo ainda não configurado</span>
+                        <small>
+                            Você poderá usar:
+                            <strong>static/videos/arquivo.mp4</strong>
+                            ou link do YouTube
+                        </small>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="lesson-actions lesson-actions-row">
+                {% if aula.id in aulas_concluidas_ids %}
+                    <span class="lesson-status done">Concluída</span>
+                {% else %}
+                    <span class="lesson-status pending">Pendente</span>
+                {% endif %}
+
+                <a href="{% url 'aluno_aula' aula.id %}" class="btn btn-primary">
+                    Abrir aula
+                </a>
+            </div>
+        </article>
+    {% empty %}
+        <div class="aluno-card">
+            <h3>Nenhuma aula cadastrada</h3>
+            <p>Este módulo ainda não possui aulas disponíveis.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

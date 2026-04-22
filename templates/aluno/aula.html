@@ -1,0 +1,35 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}{{ aula.titulo }}{% endblock %}
+{% block aluno_title %}{{ aula.titulo }}{% endblock %}
+
+{% block aluno_content %}
+<div class="video-class-card">
+    {% if embed_url %}
+        <div class="video-frame">
+            <iframe src="{{ embed_url }}" title="{{ aula.titulo }}" allowfullscreen></iframe>
+        </div>
+    {% else %}
+        <div class="aluno-card">
+            <h3>Vídeo ainda não configurado</h3>
+            <p>Cadastre a URL do vídeo no admin para exibir a aula aqui.</p>
+        </div>
+    {% endif %}
+
+    <div class="video-class-content">
+        <h3>{{ aula.titulo }}</h3>
+        <p>{{ aula.descricao }}</p>
+
+        {% if progresso.concluida %}
+            <p class="lesson-status done">Você já concluiu esta aula.</p>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">
+                    Marcar como concluída
+                </button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

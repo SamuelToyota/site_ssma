@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Área do Aluno{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="aluno-body">
+    <div class="aluno-layout">
+        <aside class="aluno-sidebar">
+            <a href="{% url 'aluno_dashboard' %}" class="aluno-brand-link">
+                <img
+                    src="{% static 'images/logo.png' %}"
+                    alt="Logo"
+                    class="aluno-logo"
+                >
+                <div>
+                    <h2>Área do Aluno</h2>
+                    <p>Consultor Interno</p>
+                </div>
+            </a>
+
+            <nav class="aluno-menu">
+                <a href="{% url 'aluno_dashboard' %}">Dashboard</a>
+                <a href="{% url 'aluno_modulos' %}">Módulos</a>
+                <a href="{% url 'aluno_materiais' %}">Materiais</a>
+                <a href="{% url 'aluno_mentorias' %}">Mentorias</a>
+                <a href="{% url 'aluno_perfil' %}">Perfil</a>
+                <a href="{% url 'logout' %}">Sair</a>
+            </nav>
+        </aside>
+
+        <div class="aluno-main-wrap">
+            <header class="aluno-topbar">
+                <div>
+                    <p class="aluno-topbar-label">Área reservada</p>
+                    <h1 class="aluno-topbar-title">
+                        {% block aluno_title %}Painel{% endblock %}
+                    </h1>
+                </div>
+
+                <div class="aluno-user-box">
+                    {{ request.user.username }}
+                </div>
+            </header>
+
+            <main class="aluno-main">
+                {% block aluno_content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+</body>
+</html>

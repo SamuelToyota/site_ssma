@@ -1,0 +1,28 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}Mentorias{% endblock %}
+{% block aluno_title %}Mentorias e Gravações{% endblock %}
+
+{% block aluno_content %}
+<div class="aluno-cards-grid">
+    {% for mentoria in mentorias %}
+        <div class="aluno-card">
+            <h3>{{ mentoria.titulo }}</h3>
+            <p>{{ mentoria.descricao }}</p>
+            {% if mentoria.data_referencia %}
+                <p><strong>Data:</strong> {{ mentoria.data_referencia }}</p>
+            {% endif %}
+            {% if mentoria.link_gravacao %}
+                <a href="{{ mentoria.link_gravacao }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Ver gravação
+                </a>
+            {% endif %}
+        </div>
+    {% empty %}
+        <div class="aluno-card">
+            <h3>Nenhuma mentoria disponível</h3>
+            <p>As mentorias ainda não foram cadastradas.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

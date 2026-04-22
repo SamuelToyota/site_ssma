@@ -1,0 +1,50 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block aluno_title %}Dashboard do Aluno{% endblock %}
+
+{% block aluno_content %}
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <p class="dashboard-label">Curso</p>
+        <h3>{% if curso %}{{ curso.titulo }}{% else %}Nenhum curso liberado{% endif %}</h3>
+    </div>
+
+    <div class="dashboard-card">
+        <p class="dashboard-label">Módulos</p>
+        <h3>{{ modulos|length }}</h3>
+    </div>
+
+    <div class="dashboard-card">
+        <p class="dashboard-label">Aulas concluídas</p>
+        <h3>{{ concluidas }}/{{ total_aulas }}</h3>
+    </div>
+
+    <div class="dashboard-card">
+        <p class="dashboard-label">Progresso</p>
+        <h3>{{ progresso_percentual }}%</h3>
+    </div>
+</div>
+
+<div class="dashboard-progress-card">
+    <div class="progress-header">
+        <h3>Seu progresso</h3>
+        <span>{{ progresso_percentual }}%</span>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ progresso_percentual }}%;"></div>
+    </div>
+</div>
+
+<div class="dashboard-next-card">
+    <h3>Próxima aula recomendada</h3>
+    {% if proxima_aula %}
+        <p>{{ proxima_aula.titulo }}</p>
+        <a href="{% url 'aluno_aula' proxima_aula.id %}" class="btn btn-primary">
+            Assistir agora
+        </a>
+    {% else %}
+        <p>Todas as aulas disponíveis foram concluídas ou ainda não há aulas cadastradas.</p>
+    {% endif %}
+</div>
+{% endblock %}

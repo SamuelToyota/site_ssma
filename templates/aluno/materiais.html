@@ -1,0 +1,25 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}Materiais{% endblock %}
+{% block aluno_title %}Materiais Complementares{% endblock %}
+
+{% block aluno_content %}
+<div class="aluno-cards-grid">
+    {% for material in materiais %}
+        <div class="aluno-card">
+            <h3>{{ material.titulo }}</h3>
+            <p>{{ material.descricao }}</p>
+            {% if material.link %}
+                <a href="{{ material.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Acessar material
+                </a>
+            {% endif %}
+        </div>
+    {% empty %}
+        <div class="aluno-card">
+            <h3>Nenhum material disponível</h3>
+            <p>Os materiais complementares ainda não foram cadastrados.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

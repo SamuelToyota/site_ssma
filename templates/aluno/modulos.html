@@ -1,0 +1,47 @@
+{% extends 'aluno/base_aluno.html' %}
+
+{% block title %}Módulos{% endblock %}
+{% block aluno_title %}Módulos da Formação{% endblock %}
+
+{% block aluno_content %}
+<div class="section-intro">
+    <span class="section-tag">Conteúdo disponível</span>
+    <h2>Explore os módulos da sua formação</h2>
+    <p>
+        Acompanhe a jornada da formação por módulos, com conteúdos organizados
+        para facilitar evolução, aplicação prática e desenvolvimento estratégico.
+    </p>
+</div>
+
+<div class="aluno-modulos-grid">
+    {% for modulo in modulos %}
+        <article class="aluno-modulo-card">
+            <div class="aluno-modulo-header">
+                <span class="modulo-badge">Módulo {{ modulo.ordem }}</span>
+                <h3>{{ modulo.titulo }}</h3>
+                <p>{{ modulo.descricao|default:"Conteúdo do módulo disponível para acesso." }}</p>
+            </div>
+
+            <div class="aluno-modulo-video-placeholder">
+                <div class="video-placeholder-box">
+                    <span>Espaço reservado para vídeo(s) deste módulo</span>
+                    <small>
+                        Coloque depois em: <strong>static/videos/</strong>
+                    </small>
+                </div>
+            </div>
+
+            <div class="aluno-modulo-footer">
+                <a href="{% url 'aluno_modulo_detalhe' modulo.id %}" class="btn btn-primary">
+                    Ver módulo
+                </a>
+            </div>
+        </article>
+    {% empty %}
+        <div class="aluno-card">
+            <h3>Nenhum módulo disponível</h3>
+            <p>Seu curso ainda não possui módulos cadastrados ou liberados.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -8,11 +8,45 @@
         <span class="section-tag">Mensagem enviada</span>
         <h1>Sua solicitação foi recebida com sucesso</h1>
         <p>
-            Obrigado pelo contato. Em breve você poderá analisar sua solicitação
-            e dar continuidade ao atendimento.
+            Obrigado pelo contato. Em breve sua solicitação poderá ser analisada
+            e o atendimento poderá seguir com os próximos passos.
         </p>
-        <div style="margin-top: 24px;">
-            <a href="{% url 'home' %}" class="btn btn-primary">Voltar ao início</a>
+
+        <div class="success-actions">
+            <a href="{% url 'home' %}" class="btn btn-primary">
+                Voltar ao início
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container cards-three-grid">
+        <div class="highlight-card">
+            <span class="section-tag">Próximo passo</span>
+            <h3>Análise do envio</h3>
+            <p>
+                Sua solicitação foi registrada e poderá ser analisada conforme
+                os dados enviados no formulário.
+            </p>
+        </div>
+
+        <div class="highlight-card">
+            <span class="section-tag">Objetivo</span>
+            <h3>Clareza inicial</h3>
+            <p>
+                A mentoria diagnóstica busca compreender seu momento atual
+                e identificar caminhos de desenvolvimento.
+            </p>
+        </div>
+
+        <div class="highlight-card">
+            <span class="section-tag">Continuidade</span>
+            <h3>Direcionamento estratégico</h3>
+            <p>
+                A partir desse primeiro contato, o processo pode evoluir
+                para orientação mais personalizada.
+            </p>
         </div>
     </div>
 </section>
