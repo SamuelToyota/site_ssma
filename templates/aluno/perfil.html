@@ -4,17 +4,28 @@
 {% block aluno_title %}Perfil do Aluno{% endblock %}
 
 {% block aluno_content %}
-<div class="aluno-card profile-card">
-    <h3>{{ request.user.get_username }}</h3>
-    <p><strong>E-mail:</strong> {{ request.user.email }}</p>
+<div class="profile-premium-grid">
+    <div class="profile-hero-card">
+        <div class="profile-avatar-large">
+            {{ request.user.username|first|upper }}
+        </div>
+        <div>
+            <h3>{{ request.user.get_username }}</h3>
+            <p>{{ request.user.email }}</p>
+        </div>
+    </div>
 
-    {% if perfil %}
-        <p><strong>Nome de exibição:</strong> {{ perfil.nome_exibicao|default:"-" }}</p>
-        <p><strong>Acesso ativo:</strong> {% if perfil.acesso_ativo %}Sim{% else %}Não{% endif %}</p>
-        <p><strong>Origem da compra:</strong> {{ perfil.origem_compra|default:"-" }}</p>
-        <p><strong>ID da compra:</strong> {{ perfil.compra_id|default:"-" }}</p>
-    {% else %}
-        <p>Perfil adicional ainda não cadastrado.</p>
-    {% endif %}
+    <div class="profile-info-card premium-panel">
+        <span class="section-tag">Informações</span>
+        {% if perfil %}
+            <p><strong>Nome de exibição:</strong> {{ perfil.nome_exibicao|default:"-" }}</p>
+            <p><strong>Telefone:</strong> {{ perfil.telefone|default:"-" }}</p>
+            <p><strong>Acesso ativo:</strong> {% if perfil.acesso_ativo %}Sim{% else %}Não{% endif %}</p>
+            <p><strong>Origem da compra:</strong> {{ perfil.origem_compra|default:"-" }}</p>
+            <p><strong>ID da compra:</strong> {{ perfil.compra_id|default:"-" }}</p>
+        {% else %}
+            <p>Perfil adicional ainda não cadastrado.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

@@ -4,44 +4,72 @@
 {% block aluno_title %}Módulos da Formação{% endblock %}
 
 {% block aluno_content %}
-<div class="section-intro">
-    <span class="section-tag">Conteúdo disponível</span>
-    <h2>Explore os módulos da sua formação</h2>
-    <p>
-        Acompanhe a jornada da formação por módulos, com conteúdos organizados
-        para facilitar evolução, aplicação prática e desenvolvimento estratégico.
-    </p>
-</div>
+{% if tem_matricula %}
+    <div class="section-intro aluno-intro">
+        <span class="section-tag">Conteúdo disponível</span>
+        <h2>Explore os módulos da sua formação</h2>
+        <p>
+            Cada módulo foi organizado para acelerar sua evolução com mais clareza,
+            consistência e aplicação prática no contexto profissional.
+        </p>
+    </div>
 
-<div class="aluno-modulos-grid">
-    {% for modulo in modulos %}
-        <article class="aluno-modulo-card">
-            <div class="aluno-modulo-header">
-                <span class="modulo-badge">Módulo {{ modulo.ordem }}</span>
-                <h3>{{ modulo.titulo }}</h3>
-                <p>{{ modulo.descricao|default:"Conteúdo do módulo disponível para acesso." }}</p>
-            </div>
+    <div class="aluno-modulos-grid premium-modulos-grid">
+        {% for modulo in modulos %}
+            <article class="aluno-modulo-card premium-module-card">
+                <div class="module-visual-top"></div>
 
-            <div class="aluno-modulo-video-placeholder">
-                <div class="video-placeholder-box">
-                    <span>Espaço reservado para vídeo(s) deste módulo</span>
-                    <small>
-                        Coloque depois em: <strong>static/videos/</strong>
-                    </small>
+                <div class="aluno-modulo-header">
+                    <span class="modulo-badge">Módulo {{ modulo.ordem }}</span>
+                    <h3>{{ modulo.titulo }}</h3>
+                    <p>{{ modulo.descricao|default:"Conteúdo do módulo disponível para acesso." }}</p>
                 </div>
-            </div>
 
-            <div class="aluno-modulo-footer">
-                <a href="{% url 'aluno_modulo_detalhe' modulo.id %}" class="btn btn-primary">
-                    Ver módulo
-                </a>
+                <div class="module-meta-row">
+                    <div class="module-meta-pill">
+                        {{ modulo.aulas.count }} aula{{ modulo.aulas.count|pluralize }}
+                    </div>
+                    <div class="module-meta-pill">
+                        Estrutura liberada
+                    </div>
+                </div>
+
+                <div class="aluno-modulo-video-placeholder">
+                    <div class="video-placeholder-box">
+                        <span>Espaço reservado para vídeo(s) deste módulo</span>
+                        <small>Depois coloque os arquivos em <strong>static/videos/</strong></small>
+                    </div>
+                </div>
+
+                <div class="aluno-modulo-footer">
+                    <a href="{% url 'aluno_modulo_detalhe' modulo.id %}" class="btn btn-primary">
+                        Ver módulo
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="aluno-card">
+                <h3>Nenhum módulo disponível</h3>
+                <p>Seu curso ainda não possui módulos cadastrados ou liberados.</p>
             </div>
-        </article>
-    {% empty %}
-        <div class="aluno-card">
-            <h3>Nenhum módulo disponível</h3>
-            <p>Seu curso ainda não possui módulos cadastrados ou liberados.</p>
-        </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="premium-panel blocked-panel">
+        <span class="section-tag">Conteúdo bloqueado</span>
+        <h2>Os módulos serão liberados após sua matrícula</h2>
+        <p class="dashboard-helper-text">
+            Sua conta já está criada. Quando a matrícula estiver ativa,
+            esta área exibirá todos os módulos da formação.
+        </p>
+        <a
+            href="https://chk.eduzz.com/39VEGE5BWR"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+        >
+            Ativar acesso
+        </a>
+    </div>
+{% endif %}
 {% endblock %}

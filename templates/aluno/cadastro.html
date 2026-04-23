@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta | Área do Aluno</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="login-body premium-login-body">
+    <section class="login-section cadastro-section-wide">
+        <div class="login-card premium-login-card">
+            <div class="login-top-glow"></div>
+
+            <img
+                src="{% static 'images/logo.png' %}"
+                alt="Logo"
+                class="login-logo"
+            >
+
+            <h1>Criar conta</h1>
+            <p>
+                Preencha seus dados para acessar a Área do Aluno.
+                O conteúdo completo será liberado quando houver matrícula ativa.
+            </p>
+
+            <form method="post" class="login-form cadastro-grid-form">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label for="{{ form.first_name.id_for_label }}">Nome</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <small class="form-error">{{ form.first_name.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.last_name.id_for_label }}">Sobrenome</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <small class="form-error">{{ form.last_name.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.telefone.id_for_label }}">Número</label>
+                    {{ form.telefone }}
+                    {% if form.telefone.errors %}
+                        <small class="form-error">{{ form.telefone.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.email.id_for_label }}">E-mail</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <small class="form-error">{{ form.email.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.password1.id_for_label }}">Senha</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <small class="form-error">{{ form.password1.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="input-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirmar senha</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <small class="form-error">{{ form.password2.errors.0 }}</small>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-form cadastro-submit-full">
+                    Criar conta
+                </button>
+            </form>
+
+            <div class="cadastro-login-link">
+                <p>
+                    Já tem conta?
+                    <a href="{% url 'login' %}">Entrar agora</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

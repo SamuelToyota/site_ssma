@@ -7,9 +7,11 @@
     <title>Login | Área do Aluno</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="login-body">
+<body class="login-body premium-login-body">
     <section class="login-section">
-        <div class="login-card">
+        <div class="login-card premium-login-card">
+            <div class="login-top-glow"></div>
+
             <img
                 src="{% static 'images/logo.png' %}"
                 alt="Logo"
@@ -17,7 +19,7 @@
             >
 
             <h1>Área do Aluno</h1>
-            <p>Acesse sua plataforma de formação</p>
+            <p>Acesse sua plataforma de formação e acompanhe sua evolução.</p>
 
             {% if form.errors %}
                 <div class="login-alert">
@@ -49,9 +51,16 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-form">
-                    Entrar
+                    Entrar na plataforma
                 </button>
             </form>
+
+            <div class="cadastro-login-link">
+                <p>
+                    Ainda não tem conta?
+                    <a href="{% url 'cadastro' %}">Criar conta</a>
+                </p>
+            </div>
         </div>
     </section>
 </body>

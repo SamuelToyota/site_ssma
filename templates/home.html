@@ -1,240 +1,383 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Início | Consultor Interno{% endblock %}
+{% block title %}Consultor SSMA | Início{% endblock %}
 
 {% block content %}
-<section class="hero-section">
-    <div class="container hero-grid">
-        <div class="hero-text">
-            <span class="hero-badge">Formação | Mentoria | Cultura</span>
-            <h1>
-                Desenvolva influência, método e atuação estratégica
-                mesmo sem cargo de liderança
+<section class="ssma-hero-home ssma-hero-home-v2">
+    <div class="hero-bg-orb hero-bg-orb-1"></div>
+    <div class="hero-bg-orb hero-bg-orb-2"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="container ssma-hero-grid ssma-hero-grid-v2">
+        <div class="ssma-hero-left">
+            <span class="hero-badge">Formação completa em SSMA & ESG</span>
+
+            <h1 class="ssma-hero-title">
+                Transforme profissionais de
+                <span>SSMA e ESG</span>
+                em consultores internos estratégicos
             </h1>
-            <p>
-                Esta formação foi desenvolvida para profissionais de SSMA e líderes
-                que desejam ir além do compliance e construir uma cultura de segurança
-                genuína, sustentada por valores, comportamento e engajamento real.
+
+            <p class="ssma-hero-description">
+                Desenvolva competências para gerar impacto real, influenciar decisões,
+                fortalecer a cultura organizacional e posicionar-se como referência
+                em performance, compliance, governança e sustentabilidade.
             </p>
 
-            <div class="hero-buttons">
-                <a href="{% url 'formacao' %}" class="btn btn-primary">
-                    Conhecer a formação
+            <div class="ssma-hero-actions">
+                <a
+                    href="https://chk.eduzz.com/39VEGE5BWR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
+                    Quero me matricular
                 </a>
+
                 <a href="{% url 'contato' %}" class="btn btn-outline">
-                    Solicitar mentoria gratuita
+                    Solicitar mentoria
                 </a>
             </div>
-
-            <div class="hero-stats">
-                <div class="stat-box">
-                    <strong>+25 anos</strong>
-                    <span>de experiência prática</span>
-                </div>
-                <div class="stat-box">
-                    <strong>SSMA & ESG</strong>
-                    <span>visão estratégica, cultural e aplicada</span>
-                </div>
-                <div class="stat-box">
-                    <strong>4 a 6 semanas</strong>
-                    <span>de imersão prática</span>
-                </div>
-            </div>
         </div>
 
-        <div class="hero-image-card">
-            <img
-                src="{% static 'images/foto_1.png' %}"
-                alt="Profissional atuando em segurança"
-                class="hero-photo"
-            >
-            <div class="floating-card">
-                <span class="small-label">Formação em destaque</span>
-                <h3>Consultor Interno em Cultura de Segurança</h3>
-                <p>
-                    Aulas gravadas, mentorias ao vivo, exercícios aplicados
-                    e metodologia orientada para transformação cultural
-                    e resultados sustentáveis.
-                </p>
+        <div class="ssma-hero-right">
+            <div class="ssma-hero-panel-frame">
+                <img
+                    src="{% static 'images/hero.png' %}"
+                    alt="Painel visual Consultor SSMA"
+                    class="ssma-hero-panel-image"
+                    onerror="this.onerror=null;this.src='{% static 'images/foto_1.png' %}';"
+                >
             </div>
         </div>
     </div>
 </section>
 
-<section class="section-default">
-    <div class="container section-intro center-text">
-        <span class="section-tag">Sobre a formação</span>
-        <h2>Uma jornada criada para transformar segurança em valor organizacional</h2>
-        <p>
-            Ao longo da formação, você desenvolverá competências para transformar
-            a segurança em um valor intrínseco da organização, e não apenas
-            em uma regra a ser seguida.
-        </p>
-    </div>
-</section>
-
-<section class="section-default dark-panel">
-    <div class="container image-text-grid">
-        <div>
-            <span class="section-tag">Diferencial</span>
-            <h2 class="section-title-left">
-                Uma abordagem profissional, prática e estrategicamente aplicável
-            </h2>
-            <p class="section-left-text">
-                A metodologia foi estruturada para conectar cultura, liderança,
-                comportamento, valores organizacionais e posicionamento técnico
-                em uma proposta de desenvolvimento profissional consistente.
-            </p>
-            <div class="mini-points">
-                <div class="mini-point">Baseada em valores</div>
-                <div class="mini-point">Aplicável a empresas nacionais e multinacionais</div>
-                <div class="mini-point">Foco em resultados sustentáveis</div>
-            </div>
-        </div>
-
-        <div class="side-image-card">
-            <img
-                src="{% static 'images/foto_2.png' %}"
-                alt="Profissional em ambiente corporativo de segurança"
-                class="section-photo"
-            >
-        </div>
-    </div>
-</section>
-
-<section class="section-default">
+<section class="ssma-authority-strip authority-v2">
     <div class="container">
-        <div class="section-intro center-text">
-            <span class="section-tag">O que você vai dominar</span>
-            <h2>Competências essenciais para atuação estratégica em SSMA</h2>
-        </div>
-
-        <div class="benefits-grid">
-            <div class="benefit-box">
-                Diagnóstico da cultura de segurança atual da organização
-            </div>
-            <div class="benefit-box">
-                Identificação de valores pessoais e organizacionais que influenciam o comportamento
-            </div>
-            <div class="benefit-box">
-                Estratégias para engajar líderes e equipes de forma consistente
-            </div>
-            <div class="benefit-box">
-                Desenvolvimento de programas de segurança comportamental sustentáveis
-            </div>
-            <div class="benefit-box">
-                Métodos para medir, comunicar e demonstrar impacto real
-            </div>
-            <div class="benefit-box">
-                Posicionamento como agente de mudança estratégica em SSMA
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-default authority-section">
-    <div class="container authority-grid">
-        <div class="authority-image-box">
-            <img
-                src="{% static 'images/foto_3.png' %}"
-                alt="Profissional trabalhando com segurança"
-                class="section-photo tall-photo"
-            >
-        </div>
-
-        <div class="authority-text">
-            <span class="section-tag">Para quem é esta formação</span>
-            <h2>Profissionais que desejam ampliar influência, reconhecimento e resultado</h2>
-            <ul class="custom-list">
-                <li>Profissionais de SSMA que querem ampliar impacto e influência</li>
-                <li>Líderes que buscam engajamento real em segurança</li>
-                <li>Quem deseja sair da atuação normativa para a cultural</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="section-default dark-panel">
-    <div class="container cards-three-grid">
-        <div class="highlight-card">
-            <span class="section-tag">Como funciona</span>
-            <h3>Duração</h3>
-            <p>Imersão prática de 4 a 6 semanas, com foco em aplicação real no ambiente corporativo.</p>
-        </div>
-
-        <div class="highlight-card">
-            <span class="section-tag">Formato</span>
-            <h3>Aulas e mentorias</h3>
-            <p>Aulas gravadas com acesso 24/7 e 02 mentorias ao vivo com direito à gravação.</p>
-        </div>
-
-        <div class="highlight-card">
-            <span class="section-tag">Flexibilidade</span>
-            <h3>Aprendizado no seu ritmo</h3>
-            <p>Conteúdos complementares, exercícios aplicados e liberdade para aprender de forma consistente.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section-default faq-section">
-    <div class="container">
-        <div class="section-intro center-text">
-            <span class="section-tag">Perguntas frequentes</span>
-            <h2>Dúvidas comuns sobre a formação</h2>
-        </div>
-
-        <div class="faq-grid">
-            <div class="faq-card">
-                <h3>O curso é indicado para quem não ocupa cargo de liderança?</h3>
-                <p>
-                    Sim. A formação foi pensada para profissionais que já influenciam,
-                    orientam, analisam e apoiam decisões, mas desejam fazer isso com
-                    mais segurança, método e posicionamento.
-                </p>
-            </div>
-
-            <div class="faq-card">
-                <h3>Como recebo acesso ao conteúdo?</h3>
-                <p>
-                    Após a confirmação da compra, o aluno é direcionado para a área
-                    do curso e pode acessar as aulas, materiais complementares e mentorias.
-                </p>
-            </div>
-
-            <div class="faq-card">
-                <h3>As mentorias ficam gravadas?</h3>
-                <p>
-                    Sim. A proposta inclui 02 mentorias ao vivo com direito a gravação,
-                    permitindo revisão posterior dos conteúdos e orientações.
-                </p>
-            </div>
-
-            <div class="faq-card">
-                <h3>Qual o principal resultado esperado?</h3>
-                <p>
-                    O objetivo é preparar o profissional para atuar como referência em cultura
-                    de segurança, com mais influência, clareza, engajamento e resultado sustentável.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-default cta-section">
-    <div class="container cta-box">
-        <div>
-            <span class="section-tag">Próximo passo</span>
-            <h2>Solicite sua Mentoria Diagnóstica Gratuita</h2>
+        <div class="authority-v2-header">
+            <span class="section-tag">Diferenciais da formação</span>
+            <h2>Uma formação pensada para gerar impacto real</h2>
             <p>
-                Receba direcionamento inicial, compreenda o estágio atual da sua atuação
-                e descubra qual caminho faz mais sentido para o seu momento profissional.
+                Conteúdo estratégico, experiência prática e aplicação direta
+                para profissionais que querem evoluir sua atuação em SSMA e ESG.
             </p>
         </div>
 
-        <a href="{% url 'contato' %}" class="btn btn-primary">
-            Quero solicitar
-        </a>
+        <div class="authority-v2-grid">
+            <article class="authority-v2-card">
+                <div class="authority-v2-icon">01</div>
+                <span class="authority-v2-kicker">Experiência</span>
+                <h3>+25 anos</h3>
+                <p>
+                    Experiência aplicada em SSMA, ESG, governança, cultura de
+                    segurança e performance corporativa.
+                </p>
+            </article>
+
+            <article class="authority-v2-card">
+                <div class="authority-v2-icon">02</div>
+                <span class="authority-v2-kicker">Visão integrada</span>
+                <h3>SSMA & ESG</h3>
+                <p>
+                    Segurança, saúde, meio ambiente e sustentabilidade
+                    conectados à estratégia do negócio.
+                </p>
+            </article>
+
+            <article class="authority-v2-card">
+                <div class="authority-v2-icon">03</div>
+                <span class="authority-v2-kicker">Aplicação prática</span>
+                <h3>Consultoria estratégica</h3>
+                <p>
+                    Métodos aplicáveis para melhorar cultura, indicadores,
+                    influência e tomada de decisão.
+                </p>
+            </article>
+
+            <article class="authority-v2-card">
+                <div class="authority-v2-icon">04</div>
+                <span class="authority-v2-kicker">Formato da formação</span>
+                <h3>Aulas + mentorias</h3>
+                <p>
+                    Conteúdo gravado com flexibilidade, além de encontros ao
+                    vivo para aprofundamento e direcionamento prático.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section-default formacao-v3-section">
+    <div class="container">
+        <div class="formacao-v3-header">
+            <span class="section-tag">Formação principal</span>
+            <h2>Formação Consultor Interno SSMA & ESG</h2>
+            <p>
+                Um caminho completo para profissionais que desejam sair do operacional
+                e atuar com mais influência, clareza, posicionamento e geração de valor.
+            </p>
+        </div>
+
+        <div class="formacao-v3-layout">
+            <div class="formacao-v3-main-card">
+                <span class="formacao-v3-mini-label">Estrutura da formação</span>
+                <h3>O que você vai encontrar na formação</h3>
+
+                <p class="formacao-v3-main-text">
+                    A formação foi construída para desenvolver visão estratégica,
+                    capacidade de influência e aplicação prática em contextos reais
+                    de SSMA e ESG.
+                </p>
+
+                <ul class="formacao-v3-list">
+                    <li>Metodologia prática e atualizada</li>
+                    <li>Aplicação em empresas nacionais e multinacionais</li>
+                    <li>Foco em estratégia, cultura, pessoas e indicadores</li>
+                    <li>Aulas gravadas com acesso flexível</li>
+                    <li>Mentorias ao vivo para aprofundamento</li>
+                    <li>Desenvolvimento de visão consultiva e influência interna</li>
+                </ul>
+            </div>
+
+            <div class="formacao-v3-side">
+                <article class="formacao-v3-side-card">
+                    <span class="formacao-v3-kicker">Base sólida</span>
+                    <h3>Fundamentos SSMA & ESG</h3>
+                    <p>
+                        Domine os pilares essenciais para integrar segurança,
+                        saúde, meio ambiente e governança de forma estruturada.
+                    </p>
+                </article>
+
+                <article class="formacao-v3-side-card">
+                    <span class="formacao-v3-kicker">Aplicação prática</span>
+                    <h3>Consultor Interno de Alta Performance</h3>
+                    <p>
+                        Aprenda métodos para análise, tomada de decisão e geração
+                        de impacto real dentro da empresa.
+                    </p>
+                </article>
+
+                <article class="formacao-v3-side-card">
+                    <span class="formacao-v3-kicker">Influência</span>
+                    <h3>Liderança Estratégica</h3>
+                    <p>
+                        Desenvolva a capacidade de engajar líderes e fortalecer
+                        a cultura de segurança com consistência.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-default mentor-v2-section">
+    <div class="container mentor-v2-layout">
+        <div class="mentor-v2-photo-wrap">
+            <div class="mentor-v2-photo-frame">
+                <img
+                    src="{% static 'images/alan.png' %}"
+                    alt="Alan Silverio da Silva"
+                    class="mentor-v2-photo"
+                >
+            </div>
+        </div>
+
+        <div class="mentor-v2-content">
+            <span class="section-tag">Seu mentor</span>
+            <h2>Alan Silverio da Silva</h2>
+
+            <p class="mentor-v2-subtitle">
+                Referência em SSMA, ESG, performance e cultura de segurança
+            </p>
+
+            <p class="mentor-v2-description">
+                Com sólida experiência em grandes corporações e projetos de alta
+                complexidade, Alan atua no desenvolvimento de profissionais que
+                desejam ampliar influência, fortalecer autoridade técnica e gerar
+                resultados sustentáveis dentro das organizações.
+            </p>
+
+            <div class="mentor-v2-info-grid">
+                <div class="mentor-v2-info-card">
+                    <span class="mentor-v2-info-label">Atuação</span>
+                    <strong>SSMA, ESG e Governança</strong>
+                    <p>Visão integrada entre segurança, sustentabilidade e estratégia.</p>
+                </div>
+
+                <div class="mentor-v2-info-card">
+                    <span class="mentor-v2-info-label">Foco</span>
+                    <strong>Performance e Resultados</strong>
+                    <p>Aplicação prática para fortalecer cultura, influência e tomada de decisão.</p>
+                </div>
+            </div>
+
+            <div class="mentor-v2-points">
+                <div>Gestão de riscos e compliance</div>
+                <div>Performance e resultados sustentáveis</div>
+                <div>Cultura de segurança e engajamento</div>
+                <div>Posicionamento estratégico em SSMA & ESG</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-default dominar-v2-section">
+    <div class="container">
+        <div class="dominar-v2-header">
+            <span class="section-tag">O que você vai dominar</span>
+            <h2>Competências que geram impacto real</h2>
+            <p>
+                Desenvolva capacidades práticas e estratégicas para fortalecer sua
+                atuação, ampliar sua influência e gerar resultados sustentáveis
+                dentro da organização.
+            </p>
+        </div>
+
+        <div class="dominar-v2-layout">
+            <div class="dominar-v2-main-card">
+                <span class="dominar-v2-mini-label">Desenvolvimento profissional</span>
+                <h3>Uma formação voltada para evolução real</h3>
+                <p class="dominar-v2-main-text">
+                    Mais do que conteúdo técnico, a formação foi estruturada para
+                    desenvolver visão estratégica, posicionamento profissional e
+                    capacidade de gerar valor em ambientes corporativos complexos.
+                </p>
+
+                <ul class="dominar-v2-list">
+                    <li>Fortalecimento da atuação consultiva dentro da empresa</li>
+                    <li>Ampliação da influência em decisões e direcionamentos</li>
+                    <li>Conexão entre cultura, liderança e resultados</li>
+                    <li>Aplicação prática com foco em transformação consistente</li>
+                </ul>
+            </div>
+
+            <div class="dominar-v2-grid">
+                <article class="dominar-v2-card">
+                    <span class="dominar-v2-kicker">Diagnóstico</span>
+                    <h3>Cultura de Segurança</h3>
+                    <p>
+                        Entenda a realidade da organização, identifique padrões
+                        e reconheça os fatores que influenciam comportamentos.
+                    </p>
+                </article>
+
+                <article class="dominar-v2-card">
+                    <span class="dominar-v2-kicker">Influência</span>
+                    <h3>Engajamento de Líderes</h3>
+                    <p>
+                        Aprenda a envolver lideranças e equipes com mais consistência,
+                        clareza e direcionamento estratégico.
+                    </p>
+                </article>
+
+                <article class="dominar-v2-card">
+                    <span class="dominar-v2-kicker">Transformação</span>
+                    <h3>Segurança Comportamental</h3>
+                    <p>
+                        Desenvolva abordagens capazes de transformar regras em
+                        cultura por meio de valores, atitudes e engajamento.
+                    </p>
+                </article>
+
+                <article class="dominar-v2-card">
+                    <span class="dominar-v2-kicker">Resultado</span>
+                    <h3>Indicadores e Impacto</h3>
+                    <p>
+                        Meça, comunique e demonstre resultados com método,
+                        visão analítica e conexão com o negócio.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-default ssma-video-section">
+    <div class="container">
+        <div class="ssma-section-head-inline">
+            <div>
+                <span class="section-tag">Vídeos e conteúdos</span>
+                <h2>Aprenda com quem vive a prática</h2>
+            </div>
+
+            <a href="{% url 'videos' %}" class="btn btn-outline">
+                Ver todos os vídeos
+            </a>
+        </div>
+
+        <div class="ssma-video-cards-grid">
+            <article class="ssma-video-home-card">
+                <img
+                    src="{% static 'images/foto_1.png' %}"
+                    alt="Vídeo 1"
+                    class="ssma-video-thumb"
+                >
+                <div class="ssma-video-home-content">
+                    <span>Conteúdo prático</span>
+                    <h3>O papel estratégico do consultor interno</h3>
+                    <p>Como sair do operacional e se posicionar como parceiro estratégico da empresa.</p>
+                </div>
+            </article>
+
+            <article class="ssma-video-home-card">
+                <img
+                    src="{% static 'images/foto_2.png' %}"
+                    alt="Vídeo 2"
+                    class="ssma-video-thumb"
+                >
+                <div class="ssma-video-home-content">
+                    <span>Aplicação real</span>
+                    <h3>Indicadores que geram decisões e resultados</h3>
+                    <p>Descubra como transformar dados em ações com impacto concreto no negócio.</p>
+                </div>
+            </article>
+
+            <article class="ssma-video-home-card">
+                <img
+                    src="{% static 'images/foto_3.png' %}"
+                    alt="Vídeo 3"
+                    class="ssma-video-thumb"
+                >
+                <div class="ssma-video-home-content">
+                    <span>Liderança</span>
+                    <h3>Influência e cultura de segurança</h3>
+                    <p>Estratégias para engajar líderes e equipes de maneira consistente e sustentável.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section-default">
+    <div class="container">
+        <div class="ssma-big-cta-box">
+            <div>
+                <span class="section-tag">Próximo passo</span>
+                <h2>Pronto para elevar sua atuação em SSMA & ESG?</h2>
+                <p>
+                    Matricule-se agora e tenha acesso a uma formação pensada para gerar clareza,
+                    posicionamento e resultados sustentáveis.
+                </p>
+            </div>
+
+            <div class="ssma-big-cta-actions">
+                <a
+                    href="https://chk.eduzz.com/39VEGE5BWR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
+                    Quero me matricular
+                </a>
+
+                <a href="{% url 'contato' %}" class="btn btn-outline">
+                    Agendar mentoria gratuita
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

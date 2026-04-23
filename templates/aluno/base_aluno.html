@@ -8,45 +8,72 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="aluno-body">
-    <div class="aluno-layout">
+    <div class="aluno-shell">
         <aside class="aluno-sidebar">
-            <a href="{% url 'aluno_dashboard' %}" class="aluno-brand-link">
-                <img
-                    src="{% static 'images/logo.png' %}"
-                    alt="Logo"
-                    class="aluno-logo"
-                >
-                <div>
-                    <h2>Área do Aluno</h2>
-                    <p>Consultor Interno</p>
-                </div>
-            </a>
+            <div class="aluno-sidebar-top">
+                <a href="{% url 'aluno_dashboard' %}" class="aluno-brand-link">
+                    <img
+                        src="{% static 'images/logo.png' %}"
+                        alt="Logo"
+                        class="aluno-logo"
+                    >
+                    <div class="aluno-brand-text">
+                        <h2>Área do Aluno</h2>
+                        <p>Consultor Interno</p>
+                    </div>
+                </a>
+            </div>
 
             <nav class="aluno-menu">
-                <a href="{% url 'aluno_dashboard' %}">Dashboard</a>
-                <a href="{% url 'aluno_modulos' %}">Módulos</a>
-                <a href="{% url 'aluno_materiais' %}">Materiais</a>
-                <a href="{% url 'aluno_mentorias' %}">Mentorias</a>
-                <a href="{% url 'aluno_perfil' %}">Perfil</a>
-                <a href="{% url 'logout' %}">Sair</a>
+                <a href="{% url 'aluno_dashboard' %}" class="aluno-menu-link">Dashboard</a>
+                <a href="{% url 'aluno_modulos' %}" class="aluno-menu-link">Módulos</a>
+                <a href="{% url 'aluno_materiais' %}" class="aluno-menu-link">Materiais</a>
+                <a href="{% url 'aluno_mentorias' %}" class="aluno-menu-link">Mentorias</a>
+                <a href="{% url 'aluno_perfil' %}" class="aluno-menu-link">Perfil</a>
+
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="aluno-menu-link aluno-menu-exit logout-button">
+                        Sair
+                    </button>
+                </form>
             </nav>
+
+            <div class="aluno-sidebar-bottom">
+                <div class="aluno-side-card">
+                    <span class="aluno-side-label">Experiência premium</span>
+                    <h3>Seu ambiente de evolução</h3>
+                    <p>
+                        Acesse módulos, materiais, mentorias e acompanhe sua jornada
+                        com mais clareza e organização.
+                    </p>
+                </div>
+            </div>
         </aside>
 
-        <div class="aluno-main-wrap">
+        <div class="aluno-main-area">
             <header class="aluno-topbar">
-                <div>
-                    <p class="aluno-topbar-label">Área reservada</p>
+                <div class="aluno-topbar-left">
+                    <p class="aluno-topbar-label">Ambiente reservado</p>
                     <h1 class="aluno-topbar-title">
                         {% block aluno_title %}Painel{% endblock %}
                     </h1>
                 </div>
 
-                <div class="aluno-user-box">
-                    {{ request.user.username }}
+                <div class="aluno-topbar-right">
+                    <div class="aluno-user-badge">
+                        <span class="aluno-user-avatar">
+                            {{ request.user.username|first|upper }}
+                        </span>
+                        <div>
+                            <strong>{{ request.user.username }}</strong>
+                            <small>Aluno ativo</small>
+                        </div>
+                    </div>
                 </div>
             </header>
 
-            <main class="aluno-main">
+            <main class="aluno-main-content">
                 {% block aluno_content %}{% endblock %}
             </main>
         </div>

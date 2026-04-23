@@ -4,15 +4,24 @@
 {% block aluno_title %}{{ modulo.titulo }}{% endblock %}
 
 {% block aluno_content %}
-<div class="module-detail-card">
-    <span class="section-tag">Detalhes do módulo</span>
-    <h2>{{ modulo.titulo }}</h2>
-    <p>{{ modulo.descricao|default:"Descrição do módulo ainda não cadastrada." }}</p>
+<div class="module-detail-hero premium-panel">
+    <div class="module-detail-hero-text">
+        <span class="section-tag">Detalhes do módulo</span>
+        <h2>{{ modulo.titulo }}</h2>
+        <p>{{ modulo.descricao|default:"Descrição do módulo ainda não cadastrada." }}</p>
+    </div>
+
+    <div class="module-detail-hero-side">
+        <div class="module-stat-box">
+            <strong>{{ aulas|length }}</strong>
+            <span>Aula{{ aulas|length|pluralize }}</span>
+        </div>
+    </div>
 </div>
 
-<div class="lesson-list">
+<div class="lesson-list premium-lesson-list">
     {% for aula in aulas %}
-        <article class="lesson-card lesson-card-column">
+        <article class="lesson-card lesson-card-column premium-lesson-card">
             <div class="lesson-main">
                 <span class="modulo-badge">Aula {{ aula.ordem }}</span>
                 <h3>{{ aula.titulo }}</h3>
@@ -32,8 +41,7 @@
                     <div class="video-placeholder-box">
                         <span>Vídeo ainda não configurado</span>
                         <small>
-                            Você poderá usar:
-                            <strong>static/videos/arquivo.mp4</strong>
+                            Você poderá usar <strong>static/videos/arquivo.mp4</strong>
                             ou link do YouTube
                         </small>
                     </div>

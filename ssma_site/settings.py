@@ -79,7 +79,6 @@ if database_url:
         "default": dj_database_url.parse(
             database_url,
             conn_max_age=600,
-            ssl_require=True,
         )
     }
 else:
@@ -101,27 +100,26 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# WhiteNoise para produção e compatível com o local
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+if not DEBUG:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True") == "True"
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "usialan78@gmail.com")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "toyotaa038@gmail.com")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
-CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "usialan78@gmail.com")
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "toyotaa038@gmail.com")
 
-# Segurança extra quando DEBUG=False
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/aluno/"
+LOGOUT_REDIRECT_URL = "/login/"
+
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-LOGIN_URL = "/login/"
-LOGIN_REDIRECT_URL = "/aluno/"
-LOGOUT_REDIRECT_URL = "/login/"

@@ -24,6 +24,7 @@ class PerfilAluno(models.Model):
         related_name="perfil_aluno",
     )
     nome_exibicao = models.CharField(max_length=150, blank=True)
+    telefone = models.CharField(max_length=30, blank=True)
     compra_id = models.CharField(max_length=120, blank=True)
     origem_compra = models.CharField(max_length=80, blank=True)
     acesso_ativo = models.BooleanField(default=False)

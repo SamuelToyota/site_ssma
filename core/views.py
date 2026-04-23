@@ -1,14 +1,14 @@
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import parse_qs, urlparse
 
 from django.conf import settings
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import MentoriaContatoForm
+from .forms import CadastroAlunoForm, MentoriaContatoForm
 from .models import (
     Aula,
-    Curso,
     Material,
     Matricula,
     MentoriaAula,
@@ -29,6 +29,10 @@ def videos(request):
     return render(request, "videos.html")
 
 
+def modulos(request):
+    return render(request, "modulos.html")
+
+
 def contato(request):
     if request.method == "POST":
         form = MentoriaContatoForm(request.POST)
@@ -47,7 +51,7 @@ def contato(request):
                 message=mensagem,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.CONTACT_EMAIL],
-                fail_silently=False,
+                fail_silently=True,
             )
             return redirect("sucesso")
     else:
@@ -58,6 +62,40 @@ def contato(request):
 
 def sucesso(request):
     return render(request, "sucesso.html")
+
+
+def cadastro(request):
+    if request.method == "POST":
+        form = CadastroAlunoForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+
+            assunto = "Conta criada com sucesso | Área do Aluno"
+            mensagem = (
+                f"Olá, {user.first_name}!\n\n"
+                "Sua conta foi criada com sucesso na Área do Aluno do Consultor Interno.\n\n"
+                "Agora você já pode acessar a plataforma utilizando seu login e sua senha.\n\n"
+                "Importante:\n"
+                "- O conteúdo completo será liberado somente após a matrícula ativa.\n"
+                "- Você pode voltar e entrar novamente quando quiser pela página de login.\n\n"
+                "Atenciosamente,\n"
+                "Equipe Consultor Interno"
+            )
+
+            send_mail(
+                subject=assunto,
+                message=mensagem,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[user.email],
+                fail_silently=True,
+            )
+
+            login(request, user)
+            return redirect("aluno_dashboard")
+    else:
+        form = CadastroAlunoForm()
+
+    return render(request, "aluno/cadastro.html", {"form": form})
 
 
 def _usuario_tem_acesso(user, curso):
@@ -71,17 +109,22 @@ def _usuario_tem_acesso(user, curso):
 def _youtube_embed_url(url):
     if not url:
         return ""
+
     if "youtube.com/embed/" in url:
         return url
+
     parsed = urlparse(url)
+
     if "youtu.be" in parsed.netloc:
         video_id = parsed.path.strip("/")
         return f"https://www.youtube.com/embed/{video_id}"
+
     if "youtube.com" in parsed.netloc:
         query = parse_qs(parsed.query)
         video_id = query.get("v", [""])[0]
         if video_id:
             return f"https://www.youtube.com/embed/{video_id}"
+
     return url
 
 
@@ -128,6 +171,7 @@ def aluno_dashboard(request):
         "concluidas": concluidas,
         "progresso_percentual": progresso_percentual,
         "proxima_aula": proxima_aula,
+        "tem_matricula": bool(curso),
     }
     return render(request, "aluno/dashboard.html", context)
 
@@ -148,6 +192,7 @@ def aluno_modulos(request):
         {
             "curso": curso,
             "modulos": modulos,
+            "tem_matricula": bool(curso),
         },
     )
 
@@ -228,6 +273,7 @@ def aluno_materiais(request):
         {
             "curso": curso,
             "materiais": materiais,
+            "tem_matricula": bool(curso),
         },
     )
 
@@ -248,6 +294,7 @@ def aluno_mentorias(request):
         {
             "curso": curso,
             "mentorias": mentorias,
+            "tem_matricula": bool(curso),
         },
     )
 
@@ -263,5 +310,3 @@ def aluno_perfil(request):
             "perfil": perfil,
         },
     )
-def modulos(request):
-    return render(request, "modulos.html")

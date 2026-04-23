@@ -4,25 +4,56 @@
 {% block aluno_title %}Mentorias e Gravações{% endblock %}
 
 {% block aluno_content %}
-<div class="aluno-cards-grid">
-    {% for mentoria in mentorias %}
-        <div class="aluno-card">
-            <h3>{{ mentoria.titulo }}</h3>
-            <p>{{ mentoria.descricao }}</p>
-            {% if mentoria.data_referencia %}
-                <p><strong>Data:</strong> {{ mentoria.data_referencia }}</p>
-            {% endif %}
-            {% if mentoria.link_gravacao %}
-                <a href="{{ mentoria.link_gravacao }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    Ver gravação
-                </a>
-            {% endif %}
-        </div>
-    {% empty %}
-        <div class="aluno-card">
-            <h3>Nenhuma mentoria disponível</h3>
-            <p>As mentorias ainda não foram cadastradas.</p>
-        </div>
-    {% endfor %}
-</div>
+{% if tem_matricula %}
+    <div class="section-intro aluno-intro">
+        <span class="section-tag">Acompanhamento</span>
+        <h2>Encontros, gravações e aprofundamento</h2>
+        <p>
+            Revise os conteúdos das mentorias e fortaleça seu processo
+            de aplicação prática com mais segurança.
+        </p>
+    </div>
+
+    <div class="aluno-cards-grid premium-resource-grid">
+        {% for mentoria in mentorias %}
+            <div class="aluno-card premium-resource-card">
+                <span class="section-tag">Mentoria</span>
+                <h3>{{ mentoria.titulo }}</h3>
+                <p>{{ mentoria.descricao }}</p>
+                {% if mentoria.data_referencia %}
+                    <p><strong>Data:</strong> {{ mentoria.data_referencia }}</p>
+                {% endif %}
+                <div class="resource-card-footer">
+                    {% if mentoria.link_gravacao %}
+                        <a href="{{ mentoria.link_gravacao }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            Ver gravação
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="aluno-card">
+                <h3>Nenhuma mentoria disponível</h3>
+                <p>As mentorias ainda não foram cadastradas.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="premium-panel blocked-panel">
+        <span class="section-tag">Conteúdo bloqueado</span>
+        <h2>As mentorias serão liberadas após sua matrícula</h2>
+        <p class="dashboard-helper-text">
+            Quando seu acesso estiver ativo, você verá aqui encontros,
+            gravações e conteúdos de aprofundamento.
+        </p>
+        <a
+            href="https://chk.eduzz.com/39VEGE5BWR"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+        >
+            Liberar conteúdo
+        </a>
+    </div>
+{% endif %}
 {% endblock %}

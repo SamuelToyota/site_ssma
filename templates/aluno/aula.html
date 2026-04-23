@@ -4,26 +4,42 @@
 {% block aluno_title %}{{ aula.titulo }}{% endblock %}
 
 {% block aluno_content %}
-<div class="video-class-card">
-    {% if embed_url %}
-        <div class="video-frame">
-            <iframe src="{{ embed_url }}" title="{{ aula.titulo }}" allowfullscreen></iframe>
-        </div>
-    {% else %}
-        <div class="aluno-card">
-            <h3>Vídeo ainda não configurado</h3>
-            <p>Cadastre a URL do vídeo no admin para exibir a aula aqui.</p>
-        </div>
-    {% endif %}
-
-    <div class="video-class-content">
-        <h3>{{ aula.titulo }}</h3>
-        <p>{{ aula.descricao }}</p>
-
-        {% if progresso.concluida %}
-            <p class="lesson-status done">Você já concluiu esta aula.</p>
+<div class="class-view-layout">
+    <div class="class-video-panel premium-panel">
+        {% if embed_url %}
+            <div class="video-frame large-video-frame">
+                <iframe
+                    src="{{ embed_url }}"
+                    title="{{ aula.titulo }}"
+                    allowfullscreen
+                ></iframe>
+            </div>
         {% else %}
-            <form method="post">
+            <div class="video-placeholder-box large-placeholder">
+                <span>Vídeo ainda não configurado</span>
+                <small>
+                    Cadastre a URL da aula no admin ou use depois um arquivo em
+                    <strong>static/videos/</strong>
+                </small>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="class-info-panel premium-panel">
+        <span class="section-tag">Aula</span>
+        <h2>{{ aula.titulo }}</h2>
+        <p>{{ aula.descricao|default:"Descrição da aula ainda não cadastrada." }}</p>
+
+        <div class="class-status-wrap">
+            {% if progresso.concluida %}
+                <span class="lesson-status done">Você já concluiu esta aula</span>
+            {% else %}
+                <span class="lesson-status pending">Aula ainda não concluída</span>
+            {% endif %}
+        </div>
+
+        {% if not progresso.concluida %}
+            <form method="post" class="class-complete-form">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">
                     Marcar como concluída

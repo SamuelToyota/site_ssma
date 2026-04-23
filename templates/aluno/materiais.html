@@ -4,22 +4,53 @@
 {% block aluno_title %}Materiais Complementares{% endblock %}
 
 {% block aluno_content %}
-<div class="aluno-cards-grid">
-    {% for material in materiais %}
-        <div class="aluno-card">
-            <h3>{{ material.titulo }}</h3>
-            <p>{{ material.descricao }}</p>
-            {% if material.link %}
-                <a href="{{ material.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    Acessar material
-                </a>
-            {% endif %}
-        </div>
-    {% empty %}
-        <div class="aluno-card">
-            <h3>Nenhum material disponível</h3>
-            <p>Os materiais complementares ainda não foram cadastrados.</p>
-        </div>
-    {% endfor %}
-</div>
+{% if tem_matricula %}
+    <div class="section-intro aluno-intro">
+        <span class="section-tag">Recursos de apoio</span>
+        <h2>Materiais para aprofundar sua prática</h2>
+        <p>
+            Aqui você acessa arquivos, links e conteúdos complementares
+            para fortalecer a aplicação prática da formação.
+        </p>
+    </div>
+
+    <div class="aluno-cards-grid premium-resource-grid">
+        {% for material in materiais %}
+            <div class="aluno-card premium-resource-card">
+                <span class="section-tag">Material</span>
+                <h3>{{ material.titulo }}</h3>
+                <p>{{ material.descricao }}</p>
+                <div class="resource-card-footer">
+                    {% if material.link %}
+                        <a href="{{ material.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            Acessar material
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="aluno-card">
+                <h3>Nenhum material disponível</h3>
+                <p>Os materiais complementares ainda não foram cadastrados.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="premium-panel blocked-panel">
+        <span class="section-tag">Conteúdo bloqueado</span>
+        <h2>Os materiais serão liberados após sua matrícula</h2>
+        <p class="dashboard-helper-text">
+            Após a ativação do acesso, você verá aqui os materiais complementares,
+            exercícios e links de apoio.
+        </p>
+        <a
+            href="https://chk.eduzz.com/39VEGE5BWR"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+        >
+            Desbloquear acesso
+        </a>
+    </div>
+{% endif %}
 {% endblock %}

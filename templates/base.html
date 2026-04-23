@@ -7,7 +7,8 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-    <title>{% block title %}Consultor Interno{% endblock %}</title>
+    <title>{% block title %}Consultor SSMA{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -16,14 +17,12 @@
             <a href="{% url 'home' %}" class="logo-wrap">
                 <img
                     src="{% static 'images/logo.png' %}"
-                    alt="Logo Consultor Interno"
+                    alt="Logo Consultor SSMA"
                     class="logo-img"
                 >
                 <div class="logo-text">
-                    <span class="logo-title">Consultor Interno</span>
-                    <span class="logo-subtitle">
-                        Consultoria em SSMA & ESG | Performance & Resultados Sustentáveis
-                    </span>
+                    <span class="logo-title">Consultor SSMA</span>
+                    <span class="logo-subtitle">Consultor Interno</span>
                 </div>
             </a>
 
@@ -32,36 +31,44 @@
                     <a href="{% url 'home' %}">Início</a>
                     <a href="{% url 'formacao' %}">Formação</a>
                     <a href="{% url 'videos' %}">Vídeos</a>
-                    <a href="{% url 'modulos' %}">Módulos</a>
                     <a href="{% url 'contato' %}">Mentoria</a>
-                    <a href="{% url 'login' %}" class="aluno-top-link">Área do Aluno</a>
+                    <a href="{% url 'login' %}">Área do Aluno</a>
                 </nav>
 
-                <div class="social-icons">
-                    <a
-                        href="https://www.instagram.com/consultorinterno/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram"
-                        class="social-link"
-                    >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2Zm10.25 1.65a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"/>
-                        </svg>
-                    </a>
-
+                <div class="header-socials">
                     <a
                         href="https://www.linkedin.com/in/consultor-interno/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="social-icon-btn"
                         aria-label="LinkedIn"
-                        class="social-link"
                     >
                         <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4.98 3.5A1.75 1.75 0 1 1 3.23 5.25 1.75 1.75 0 0 1 4.98 3.5ZM3.5 8.25h2.96V20.5H3.5Zm4.82 0h2.84v1.67h.04A3.12 3.12 0 0 1 14 8c2.99 0 3.54 1.97 3.54 4.52v7.98h-2.96v-7.07c0-1.69-.03-3.86-2.35-3.86s-2.71 1.84-2.71 3.74v7.19H8.32Z"/>
+                            <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56A1.97 1.97 0 0 0 5.17 3 1.97 1.97 0 0 0 3.2 4.94c0 1.08.88 1.94 1.97 1.94 1.09 0 1.99-.86 1.99-1.94ZM20.8 13.02c0-3.48-1.86-5.1-4.34-5.1-2 0-2.9 1.1-3.4 1.87V8.5H9.68c.05.85 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.67.12-.91.27-.67.88-1.37 1.91-1.37 1.35 0 1.89 1.03 1.89 2.55V20H20.8v-6.98Z"/>
+                        </svg>
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/consultorinterno/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon-btn"
+                        aria-label="Instagram"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5A3.95 3.95 0 0 0 16.25 3.8h-8.5Zm8.92 1.35a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/>
                         </svg>
                     </a>
                 </div>
+
+                <a
+                    href="https://chk.eduzz.com/39VEGE5BWR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary premium-header-cta"
+                >
+                    Quero me matricular
+                </a>
             </div>
         </div>
     </header>
@@ -70,25 +77,62 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-wrapper">
-            <div class="footer-brand">
-                <h3>Consultor Interno</h3>
-                <p>
-                    Consultoria em SSMA & ESG | Performance & Resultados Sustentáveis |
-                    Compliance & Governança | Desenvolvimento Profissional, Autoridade
-                    Técnica e Crescimento de Carreira | Posicionamento estratégico
+    <footer class="site-footer premium-footer">
+        <div class="container premium-footer-grid">
+            <div class="premium-footer-brand">
+                <div class="premium-footer-logo-line">
+                    <img
+                        src="{% static 'images/logo.png' %}"
+                        alt="Logo Consultor SSMA"
+                        class="footer-logo-img"
+                    >
+                    <div>
+                        <h3>Consultor SSMA</h3>
+                        <p>Consultor Interno</p>
+                    </div>
+                </div>
+
+                <p class="premium-footer-text">
+                    Formação e consultoria para transformar profissionais de SSMA e ESG
+                    em referências estratégicas de performance, compliance,
+                    governança e cultura de segurança.
                 </p>
             </div>
 
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="{% url 'home' %}">Início</a>
-                    <a href="{% url 'formacao' %}">Formação</a>
-                    <a href="{% url 'videos' %}">Vídeos</a>
-                    <a href="{% url 'contato' %}">Mentoria</a>
-                    <a href="{% url 'login' %}">Área do Aluno</a>
-                </div>
+            <div class="premium-footer-column">
+                <h4>Navegação</h4>
+                <a href="{% url 'home' %}">Início</a>
+                <a href="{% url 'formacao' %}">Formação</a>
+                <a href="{% url 'videos' %}">Vídeos</a>
+                <a href="{% url 'contato' %}">Mentoria</a>
+                <a href="{% url 'login' %}">Área do Aluno</a>
+            </div>
+
+            <div class="premium-footer-column">
+                <h4>Serviços</h4>
+                <span>Formação SSMA & ESG</span>
+                <span>Mentoria Diagnóstica</span>
+                <span>Consultoria Estratégica</span>
+                <span>Desenvolvimento Profissional</span>
+                <span>Cultura de Segurança</span>
+            </div>
+
+            <div class="premium-footer-column">
+                <h4>Siga-nos</h4>
+                <a
+                    href="https://www.instagram.com/consultorinterno/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/consultor-interno/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
             </div>
         </div>
     </footer>
