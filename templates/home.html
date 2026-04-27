@@ -26,17 +26,12 @@
             </p>
 
             <div class="ssma-hero-actions">
-                <a
-                    href="https://chk.eduzz.com/39VEGE5BWR"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    Quero me matricular
-                </a>
 
+                <a href="{% url 'cursos' %}" class="btn-main">
+    Ver Cursos
+</a>
                 <a href="{% url 'contato' %}" class="btn btn-outline">
-                    Solicitar mentoria
+                    Agendar mentoria gratuita
                 </a>
             </div>
         </div>
@@ -109,6 +104,59 @@
     </div>
 </section>
 
+<section class="cursos-premium">
+    <div class="container">
+
+        <div class="cursos-header">
+            <h2>Formações e Ferramentas Estratégicas</h2>
+            <p>Escolha o caminho ideal para elevar seu nível profissional em SSMA e ESG</p>
+        </div>
+
+        <div class="cursos-grid">
+
+            <!-- CURSO 1 -->
+            <div class="curso-card">
+                <div class="curso-img">
+                    <img src="{% static 'images/course_1.png' %}" alt="Curso Cultura de Segurança">
+                </div>
+
+                <div class="curso-content">
+                    <h3>Especialista em Cultura de Segurança</h3>
+                    <p>Baseado em valores pessoais e organizacionais para transformação real.</p>
+
+                    <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" class="btn-curso">
+                        Compre Já
+                    </a>
+                    <a href="{% url 'curso_cultura' %}" class="btn-secondary">
+    Saiba mais
+</a>
+                </div>
+            </div>
+
+            <!-- CURSO 2 -->
+            <div class="curso-card">
+                <div class="curso-img">
+                    <img src="{% static 'images/course_2.png' %}" alt="Teste de Perfil">
+                </div>
+
+                <div class="curso-content">
+                    <h3>Teste de Perfil</h3>
+                    <p>Valores pessoais, carreira e devolutiva personalizada.</p>
+
+                    <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" class="btn-curso">
+                        Compre Já
+                    </a>
+                    <a href="{% url 'curso_teste' %}" class="btn-secondary">
+    Saiba mais
+</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 <section class="section-default formacao-v3-section">
     <div class="container">
         <div class="formacao-v3-header">
@@ -173,56 +221,6 @@
     </div>
 </section>
 
-<section class="section-default mentor-v2-section">
-    <div class="container mentor-v2-layout">
-        <div class="mentor-v2-photo-wrap">
-            <div class="mentor-v2-photo-frame">
-                <img
-                    src="{% static 'images/alan.png' %}"
-                    alt="Alan Silverio da Silva"
-                    class="mentor-v2-photo"
-                >
-            </div>
-        </div>
-
-        <div class="mentor-v2-content">
-            <span class="section-tag">Seu mentor</span>
-            <h2>Alan Silverio da Silva</h2>
-
-            <p class="mentor-v2-subtitle">
-                Referência em SSMA, ESG, performance e cultura de segurança
-            </p>
-
-            <p class="mentor-v2-description">
-                Com sólida experiência em grandes corporações e projetos de alta
-                complexidade, Alan atua no desenvolvimento de profissionais que
-                desejam ampliar influência, fortalecer autoridade técnica e gerar
-                resultados sustentáveis dentro das organizações.
-            </p>
-
-            <div class="mentor-v2-info-grid">
-                <div class="mentor-v2-info-card">
-                    <span class="mentor-v2-info-label">Atuação</span>
-                    <strong>SSMA, ESG e Governança</strong>
-                    <p>Visão integrada entre segurança, sustentabilidade e estratégia.</p>
-                </div>
-
-                <div class="mentor-v2-info-card">
-                    <span class="mentor-v2-info-label">Foco</span>
-                    <strong>Performance e Resultados</strong>
-                    <p>Aplicação prática para fortalecer cultura, influência e tomada de decisão.</p>
-                </div>
-            </div>
-
-            <div class="mentor-v2-points">
-                <div>Gestão de riscos e compliance</div>
-                <div>Performance e resultados sustentáveis</div>
-                <div>Cultura de segurança e engajamento</div>
-                <div>Posicionamento estratégico em SSMA & ESG</div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="section-default dominar-v2-section">
     <div class="container">
@@ -295,58 +293,53 @@
     </div>
 </section>
 
-<section class="section-default ssma-video-section">
-    <div class="container">
-        <div class="ssma-section-head-inline">
-            <div>
-                <span class="section-tag">Vídeos e conteúdos</span>
-                <h2>Aprenda com quem vive a prática</h2>
+<section class="section-default mentor-v2-section">
+    <div class="container mentor-v2-layout">
+        <div class="mentor-v2-photo-wrap">
+            <div class="mentor-v2-photo-frame">
+                <img
+                    src="{% static 'images/alan.png' %}"
+                    alt="Alan Silverio da Silva"
+                    class="mentor-v2-photo"
+                >
             </div>
-
-            <a href="{% url 'videos' %}" class="btn btn-outline">
-                Ver todos os vídeos
-            </a>
         </div>
 
-        <div class="ssma-video-cards-grid">
-            <article class="ssma-video-home-card">
-                <img
-                    src="{% static 'images/foto_1.png' %}"
-                    alt="Vídeo 1"
-                    class="ssma-video-thumb"
-                >
-                <div class="ssma-video-home-content">
-                    <span>Conteúdo prático</span>
-                    <h3>O papel estratégico do consultor interno</h3>
-                    <p>Como sair do operacional e se posicionar como parceiro estratégico da empresa.</p>
-                </div>
-            </article>
+        <div class="mentor-v2-content">
+            <span class="section-tag">Seu mentor</span>
+            <h2>Alan Silverio da Silva</h2>
 
-            <article class="ssma-video-home-card">
-                <img
-                    src="{% static 'images/foto_2.png' %}"
-                    alt="Vídeo 2"
-                    class="ssma-video-thumb"
-                >
-                <div class="ssma-video-home-content">
-                    <span>Aplicação real</span>
-                    <h3>Indicadores que geram decisões e resultados</h3>
-                    <p>Descubra como transformar dados em ações com impacto concreto no negócio.</p>
-                </div>
-            </article>
+            <p class="mentor-v2-subtitle">
+                Referência em SSMA, ESG, performance e cultura de segurança
+            </p>
 
-            <article class="ssma-video-home-card">
-                <img
-                    src="{% static 'images/foto_3.png' %}"
-                    alt="Vídeo 3"
-                    class="ssma-video-thumb"
-                >
-                <div class="ssma-video-home-content">
-                    <span>Liderança</span>
-                    <h3>Influência e cultura de segurança</h3>
-                    <p>Estratégias para engajar líderes e equipes de maneira consistente e sustentável.</p>
+            <p class="mentor-v2-description">
+                Com sólida experiência em grandes corporações e projetos de alta
+                complexidade, Alan atua no desenvolvimento de profissionais que
+                desejam ampliar influência, fortalecer autoridade técnica e gerar
+                resultados sustentáveis dentro das organizações.
+            </p>
+
+            <div class="mentor-v2-info-grid">
+                <div class="mentor-v2-info-card">
+                    <span class="mentor-v2-info-label">Atuação</span>
+                    <strong>SSMA, ESG e Governança</strong>
+                    <p>Visão integrada entre segurança, sustentabilidade e estratégia.</p>
                 </div>
-            </article>
+
+                <div class="mentor-v2-info-card">
+                    <span class="mentor-v2-info-label">Foco</span>
+                    <strong>Performance e Resultados</strong>
+                    <p>Aplicação prática para fortalecer cultura, influência e tomada de decisão.</p>
+                </div>
+            </div>
+
+            <div class="mentor-v2-points">
+                <div>Gestão de riscos e compliance</div>
+                <div>Performance e resultados sustentáveis</div>
+                <div>Cultura de segurança e engajamento</div>
+                <div>Posicionamento estratégico em SSMA & ESG</div>
+            </div>
         </div>
     </div>
 </section>
@@ -358,24 +351,16 @@
                 <span class="section-tag">Próximo passo</span>
                 <h2>Pronto para elevar sua atuação em SSMA & ESG?</h2>
                 <p>
-                    Matricule-se agora e tenha acesso a uma formação pensada para gerar clareza,
+                    Assine agora e tenha acesso a uma formação pensada para gerar clareza,
                     posicionamento e resultados sustentáveis.
                 </p>
             </div>
 
             <div class="ssma-big-cta-actions">
-                <a
-                    href="https://chk.eduzz.com/39VEGE5BWR"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    Quero me matricular
-                </a>
+                 <a href="{% url 'cursos' %}" class="btn-main">
+    Assine agora
+</a>
 
-                <a href="{% url 'contato' %}" class="btn btn-outline">
-                    Agendar mentoria gratuita
-                </a>
             </div>
         </div>
     </div>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section-default">
+    <div class="container">
+
+        <h2 style="margin-bottom: 40px;">Nossos Cursos</h2>
+
+        <div class="courses-grid">
+
+            <!-- CURSO 1 -->
+            <div class="course-card">
+                <img src="{% static 'images/course_1.png' %}">
+                
+                <a href="{% url 'curso_cultura' %}" class="btn-main">Ver mais</a>
+            </div>
+
+            <!-- CURSO 2 -->
+            <div class="course-card">
+                <img src="{% static 'images/course_2.png' %}">
+
+                <a href="{% url 'curso_teste' %}" class="btn-main">Ver mais</a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

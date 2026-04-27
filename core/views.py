@@ -20,6 +20,14 @@ from .models import (
 def home(request):
     return render(request, "home.html")
 
+def curso_cultura(request):
+    return render(request, 'core/curso_cultura.html')
+
+def curso_teste(request):
+    return render(request, 'core/curso_teste.html')
+
+def cursos(request):
+    return render(request, 'core/cursos.html')
 
 def formacao(request):
     return render(request, "formacao.html")
