@@ -7,31 +7,28 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-    <title>{% block title %}Consultor SSMA{% endblock %}</title>
+    <title>{% block title %}Consultor Interno{% endblock %}</title>
+
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header class="site-header">
         <div class="container nav-wrapper">
- <a href="{% url 'home' %}" class="logo-wrap">
-    <img
-        src="{% static 'images/logo.png' %}"
-        alt="Consultor Interno"
-        class="logo-img"
-    >
+            <a href="{% url 'home' %}" class="logo-wrap">
+                <img
+                    src="{% static 'images/logo.png' %}"
+                    alt="Consultor Interno"
+                    class="logo-img"
+                >
 
-    <div class="logo-text">
-        <span class="logo-top">Consultor Interno</span>
-
-    </div>
-</a>
+                <span class="logo-text">Consultor Interno</span>
+            </a>
 
             <div class="header-right">
                 <nav class="navbar">
-                    <a href="{% url 'home' %}">Home</a>
-                    <a href="{% url 'formacao' %}">Cultura</a>
-                    <a href="{% url 'videos' %}">Vídeos</a>
+                    <a href="{% url 'home' %}">Início</a>
+                    <a href="{% url 'cursos' %}">Cursos</a>
                     <a href="{% url 'contato' %}">Mentoria</a>
                 </nav>
 
@@ -61,12 +58,9 @@
                     </a>
                 </div>
 
-                <a
-    href="{% url 'cursos' %}"
-    class="btn btn-primary premium-header-cta"
->
-    Ver cursos
-</a>
+                <a href="{% url 'cursos' %}" class="btn btn-primary premium-header-cta">
+                    Ver cursos
+                </a>
             </div>
         </div>
     </header>
@@ -81,12 +75,13 @@
                 <div class="premium-footer-logo-line">
                     <img
                         src="{% static 'images/logo.png' %}"
-                        alt="Logo Consultor SSMA"
+                        alt="Logo Consultor Interno"
                         class="footer-logo-img"
                     >
+
                     <div>
-                        <h3>Consultor SSMA</h3>
-                        <p>Consultor Interno</p>
+                        <h3>Consultor Interno</h3>
+                        <p>SSMA & ESG</p>
                     </div>
                 </div>
 
@@ -99,10 +94,9 @@
 
             <div class="premium-footer-column">
                 <h4>Navegação</h4>
-                <a href="{% url 'home' %}">Início</a>
-                <a href="{% url 'formacao' %}">Formação</a>
-                <a href="{% url 'videos' %}">Vídeos</a>
-                <a href="{% url 'contato' %}">Mentoria</a>
+                    <a href="{% url 'home' %}">Início</a>
+                    <a href="{% url 'cursos' %}">Cursos</a>
+                    <a href="{% url 'contato' %}">Mentoria</a>
             </div>
 
             <div class="premium-footer-column">
@@ -123,6 +117,7 @@
                 >
                     Instagram
                 </a>
+
                 <a
                     href="https://www.linkedin.com/in/consultor-interno/"
                     target="_blank"
@@ -133,5 +128,33 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const elements = document.querySelectorAll(".fade-up");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        });
+
+        elements.forEach(element => observer.observe(element));
+    </script>
+    <a
+    href="https://wa.me/5517997074900?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%20D.E.S.T.A.Q.U.E."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Falar no WhatsApp"
+>
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16.04 3C8.86 3 3 8.86 3 16.04c0 2.3.6 4.55 1.75 6.53L3.1 29l6.6-1.58a13.02 13.02 0 0 0 6.34 1.62C23.22 29.04 29 23.22 29 16.04 29 8.86 23.22 3 16.04 3Zm0 23.8c-2.02 0-3.98-.54-5.7-1.58l-.4-.24-3.92.94 1-3.82-.26-.42a10.77 10.77 0 0 1-1.52-5.64c0-5.96 4.85-10.8 10.8-10.8s10.8 4.84 10.8 10.8-4.84 10.76-10.8 10.76Zm5.94-8.08c-.32-.16-1.9-.94-2.2-1.04-.3-.12-.52-.16-.74.16-.22.32-.84 1.04-1.04 1.26-.18.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.62-1.92-1.8-2.24-.18-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.2.22-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.74-1.78-1.02-2.44-.26-.64-.54-.56-.74-.56h-.64c-.22 0-.56.08-.86.4-.3.32-1.12 1.1-1.12 2.68s1.16 3.1 1.32 3.32c.16.22 2.28 3.48 5.52 4.88.78.34 1.38.54 1.86.68.78.24 1.48.2 2.04.12.62-.1 1.9-.78 2.16-1.52.26-.74.26-1.38.18-1.52-.08-.14-.3-.22-.62-.38Z"/>
+    </svg>
+
+    <span>WhatsApp</span>
+</a>
+
 </body>
 </html>
