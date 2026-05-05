@@ -1,31 +1,169 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Cursos | Consultor Interno{% endblock %}
+
 {% block content %}
 
-<section class="section-default">
+<section class="courses-hero-new">
+    <div class="container">
+        <div class="courses-hero-new-content">
+            <span class="section-tag">Formações disponíveis</span>
+
+            <h1>
+                Escolha o caminho para sua
+                <span>evolução profissional</span>
+            </h1>
+
+            <p>
+                Duas soluções criadas para profissionais que querem mais clareza,
+                influência, posicionamento e evolução na carreira em SSMA e ESG.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="courses-new-showcase">
     <div class="container">
 
-        <h2 style="margin-bottom: 40px;">Nossos Cursos</h2>
+        <div class="courses-new-grid">
 
-        <div class="courses-grid">
+            <article class="course-new-card course-new-main">
+                <div class="course-new-visual">
+                    <img
+                        src="{% static 'images/course_1.png' %}"
+                        alt="Especialista em Cultura de Segurança"
+                    >
+                </div>
 
-            <!-- CURSO 1 -->
-            <div class="course-card">
-                <img src="{% static 'images/course_1.png' %}">
-                
-                <a href="{% url 'curso_cultura' %}" class="btn-main">Ver mais</a>
-            </div>
+                <div class="course-new-content">
+                    <span class="course-new-tag">Formação completa</span>
 
-            <!-- CURSO 2 -->
-            <div class="course-card">
-                <img src="{% static 'images/course_2.png' %}">
+                    <h2>Especialista em Cultura de Segurança</h2>
 
-                <a href="{% url 'curso_teste' %}" class="btn-main">Ver mais</a>
-            </div>
+                    <p>
+                        Para profissionais que querem sair da atuação apenas normativa
+                        e construir uma cultura de segurança real, baseada em valores,
+                        comportamento, liderança e engajamento.
+                    </p>
+
+                    <div class="course-new-highlights">
+                        <div>
+                            <strong>Foco</strong>
+                            <span>Cultura, liderança e comportamento</span>
+                        </div>
+
+                        <div>
+                            <strong>Ideal para</strong>
+                            <span>SSMA, líderes e agentes de mudança</span>
+                        </div>
+
+                        <div>
+                            <strong>Resultado</strong>
+                            <span>Mais influência e impacto organizacional</span>
+                        </div>
+                    </div>
+
+                    <div class="course-new-actions">
+                        <a href="{% url 'curso_cultura' %}" class="btn-main">
+                            Conhecer formação
+                        </a>
+
+                        <a
+                            href="https://chk.eduzz.com/39VEGE5BWR"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-outline"
+                        >
+                            Comprar agora
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="course-new-card course-new-tool">
+                <div class="course-new-visual">
+                    <img
+                        src="{% static 'images/course_2.png' %}"
+                        alt="Teste de Perfil Profissional"
+                    >
+                </div>
+
+                <div class="course-new-content">
+                    <span class="course-new-tag">Ferramenta estratégica</span>
+
+                    <h2>Teste de Perfil Profissional</h2>
+
+                    <p>
+                        Para quem busca clareza sobre seus valores pessoais, carreira,
+                        prioridades e próximos passos profissionais com devolutiva
+                        personalizada.
+                    </p>
+
+                    <div class="course-new-highlights">
+                        <div>
+                            <strong>Foco</strong>
+                            <span>Autoconhecimento aplicado à carreira</span>
+                        </div>
+
+                        <div>
+                            <strong>Ideal para</strong>
+                            <span>Decisões profissionais mais conscientes</span>
+                        </div>
+
+                        <div>
+                            <strong>Resultado</strong>
+                            <span>Clareza, direção e plano de ação</span>
+                        </div>
+                    </div>
+
+                    <div class="course-new-actions">
+                        <a href="{% url 'curso_teste' %}" class="btn-main">
+                            Conhecer teste
+                        </a>
+
+                        <a
+                            href="https://chk.eduzz.com/KW8KDK2O01"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-outline"
+                        >
+                            Comprar agora
+                        </a>
+                    </div>
+                </div>
+            </article>
 
         </div>
 
+    </div>
+</section>
+
+<section class="courses-choice-section">
+    <div class="container">
+        <div class="courses-choice-box">
+            <span class="section-tag">Qual escolher?</span>
+
+            <h2>
+                Se você quer evoluir sua carreira, comece pelo ponto certo.
+            </h2>
+
+            <div class="courses-choice-grid">
+                <div>
+                    <strong>Quero transformar cultura e liderar mudanças</strong>
+                    <p>
+                        Comece pela formação de Cultura de Segurança.
+                    </p>
+                </div>
+
+                <div>
+                    <strong>Quero entender meu perfil e tomar melhores decisões</strong>
+                    <p>
+                        Comece pelo Teste de Perfil Profissional.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

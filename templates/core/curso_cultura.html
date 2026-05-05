@@ -1,72 +1,214 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Especialista em Cultura de Segurança | Consultor Interno{% endblock %}
+
 {% block content %}
 
-<section class="curso-page-premium">
-    <div class="container">
+<section class="product-hero culture-hero">
+    <div class="container product-hero-grid">
+        <div class="product-hero-content">
+            <span class="section-tag">Formação principal</span>
 
-        <div class="curso-card-premium">
+            <h1>
+                Especialista em
+                <span>Cultura de Segurança</span>
+            </h1>
 
-            <div class="curso-img-box">
-                <img src="{% static 'images/course_1.png' %}">
-            </div>
+            <p>
+                Uma formação para profissionais de SSMA e líderes que desejam ir além
+                do compliance e construir uma cultura de segurança genuína, sustentada
+                por valores, comportamento, engajamento e liderança.
+            </p>
 
-            <div class="curso-info">
-
-                <h1>Especialista em Cultura de Segurança</h1>
-
-                <p class="curso-sub">
-                    Vá além do compliance e transforme a segurança em um valor real dentro da sua organização.
-                </p>
-
-                <div class="curso-bloco">
-                    <h3>O que você vai dominar</h3>
-                    <ul>
-                        <li>Diagnóstico completo da cultura de segurança</li>
-                        <li>Identificação de valores que influenciam comportamento</li>
-                        <li>Engajamento estratégico de líderes e equipes</li>
-                        <li>Programas sustentáveis de segurança comportamental</li>
-                        <li>Mensuração e comunicação de resultados reais</li>
-                        <li>Posicionamento como referência em SSMA</li>
-                    </ul>
-                </div>
-
-                <div class="curso-bloco">
-                    <h3>Para quem é</h3>
-                    <ul>
-                        <li>Profissionais de SSMA que querem crescer</li>
-                        <li>Líderes que buscam engajamento real</li>
-                        <li>Quem quer sair do operacional e ganhar influência</li>
-                    </ul>
-                </div>
-
-                <div class="curso-bloco">
-                    <h3>Como funciona</h3>
-                    <ul>
-                        <li>4 a 6 semanas de imersão prática</li>
-                        <li>Aulas gravadas com acesso 24/7</li>
-                        <li>2 mentorias ao vivo com gravação</li>
-                        <li>Conteúdo aplicável + exercícios reais</li>
-                    </ul>
-                </div>
-
-                <div class="curso-bloco destaque">
-                    <h3>Diferencial</h3>
-                    <p>
-                        Metodologia baseada em valores pessoais e organizacionais,
-                        validada por mais de 20 anos de experiência em SSMA e ESG.
-                    </p>
-                </div>
-
-                <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" class="btn-curso-premium">
-                    Quero me tornar especialista
+            <div class="product-hero-actions">
+                <a
+                    href="https://chk.eduzz.com/39VEGE5BWR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-main"
+                >
+                    Comprar formação
                 </a>
 
+                <a href="{% url 'cursos' %}" class="btn btn-outline">
+                    Voltar aos cursos
+                </a>
             </div>
-
         </div>
 
+        <div class="product-hero-media">
+            <img
+                src="{% static 'images/course_1.png' %}"
+                alt="Especialista em Cultura de Segurança"
+            >
+        </div>
+    </div>
+</section>
+
+<section class="product-impact-section">
+    <div class="container">
+        <div class="product-impact-box">
+            <span class="section-tag">A transformação</span>
+
+            <h2>
+                De normas cumpridas para uma cultura que realmente muda comportamentos.
+            </h2>
+
+            <p>
+                O objetivo não é apenas ensinar conceitos. É preparar você para
+                diagnosticar a cultura atual, influenciar líderes, engajar equipes
+                e demonstrar impacto real em SSMA.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="product-modules-section">
+    <div class="container">
+        <div class="product-section-head">
+            <span class="section-tag">O que você vai dominar</span>
+
+            <h2>
+                Competências práticas para fortalecer sua atuação estratégica.
+            </h2>
+        </div>
+
+        <div class="product-modules-grid">
+            <article>
+                <span>01</span>
+                <h3>Diagnóstico cultural</h3>
+                <p>
+                    Entenda a realidade atual da organização e identifique os fatores
+                    que sustentam comportamentos seguros ou inseguros.
+                </p>
+            </article>
+
+            <article>
+                <span>02</span>
+                <h3>Valores e comportamento</h3>
+                <p>
+                    Aprenda como valores pessoais e organizacionais influenciam
+                    decisões, atitudes e práticas de segurança.
+                </p>
+            </article>
+
+            <article>
+                <span>03</span>
+                <h3>Engajamento de líderes</h3>
+                <p>
+                    Desenvolva estratégias para envolver lideranças e equipes
+                    com consistência, clareza e propósito.
+                </p>
+            </article>
+
+            <article>
+                <span>04</span>
+                <h3>Programas sustentáveis</h3>
+                <p>
+                    Estruture ações de segurança comportamental que não dependem
+                    apenas de cobrança, mas de cultura e continuidade.
+                </p>
+            </article>
+
+            <article>
+                <span>05</span>
+                <h3>Indicadores e impacto</h3>
+                <p>
+                    Meça, comunique e demonstre resultados com linguagem estratégica
+                    e conexão com o negócio.
+                </p>
+            </article>
+
+            <article>
+                <span>06</span>
+                <h3>Agente de mudança</h3>
+                <p>
+                    Posicione-se como referência em SSMA e contribua para decisões
+                    mais maduras dentro da organização.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="product-audience-section">
+    <div class="container product-audience-grid">
+        <div>
+            <span class="section-tag">Para quem é</span>
+
+            <h2>
+                Para profissionais que querem ampliar influência e sair do operacional.
+            </h2>
+        </div>
+
+        <div class="product-audience-list">
+            <div>Profissionais de SSMA que querem crescer com mais impacto.</div>
+            <div>Líderes que buscam engajamento real em segurança.</div>
+            <div>Profissionais que desejam evoluir da atuação normativa para cultural.</div>
+        </div>
+    </div>
+</section>
+
+<section class="product-format-section">
+    <div class="container">
+        <div class="product-section-head">
+            <span class="section-tag">Como funciona</span>
+
+            <h2>
+                Estrutura prática, flexível e aplicável.
+            </h2>
+        </div>
+
+        <div class="product-format-grid">
+            <div>
+                <strong>4 a 6 semanas</strong>
+                <span>Imersão prática para desenvolver repertório e aplicação.</span>
+            </div>
+
+            <div>
+                <strong>Acesso 24/7</strong>
+                <span>Aulas gravadas para estudar no seu ritmo.</span>
+            </div>
+
+            <div>
+                <strong>2 mentorias ao vivo</strong>
+                <span>Encontros com gravação para aprofundamento.</span>
+            </div>
+
+            <div>
+                <strong>Exercícios aplicados</strong>
+                <span>Conteúdo complementar para colocar em prática.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-final-section">
+    <div class="container">
+        <div class="product-final-box">
+            <div>
+                <span class="section-tag">Próximo passo</span>
+
+                <h2>
+                    Deixe de apenas cumprir normas. Comece a transformar culturas.
+                </h2>
+
+                <p>
+                    Torne-se um profissional mais preparado para engajar pessoas,
+                    influenciar decisões e fortalecer resultados sustentáveis.
+                </p>
+            </div>
+
+            <a
+                href="https://chk.eduzz.com/39VEGE5BWR"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-main"
+            >
+                Quero me tornar especialista
+            </a>
+        </div>
     </div>
 </section>
 
