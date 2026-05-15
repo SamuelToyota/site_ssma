@@ -16,6 +16,9 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "site-ssma-web-xegs.onrender.com",
+    "consultorinterno.com.br",
+    "www.consultorinterno.com.br",
 ]
 
 if RENDER_EXTERNAL_HOSTNAME:
@@ -29,6 +32,9 @@ if additional_hosts:
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com",
+    "https://site-ssma-web-xegs.onrender.com",
+    "https://consultorinterno.com.br",
+    "https://www.consultorinterno.com.br",
 ]
 
 INSTALLED_APPS = [
