@@ -3558,3 +3558,44 @@ a {
         width: 100%;
     }
 }
+/* =========================
+   AJUSTE MOBILE — HEADER NÃO COBRIR HERO
+========================= */
+
+@media (max-width: 900px) {
+    main {
+        padding-top: 130px;
+    }
+
+    .ssma-hero-home,
+    .ssma-hero-home-v2,
+    .landing-hero-vendas,
+    .courses-hero-new,
+    .product-hero,
+    .mentoria-hero-alt {
+        padding-top: 42px;
+    }
+
+    .premium-header-cta {
+        width: auto;
+        padding: 10px 16px;
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 680px) {
+    main {
+        padding-top: 155px;
+    }
+
+    .ssma-hero-home,
+    .ssma-hero-home-v2,
+    .landing-hero-vendas {
+        padding-top: 36px;
+    }
+
+    .hero-badge,
+    .section-tag {
+        margin-top: 4px;
+    }
+}
