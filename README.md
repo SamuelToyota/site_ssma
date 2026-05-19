@@ -8,7 +8,7 @@ Este projeto foi criado para simular um site institucional/profissional, com foc
 
 ## 🌐 Acesso ao projeto
 
-Link da aplicação: [site-ssma-web-xegs.onrender.com](https://site-ssma-web-xegs.onrender.com)
+Link da aplicação: [consultorinterno.com.br](https://www.consultorinterno.com.br)
 
 > **Observação:** esta é uma hospedagem de teste, utilizada para fins de demonstração do projeto.
 
