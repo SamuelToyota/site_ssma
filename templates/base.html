@@ -3,158 +3,96 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <title>{% block title %}Consultor Interno{% endblock %}</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formação e mentoria para profissionais de SSMA que desejam ampliar influência, cultura de segurança e resultados.">
+    <meta name="theme-color" content="#ffffff">
+    <title>{% block title %}Consultor Interno | SSMA estratégico{% endblock %}</title>
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container nav-wrapper">
-            <a href="{% url 'home' %}" class="logo-wrap">
-                <img
-                    src="{% static 'images/logo.png' %}"
-                    alt="Consultor Interno"
-                    class="logo-img"
-                >
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-                <span class="logo-text">Consultor Interno</span>
+    <header class="site-header" data-header>
+        <div class="container nav-shell">
+            <a href="{% url 'home' %}" class="brand" aria-label="Consultor Interno — página inicial">
+                <img src="{% static 'images/logo.png' %}" alt="" class="brand-mark">
+                <span class="brand-copy"><strong>Consultor Interno</strong><small>SSMA &amp; ESG</small></span>
             </a>
 
-            <div class="header-right">
-                <nav class="navbar">
-                    <a href="{% url 'home' %}">Início</a>
-                    <a href="{% url 'cursos' %}">Cursos</a>
-                    <a href="{% url 'contato' %}">Mentoria</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+                <span></span><span></span><span class="sr-only">Abrir menu</span>
+            </button>
+
+            <div class="nav-area" id="main-nav" data-nav>
+                <nav class="navbar" aria-label="Navegação principal">
+                    <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Início</a>
+                    <a href="{% url 'cursos' %}" {% if request.resolver_match.url_name == 'cursos' or request.resolver_match.url_name == 'curso_cultura' or request.resolver_match.url_name == 'curso_teste' %}aria-current="page"{% endif %}>Formações</a>
+                    <a href="{% url 'contato' %}" {% if request.resolver_match.url_name == 'contato' %}aria-current="page"{% endif %}>Mentoria</a>
                 </nav>
-
-                <div class="header-socials">
-                    <a
-                        href="https://www.linkedin.com/in/consultor-interno/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social-icon-btn"
-                        aria-label="LinkedIn"
-                    >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56A1.97 1.97 0 0 0 5.17 3 1.97 1.97 0 0 0 3.2 4.94c0 1.08.88 1.94 1.97 1.94 1.09 0 1.99-.86 1.99-1.94ZM20.8 13.02c0-3.48-1.86-5.1-4.34-5.1-2 0-2.9 1.1-3.4 1.87V8.5H9.68c.05.85 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.67.12-.91.27-.67.88-1.37 1.91-1.37 1.35 0 1.89 1.03 1.89 2.55V20H20.8v-6.98Z"/>
-                        </svg>
-                    </a>
-
-                    <a
-                        href="https://www.instagram.com/consultorinterno/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social-icon-btn"
-                        aria-label="Instagram"
-                    >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5A3.95 3.95 0 0 0 16.25 3.8h-8.5Zm8.92 1.35a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <a href="{% url 'cursos' %}" class="btn btn-primary premium-header-cta">
-                    Ver cursos
-                </a>
+                <a href="{% url 'contato' %}" class="button button-primary header-cta">Falar com um especialista</a>
             </div>
         </div>
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <main id="conteudo">{% block content %}{% endblock %}</main>
 
-    <footer class="site-footer premium-footer">
-        <div class="container premium-footer-grid">
-            <div class="premium-footer-brand">
-                <div class="premium-footer-logo-line">
-                    <img
-                        src="{% static 'images/logo.png' %}"
-                        alt="Logo Consultor Interno"
-                        class="footer-logo-img"
-                    >
-
-                    <div>
-                        <h3>Consultor Interno</h3>
-                        <p>SSMA & ESG</p>
-                    </div>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="{% url 'home' %}" class="brand brand-light" aria-label="Consultor Interno — página inicial">
+                    <img src="{% static 'images/logo.png' %}" alt="" class="brand-mark">
+                    <span class="brand-copy"><strong>Consultor Interno</strong><small>SSMA &amp; ESG</small></span>
+                </a>
+                <p>Desenvolvimento profissional para transformar conhecimento técnico em influência, cultura e resultado.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <span class="footer-title">Navegação</span>
+                    <a href="{% url 'home' %}">Início</a><a href="{% url 'cursos' %}">Formações</a><a href="{% url 'contato' %}">Mentoria</a>
                 </div>
-
-                <p class="premium-footer-text">
-                    Formação e consultoria para transformar profissionais de SSMA e ESG
-                    em referências estratégicas de performance, compliance,
-                    governança e cultura de segurança.
-                </p>
-            </div>
-
-            <div class="premium-footer-column">
-                <h4>Navegação</h4>
-                    <a href="{% url 'home' %}">Início</a>
-                    <a href="{% url 'cursos' %}">Cursos</a>
-                    <a href="{% url 'contato' %}">Mentoria</a>
-            </div>
-
-            <div class="premium-footer-column">
-                <h4>Serviços</h4>
-                <span>Formação SSMA & ESG</span>
-                <span>Mentoria Diagnóstica</span>
-                <span>Consultoria Estratégica</span>
-                <span>Desenvolvimento Profissional</span>
-                <span>Cultura de Segurança</span>
-            </div>
-
-            <div class="premium-footer-column">
-                <h4>Siga-nos</h4>
-                <a
-                    href="https://www.instagram.com/consultorinterno/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Instagram
-                </a>
-
-                <a
-                    href="https://www.linkedin.com/in/consultor-interno/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    LinkedIn
-                </a>
+                <div>
+                    <span class="footer-title">Conecte-se</span>
+                    <a href="https://www.linkedin.com/in/consultor-interno/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/consultorinterno/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
             </div>
         </div>
+        <div class="container footer-bottom"><span>© {% now "Y" %} Consultor Interno.</span><span>Saúde, segurança e meio ambiente com visão de negócio.</span></div>
     </footer>
 
+    <a href="https://wa.me/5517997074900?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20do%20Consultor%20Interno."
+       target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Conversar pelo WhatsApp">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C8.86 3 3 8.86 3 16.04c0 2.3.6 4.55 1.75 6.53L3.1 29l6.6-1.58a13.02 13.02 0 0 0 6.34 1.62C23.22 29.04 29 23.22 29 16.04 29 8.86 23.22 3 16.04 3Zm0 23.8c-2.02 0-3.98-.54-5.7-1.58l-.4-.24-3.92.94 1-3.82-.26-.42a10.77 10.77 0 0 1-1.52-5.64c0-5.96 4.85-10.8 10.8-10.8s10.8 4.84 10.8 10.8-4.84 10.76-10.8 10.76Zm5.94-8.08c-.32-.16-1.9-.94-2.2-1.04-.3-.12-.52-.16-.74.16-.22.32-.84 1.04-1.04 1.26-.18.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.62-1.92-1.8-2.24-.18-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.2.22-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.74-1.78-1.02-2.44-.26-.64-.54-.56-.74-.56h-.64c-.22 0-.56.08-.86.4-.3.32-1.12 1.1-1.12 2.68s1.16 3.1 1.32 3.32c.16.22 2.28 3.48 5.52 4.88.78.34 1.38.54 1.86.68.78.24 1.48.2 2.04.12.62-.1 1.9-.78 2.16-1.52.26-.74.26-1.38.18-1.52-.08-.14-.3-.22-.62-.38Z"/></svg>
+        <span>WhatsApp</span>
+    </a>
+
     <script>
-        const elements = document.querySelectorAll(".fade-up");
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                }
+        const toggle = document.querySelector('[data-nav-toggle]');
+        const nav = document.querySelector('[data-nav]');
+        const header = document.querySelector('[data-header]');
+        if (toggle && nav) {
+            toggle.addEventListener('click', () => {
+                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+                nav.classList.toggle('is-open', !isOpen);
             });
-        });
-
-        elements.forEach(element => observer.observe(element));
+            nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+                toggle.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open');
+            }));
+        }
+        const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+        updateHeader(); window.addEventListener('scroll', updateHeader, { passive: true });
+        const revealItems = document.querySelectorAll('[data-reveal]');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+            }), { threshold: 0.12 });
+            revealItems.forEach(item => observer.observe(item));
+        } else { revealItems.forEach(item => item.classList.add('is-visible')); }
     </script>
-    <a
-    href="https://wa.me/5517997074900?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%20D.E.S.T.A.Q.U.E."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-float"
-    aria-label="Falar no WhatsApp"
->
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16.04 3C8.86 3 3 8.86 3 16.04c0 2.3.6 4.55 1.75 6.53L3.1 29l6.6-1.58a13.02 13.02 0 0 0 6.34 1.62C23.22 29.04 29 23.22 29 16.04 29 8.86 23.22 3 16.04 3Zm0 23.8c-2.02 0-3.98-.54-5.7-1.58l-.4-.24-3.92.94 1-3.82-.26-.42a10.77 10.77 0 0 1-1.52-5.64c0-5.96 4.85-10.8 10.8-10.8s10.8 4.84 10.8 10.8-4.84 10.76-10.8 10.76Zm5.94-8.08c-.32-.16-1.9-.94-2.2-1.04-.3-.12-.52-.16-.74.16-.22.32-.84 1.04-1.04 1.26-.18.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.62-1.92-1.8-2.24-.18-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.2.22-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.74-1.78-1.02-2.44-.26-.64-.54-.56-.74-.56h-.64c-.22 0-.56.08-.86.4-.3.32-1.12 1.1-1.12 2.68s1.16 3.1 1.32 3.32c.16.22 2.28 3.48 5.52 4.88.78.34 1.38.54 1.86.68.78.24 1.48.2 2.04.12.62-.1 1.9-.78 2.16-1.52.26-.74.26-1.38.18-1.52-.08-.14-.3-.22-.62-.38Z"/>
-    </svg>
-
-    <span>WhatsApp</span>
-</a>
-
 </body>
 </html>

@@ -30,15 +30,15 @@ def cursos(request):
     return render(request, 'core/cursos.html')
 
 def formacao(request):
-    return render(request, "formacao.html")
+    return redirect("curso_cultura")
 
 
 def videos(request):
-    return render(request, "videos.html")
+    return redirect("curso_cultura")
 
 
 def modulos(request):
-    return render(request, "modulos.html")
+    return redirect("curso_cultura")
 
 
 def contato(request):

@@ -1,215 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Teste de Perfil Profissional | Consultor Interno{% endblock %}
+{% block title %}Perfil, Valores Pessoais e Carreira | Consultor Interno{% endblock %}
 
 {% block content %}
-
-<section class="product-hero test-hero">
+<section class="product-hero">
     <div class="container product-hero-grid">
-        <div class="product-hero-content">
-            <span class="section-tag">Ferramenta estratégica</span>
-
-            <h1>
-                Teste de Perfil:
-                <span>Valores Pessoais e Carreira</span>
-            </h1>
-
-            <p>
-                Um upgrade de autoconhecimento aplicado à carreira para transformar
-                reflexão em decisão, clareza em direção e perfil profissional em
-                plano de ação.
-            </p>
-
-            <div class="product-hero-actions">
-                <a
-                    href="https://chk.eduzz.com/KW8KDK2O01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-main"
-                >
-                    Comprar teste
-                </a>
-
-                <a href="{% url 'cursos' %}" class="btn btn-outline">
-                    Voltar aos cursos
-                </a>
+        <div class="product-copy" data-reveal>
+            <a href="{% url 'cursos' %}" class="back-link">← Todas as formações</a>
+            <span class="eyebrow"><i></i> Diagnóstico individual</span>
+            <h1>Perfil, Valores Pessoais &amp; Carreira</h1>
+            <p>Entenda o que orienta suas escolhas para construir uma trajetória mais coerente com quem você é.</p>
+            <div class="hero-actions">
+                <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-primary">Fazer meu diagnóstico</a>
+                <a href="#como-funciona" class="button button-secondary">Como funciona</a>
             </div>
         </div>
+        <div class="product-media" data-reveal>
+            <img src="{% static 'images/course_2.png' %}" alt="Teste de Perfil, Valores Pessoais e Carreira">
+            <span>Clareza para decisões profissionais importantes</span>
+        </div>
+    </div>
+    <div class="container product-facts product-facts-three" data-reveal>
+        <div><strong>Individual</strong><span>leitura do seu momento</span></div>
+        <div><strong>Relatório</strong><span>resultado personalizado</span></div>
+        <div><strong>Devolutiva</strong><span>orientação para agir</span></div>
+    </div>
+</section>
 
-        <div class="product-hero-media">
-            <img
-                src="{% static 'images/course_2.png' %}"
-                alt="Teste de Perfil Profissional"
-            >
+<section class="section product-intro" id="como-funciona">
+    <div class="container split-heading" data-reveal>
+        <div><span class="eyebrow">Como funciona</span><h2>Do autoconhecimento à decisão.</h2></div>
+        <p>O processo organiza informações sobre seus valores e transforma o resultado em critérios úteis para carreira, liderança e transições.</p>
+    </div>
+    <div class="container capability-grid">
+        <article data-reveal><span>01</span><h3>Mapeamento</h3><p>Você responde ao instrumento com foco em prioridades, valores e contexto profissional.</p></article>
+        <article data-reveal><span>02</span><h3>Análise</h3><p>Os resultados são organizados em um relatório objetivo e personalizado.</p></article>
+        <article data-reveal><span>03</span><h3>Direção</h3><p>A devolutiva traduz os achados em reflexões e próximos passos possíveis.</p></article>
+    </div>
+</section>
+
+<section class="section curriculum-section">
+    <div class="container curriculum-grid">
+        <div class="curriculum-heading" data-reveal><span class="eyebrow">O que você leva</span><h2>Clareza que permanece depois do teste.</h2><p>O valor está em transformar respostas em um critério mais consciente para escolher.</p></div>
+        <div class="curriculum-list">
+            <article data-reveal><span>01</span><div><h3>Valores prioritários</h3><p>Visão estruturada do que sustenta suas decisões e sua motivação.</p></div></article>
+            <article data-reveal><span>02</span><div><h3>Pontos de alinhamento</h3><p>Leitura das aproximações e tensões entre perfil, ambiente e carreira.</p></div></article>
+            <article data-reveal><span>03</span><div><h3>Perguntas estratégicas</h3><p>Critérios para avaliar oportunidades, mudanças e escolhas futuras.</p></div></article>
         </div>
     </div>
 </section>
 
-<section class="product-impact-section">
-    <div class="container">
-        <div class="product-impact-box">
-            <span class="section-tag">Clareza profissional</span>
-
-            <h2>
-                Entenda seus valores para tomar decisões com mais segurança.
-            </h2>
-
-            <p>
-                Este teste ajuda você a compreender prioridades, limites, motivações
-                e direções profissionais, conectando autoconhecimento com escolhas
-                práticas de carreira.
-            </p>
-        </div>
+<section class="section fit-section">
+    <div class="container fit-grid">
+        <div class="fit-panel" data-reveal><span class="eyebrow">Faz sentido para você</span><h2>Quando a decisão pede mais clareza.</h2><ul class="feature-list"><li>Momento de transição ou reposicionamento</li><li>Dúvida entre oportunidades profissionais</li><li>Busca por mais coerência entre valores e trabalho</li></ul></div>
+        <div class="fit-panel fit-panel-green" data-reveal><span class="eyebrow eyebrow-light">Benefícios</span><h2>Consciência para agir.</h2><ul class="feature-list"><li>Nomeie o que realmente importa</li><li>Reduza escolhas desalinhadas</li><li>Organize seus próximos passos</li></ul></div>
     </div>
 </section>
 
-<section class="product-modules-section">
-    <div class="container">
-        <div class="product-section-head">
-            <span class="section-tag">O que você recebe</span>
-
-            <h2>
-                Uma ferramenta para transformar reflexão em ação.
-            </h2>
-        </div>
-
-        <div class="product-modules-grid">
-            <article>
-                <span>01</span>
-                <h3>Teste CVAT</h3>
-                <p>
-                    Avaliação de valores pessoais e carreira para identificar
-                    seus principais direcionadores internos.
-                </p>
-            </article>
-
-            <article>
-                <span>02</span>
-                <h3>Relatórios personalizados</h3>
-                <p>
-                    Materiais estruturados com seus valores-chave e pontos de atenção
-                    para sua trajetória.
-                </p>
-            </article>
-
-            <article>
-                <span>03</span>
-                <h3>Devolutiva estruturada</h3>
-                <p>
-                    Interpretação prática dos resultados para entender como aplicar
-                    os dados na sua vida profissional.
-                </p>
-            </article>
-
-            <article>
-                <span>04</span>
-                <h3>Conexão com carreira</h3>
-                <p>
-                    Clareza sobre como seus valores influenciam escolhas, limites
-                    e decisões profissionais.
-                </p>
-            </article>
-
-            <article>
-                <span>05</span>
-                <h3>Direção profissional</h3>
-                <p>
-                    Apoio para identificar prioridades, caminhos possíveis e próximos
-                    passos mais coerentes.
-                </p>
-            </article>
-
-            <article>
-                <span>06</span>
-                <h3>Plano de ação</h3>
-                <p>
-                    Estrutura para construir decisões alinhadas ao que realmente
-                    importa para você.
-                </p>
-            </article>
-        </div>
+<section class="section purchase-section">
+    <div class="container purchase-box" data-reveal>
+        <div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Decida sua direção com mais consciência.</h2><p>Comece o diagnóstico e transforme autoconhecimento em critério de escolha.</p></div>
+        <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-light">Fazer meu diagnóstico</a>
     </div>
 </section>
-
-<section class="product-audience-section">
-    <div class="container product-audience-grid">
-        <div>
-            <span class="section-tag">Para quem é</span>
-
-            <h2>
-                Para quem quer decidir melhor e crescer com mais clareza.
-            </h2>
-        </div>
-
-        <div class="product-audience-list">
-            <div>Profissionais em momento de decisão ou transição de carreira.</div>
-            <div>Quem busca alinhar propósito, posicionamento e crescimento.</div>
-            <div>Quem deseja reduzir escolhas desalinhadas ao longo da trajetória.</div>
-        </div>
-    </div>
-</section>
-
-<section class="product-format-section">
-    <div class="container">
-        <div class="product-section-head">
-            <span class="section-tag">Benefícios práticos</span>
-
-            <h2>
-                Mais consciência para escolher seus próximos passos.
-            </h2>
-        </div>
-
-        <div class="product-format-grid">
-            <div>
-                <strong>Clareza</strong>
-                <span>Entenda o que realmente direciona suas escolhas.</span>
-            </div>
-
-            <div>
-                <strong>Segurança</strong>
-                <span>Tome decisões profissionais com menos dúvida.</span>
-            </div>
-
-            <div>
-                <strong>Alinhamento</strong>
-                <span>Conecte valores pessoais, carreira e propósito.</span>
-            </div>
-
-            <div>
-                <strong>Ação</strong>
-                <span>Construa um plano mais coerente com seu perfil.</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="product-final-section">
-    <div class="container">
-        <div class="product-final-box">
-            <div>
-                <span class="section-tag">Próximo passo</span>
-
-                <h2>
-                    Desbloqueie seus valores pessoais e defina sua próxima direção.
-                </h2>
-
-                <p>
-                    Mais do que um teste, este é um ponto de virada para organizar
-                    suas decisões profissionais com mais consciência, clareza e foco.
-                </p>
-            </div>
-
-            <a
-                href="https://chk.eduzz.com/KW8KDK2O01"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-main"
-            >
-                Fazer meu teste agora
-            </a>
-        </div>
-    </div>
-</section>
-
 {% endblock %}

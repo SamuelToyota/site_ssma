@@ -1,52 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Mensagem enviada | Consultor Interno{% endblock %}
+{% block title %}Solicitação enviada | Consultor Interno{% endblock %}
 
 {% block content %}
-<section class="page-banner">
-    <div class="container center-text">
-        <span class="section-tag">Mensagem enviada</span>
-        <h1>Sua solicitação foi recebida com sucesso</h1>
-        <p>
-            Obrigado pelo contato. Em breve sua solicitação poderá ser analisada
-            e o atendimento poderá seguir com os próximos passos.
-        </p>
-
-        <div class="success-actions">
-            <a href="{% url 'home' %}" class="btn btn-primary">
-                Voltar ao início
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="section-default">
-    <div class="container cards-three-grid">
-        <div class="highlight-card">
-            <span class="section-tag">Próximo passo</span>
-            <h3>Análise do envio</h3>
-            <p>
-                Sua solicitação foi registrada e poderá ser analisada conforme
-                os dados enviados no formulário.
-            </p>
-        </div>
-
-        <div class="highlight-card">
-            <span class="section-tag">Objetivo</span>
-            <h3>Clareza inicial</h3>
-            <p>
-                A mentoria diagnóstica busca compreender seu momento atual
-                e identificar caminhos de desenvolvimento.
-            </p>
-        </div>
-
-        <div class="highlight-card">
-            <span class="section-tag">Continuidade</span>
-            <h3>Direcionamento estratégico</h3>
-            <p>
-                A partir desse primeiro contato, o processo pode evoluir
-                para orientação mais personalizada.
-            </p>
+<section class="success-section">
+    <div class="container">
+        <div class="success-card" data-reveal>
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <span class="eyebrow">Mensagem recebida</span>
+            <h1>Obrigado pelo contato.</h1>
+            <p>Sua solicitação foi enviada. Em breve você receberá um retorno para conversarmos sobre o seu momento profissional.</p>
+            <div class="success-actions">
+                <a href="{% url 'home' %}" class="button button-primary">Voltar ao início</a>
+                <a href="{% url 'cursos' %}" class="button button-secondary">Ver formações</a>
+            </div>
         </div>
     </div>
 </section>
