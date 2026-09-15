@@ -3,7 +3,7 @@
 {% block content %}
 <section class="student-hero"><div class="container"><a href="{% url 'aluno_dashboard' %}" class="back-link">← Área do aluno</a><h1>Materiais</h1></div></section>
 <section class="section student-section"><div class="container">
-    {% if tem_matricula and materiais %}<div class="student-list">{% for material in materiais %}<a href="{{ material.link }}" target="_blank" rel="noopener"><span>Material</span><strong>{{ material.titulo }}</strong><small>{{ material.descricao }}</small></a>{% endfor %}</div>
+    {% if tem_matricula and materiais %}<div class="student-list">{% for material in materiais %}{% if material.link %}<a href="{{ material.link }}" target="_blank" rel="noopener noreferrer"><span>Material</span><strong>{{ material.titulo }}</strong><small>{{ material.descricao }}</small></a>{% else %}<article class="student-item student-item-pending"><span>Material · disponível em breve</span><strong>{{ material.titulo }}</strong><small>{{ material.descricao }}</small></article>{% endif %}{% endfor %}</div>
     {% else %}<div class="empty-state"><h2>Nenhum material disponível.</h2><p>Os materiais da formação aparecerão aqui quando forem publicados.</p></div>{% endif %}
 </div></section>
 {% endblock %}

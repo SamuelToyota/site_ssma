@@ -6,7 +6,19 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
-from .models import Artigo, CategoriaConteudo, MentoriaContato, NewsletterLead
+from .models import (
+    Artigo,
+    Aula,
+    CategoriaConteudo,
+    Curso,
+    Material,
+    Matricula,
+    MentoriaAula,
+    MentoriaContato,
+    Modulo,
+    NewsletterLead,
+    ProgressoAula,
+)
 
 
 @override_settings(
@@ -79,6 +91,89 @@ class PublicPagesTests(TestCase):
         response = self.client.get(reverse("aluno_dashboard"))
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse("login"), response.url)
+
+    def test_existing_user_can_login_with_email(self):
+        User.objects.create_user(
+            username="usuario-legado",
+            email="aluno@example.com",
+            password="UmaSenhaForte-2026",
+        )
+        response = self.client.post(
+            reverse("login"),
+            {"username": "ALUNO@example.com", "password": "UmaSenhaForte-2026"},
+        )
+        self.assertRedirects(
+            response,
+            reverse("aluno_dashboard"),
+            fetch_redirect_response=False,
+        )
+
+    def test_profile_logout_uses_secure_post(self):
+        user = User.objects.create_user(
+            username="aluno",
+            email="outro@example.com",
+            password="UmaSenhaForte-2026",
+        )
+        self.client.force_login(user)
+        profile = self.client.get(reverse("aluno_perfil"))
+        self.assertContains(profile, f'action="{reverse("logout")}"')
+        self.assertNotContains(profile, f'href="{reverse("logout")}"')
+
+        response = self.client.post(reverse("logout"))
+        self.assertRedirects(response, reverse("login"), fetch_redirect_response=False)
+
+    def test_authenticated_student_area_renders_without_broken_empty_links(self):
+        user = User.objects.create_user(
+            username="estudante",
+            email="estudante@example.com",
+            password="UmaSenhaForte-2026",
+        )
+        course = Curso.objects.create(
+            titulo="Formação de teste",
+            slug="formacao-de-teste",
+            descricao="Conteúdo criado somente no banco temporário de testes.",
+        )
+        enrollment = Matricula.objects.create(aluno=user, curso=course, ativa=True)
+        module = Modulo.objects.create(curso=course, titulo="Fundamentos", ordem=1)
+        lesson = Aula.objects.create(modulo=module, titulo="Aula inicial", ordem=1)
+        Material.objects.create(curso=course, titulo="Guia em preparação", link="")
+        MentoriaAula.objects.create(
+            curso=course,
+            titulo="Encontro em preparação",
+            link_gravacao="",
+        )
+        self.assertTrue(enrollment.ativa)
+        self.client.force_login(user)
+
+        routes = [
+            reverse("aluno_dashboard"),
+            reverse("aluno_modulos"),
+            reverse("aluno_modulo_detalhe", args=[module.id]),
+            reverse("aluno_aula", args=[lesson.id]),
+            reverse("aluno_materiais"),
+            reverse("aluno_mentorias"),
+            reverse("aluno_perfil"),
+        ]
+        for route in routes:
+            with self.subTest(route=route):
+                self.assertEqual(self.client.get(route).status_code, 200)
+
+        materials = self.client.get(reverse("aluno_materiais"))
+        mentorships = self.client.get(reverse("aluno_mentorias"))
+        self.assertContains(materials, "disponível em breve")
+        self.assertNotContains(materials, 'href=""')
+        self.assertContains(mentorships, "gravação em breve")
+        self.assertNotContains(mentorships, 'href="#"')
+
+        response = self.client.post(reverse("aluno_aula", args=[lesson.id]))
+        self.assertRedirects(
+            response,
+            reverse("aluno_aula", args=[lesson.id]),
+            fetch_redirect_response=False,
+        )
+        self.assertTrue(
+            ProgressoAula.objects.get(aluno=user, aula=lesson).concluida
+        )
 
 
 @override_settings(

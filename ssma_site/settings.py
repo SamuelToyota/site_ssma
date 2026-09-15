@@ -146,6 +146,7 @@ GTM_ID = os.environ.get("GTM_ID", "").strip()
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/aluno/"
 LOGOUT_REDIRECT_URL = "/login/"
+AUTHENTICATION_BACKENDS = ["core.auth_backends.EmailOrUsernameModelBackend"]
 
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

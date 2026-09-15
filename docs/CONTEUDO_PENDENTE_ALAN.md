@@ -8,7 +8,7 @@ Estes pontos não foram inventados nem publicados como fato. São necessários p
 - Certificações, especializações e credenciais que podem ser publicadas.
 - Cargos, setores e organizações que podem ser citados.
 - Eventos, aulas, entrevistas, artigos ou publicações anteriores.
-- Foto oficial e links profissionais definitivos, incluindo LinkedIn.
+- Confirmação dos demais perfis profissionais que podem ser publicados, especialmente Instagram. O LinkedIn identificado publicamente já foi corrigido no site.
 
 ## Método D.E.S.T.A.Q.U.E.
 
