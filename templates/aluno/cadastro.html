@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="account-section">
+    <div class="container account-grid">
+        <div class="account-intro" data-reveal>
+            <span class="eyebrow"><i></i> Área do aluno</span>
+            <h1>Crie seu acesso.</h1>
+            <p>O cadastro organiza sua conta. O conteúdo completo é liberado quando houver uma matrícula ativa.</p>
+        </div>
+        <div class="contact-form-card" data-reveal>
+            <h2>Dados de acesso</h2>
+            <form method="post" class="contact-form" data-loading novalidate>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<small class="field-help">{{ field.help_text }}</small>{% endif %}
+                    {% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="button button-primary form-submit">Criar minha conta</button>
+            </form>
+            <p class="account-note">Já possui cadastro? <a href="{% url 'login' %}">Entrar</a>.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

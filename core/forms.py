@@ -1,30 +1,159 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
 
-from .models import MentoriaContato, PerfilAluno
+from .models import MentoriaContato, NewsletterLead, PerfilAluno
 
 
-class MentoriaContatoForm(forms.ModelForm):
+class HoneypotMixin:
+    def clean_website(self):
+        value = self.cleaned_data.get("website", "")
+        if value:
+            raise forms.ValidationError("Não foi possível enviar o formulário.")
+        return value
+
+
+class BaseContatoForm(HoneypotMixin, forms.ModelForm):
+    website = forms.CharField(
+        required=False,
+        label="Deixe este campo vazio",
+        widget=forms.TextInput(
+            attrs={"tabindex": "-1", "autocomplete": "off", "aria-hidden": "true"}
+        ),
+    )
+    consentimento = forms.BooleanField(
+        required=True,
+        label="Li e concordo com a Política de Privacidade.",
+    )
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.consentimento_privacidade = True
+        if commit:
+            instance.save()
+        return instance
+
+
+class ContatoForm(BaseContatoForm):
     class Meta:
         model = MentoriaContato
-        fields = ["nome", "email", "mensagem"]
+        fields = [
+            "nome",
+            "email",
+            "telefone",
+            "tipo_interesse",
+            "empresa",
+            "cargo",
+            "mensagem",
+        ]
+        labels = {
+            "nome": "Nome completo",
+            "email": "E-mail",
+            "telefone": "Telefone (opcional)",
+            "tipo_interesse": "Assunto",
+            "empresa": "Empresa (opcional)",
+            "cargo": "Cargo (opcional)",
+            "mensagem": "Como podemos ajudar?",
+        }
         widgets = {
-            "nome": forms.TextInput(
-                attrs={"placeholder": "Digite seu nome completo"}
-            ),
-            "email": forms.EmailInput(
-                attrs={"placeholder": "Digite seu melhor e-mail"}
-            ),
+            "nome": forms.TextInput(attrs={"autocomplete": "name"}),
+            "email": forms.EmailInput(attrs={"autocomplete": "email"}),
+            "telefone": forms.TextInput(attrs={"autocomplete": "tel"}),
+            "empresa": forms.TextInput(attrs={"autocomplete": "organization"}),
+            "cargo": forms.TextInput(attrs={"autocomplete": "organization-title"}),
             "mensagem": forms.Textarea(
                 attrs={
-                    "placeholder": (
-                        "Conte brevemente seu momento profissional, "
-                        "seus desafios e o que você deseja desenvolver."
-                    ),
-                    "rows": 7,
+                    "placeholder": "Conte brevemente o contexto e o que você procura.",
+                    "rows": 6,
                 }
             ),
         }
+
+
+class MentoriaContatoForm(BaseContatoForm):
+    class Meta:
+        model = MentoriaContato
+        fields = ["nome", "email", "telefone", "mensagem"]
+        labels = {
+            "nome": "Nome completo",
+            "email": "E-mail",
+            "telefone": "Telefone (opcional)",
+            "mensagem": "O que você deseja desenvolver?",
+        }
+        widgets = {
+            "nome": forms.TextInput(attrs={"autocomplete": "name"}),
+            "email": forms.EmailInput(attrs={"autocomplete": "email"}),
+            "telefone": forms.TextInput(attrs={"autocomplete": "tel"}),
+            "mensagem": forms.Textarea(attrs={"rows": 6}),
+        }
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.tipo_interesse = "mentoria"
+        if commit:
+            instance.save()
+        return instance
+
+
+class EmpresaContatoForm(BaseContatoForm):
+    class Meta:
+        model = MentoriaContato
+        fields = ["nome", "empresa", "cargo", "email", "telefone", "mensagem"]
+        labels = {
+            "nome": "Nome completo",
+            "empresa": "Empresa",
+            "cargo": "Cargo",
+            "email": "E-mail corporativo",
+            "telefone": "Telefone (opcional)",
+            "mensagem": "Qual desafio sua organização quer trabalhar?",
+        }
+        widgets = {
+            "nome": forms.TextInput(attrs={"autocomplete": "name"}),
+            "empresa": forms.TextInput(attrs={"autocomplete": "organization"}),
+            "cargo": forms.TextInput(attrs={"autocomplete": "organization-title"}),
+            "email": forms.EmailInput(attrs={"autocomplete": "email"}),
+            "telefone": forms.TextInput(attrs={"autocomplete": "tel"}),
+            "mensagem": forms.Textarea(attrs={"rows": 6}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["empresa"].required = True
+        self.fields["cargo"].required = True
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.tipo_interesse = "treinamento_empresa"
+        if commit:
+            instance.save()
+        return instance
+
+
+class NewsletterLeadForm(HoneypotMixin, forms.ModelForm):
+    website = forms.CharField(
+        required=False,
+        label="Deixe este campo vazio",
+        widget=forms.TextInput(
+            attrs={"tabindex": "-1", "autocomplete": "off", "aria-hidden": "true"}
+        ),
+    )
+    consentimento = forms.BooleanField(
+        required=True,
+        label="Aceito receber conteúdos e posso cancelar a qualquer momento.",
+    )
+
+    class Meta:
+        model = NewsletterLead
+        fields = ["nome", "email"]
+        labels = {"nome": "Nome", "email": "E-mail"}
+        widgets = {
+            "nome": forms.TextInput(attrs={"autocomplete": "name"}),
+            "email": forms.EmailInput(attrs={"autocomplete": "email"}),
+        }
+
+    def validate_unique(self):
+        # Uma nova inscrição com o mesmo e-mail reativa o cadastro existente.
+        return
 
 
 class CadastroAlunoForm(forms.Form):
@@ -69,6 +198,18 @@ class CadastroAlunoForm(forms.Form):
 
         if password1 and password2 and password1 != password2:
             self.add_error("password2", "As senhas não coincidem.")
+
+        if password1:
+            user = User(
+                username=self.cleaned_data.get("email", ""),
+                email=self.cleaned_data.get("email", ""),
+                first_name=self.cleaned_data.get("first_name", ""),
+                last_name=self.cleaned_data.get("last_name", ""),
+            )
+            try:
+                validate_password(password1, user=user)
+            except forms.ValidationError as error:
+                self.add_error("password1", error)
 
         return cleaned_data
 

@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Perfil, Valores Pessoais e Carreira | Consultor Interno{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Perfil, Valores Pessoais e Carreira","description":"Diagnóstico individual para compreender valores e organizar decisões profissionais.","provider":{"@type":"Organization","name":"Consultor Interno"}}
+</script>
+{% endblock %}
 
 {% block content %}
 <section class="product-hero">
@@ -12,12 +16,12 @@
             <h1>Perfil, Valores Pessoais &amp; Carreira</h1>
             <p>Entenda o que orienta suas escolhas para construir uma trajetória mais coerente com quem você é.</p>
             <div class="hero-actions">
-                <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-primary">Fazer meu diagnóstico</a>
+                <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-primary" data-analytics="checkout_perfil">Fazer meu diagnóstico</a>
                 <a href="#como-funciona" class="button button-secondary">Como funciona</a>
             </div>
         </div>
         <div class="product-media" data-reveal>
-            <img src="{% static 'images/course_2.png' %}" alt="Teste de Perfil, Valores Pessoais e Carreira">
+            <img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil, Valores Pessoais e Carreira" width="1427" height="777" fetchpriority="high" decoding="async">
             <span>Clareza para decisões profissionais importantes</span>
         </div>
     </div>
@@ -25,6 +29,13 @@
         <div><strong>Individual</strong><span>leitura do seu momento</span></div>
         <div><strong>Relatório</strong><span>resultado personalizado</span></div>
         <div><strong>Devolutiva</strong><span>orientação para agir</span></div>
+    </div>
+</section>
+
+<section class="section instructor-section">
+    <div class="container authority-strip-grid" data-reveal>
+        <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async">
+        <div><span class="eyebrow">Condução</span><h2>Leitura orientada por experiência profissional.</h2><p>Alan Silvério é Engenheiro de Segurança e mentor, com mais de 20 anos de atuação em SSMA e desenvolvimento de profissionais.</p><a href="{% url 'sobre' %}" class="text-link">Sobre Alan <span aria-hidden="true">→</span></a></div>
     </div>
 </section>
 
@@ -61,7 +72,8 @@
 <section class="section purchase-section">
     <div class="container purchase-box" data-reveal>
         <div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Decida sua direção com mais consciência.</h2><p>Comece o diagnóstico e transforme autoconhecimento em critério de escolha.</p></div>
-        <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-light">Fazer meu diagnóstico</a>
+        <a href="https://chk.eduzz.com/KW8KDK2O01" target="_blank" rel="noopener noreferrer" class="button button-light" data-analytics="checkout_perfil_final">Fazer meu diagnóstico</a>
     </div>
 </section>
+{% include 'components/faq.html' %}
 {% endblock %}

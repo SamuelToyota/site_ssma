@@ -1,0 +1,13 @@
+<article class="article-card" data-reveal>
+    {% if article.imagem_url %}
+    <a href="{{ article.get_absolute_url }}" class="article-image" tabindex="-1" aria-hidden="true">
+        <img src="{{ article.imagem_url }}" alt="{{ article.imagem_alt }}" loading="lazy" decoding="async">
+    </a>
+    {% endif %}
+    <div class="article-card-body">
+        <span class="article-meta">{{ article.categoria.nome }} · {{ article.tempo_leitura }} min</span>
+        <h3><a href="{{ article.get_absolute_url }}">{{ article.titulo }}</a></h3>
+        <p>{{ article.resumo }}</p>
+        <a href="{{ article.get_absolute_url }}" class="text-link" data-analytics="leitura_artigo">Ler artigo <span aria-hidden="true">→</span></a>
+    </div>
+</article>

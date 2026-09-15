@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="container about-hero-grid">
+        <div class="about-portrait" data-reveal>
+            <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério, engenheiro de segurança e mentor" width="1000" height="1000" loading="eager" decoding="async">
+            <span>SSMA · ESG · Cultura de Segurança</span>
+        </div>
+        <div class="about-intro" data-reveal>
+            <span class="eyebrow"><i></i> Sobre Alan Silvério</span>
+            <h1>Experiência técnica com visão de negócio.</h1>
+            <p class="about-lead">Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança, com mais de 20 anos de atuação em organizações nacionais e multinacionais.</p>
+            <p>O Consultor Interno nasce de uma convicção: conhecimento técnico é o começo. Para transformar ambientes, o profissional também precisa compreender relações, comunicar prioridades e participar das decisões.</p>
+            <div class="hero-actions">
+                <a href="{% url 'mentoria' %}" class="button button-primary">Conhecer a mentoria</a>
+                <a href="{% url 'contato' %}" class="button button-secondary">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section about-manifesto">
+    <div class="container about-manifesto-grid">
+        <div data-reveal>
+            <span class="eyebrow">O ponto de vista</span>
+            <h2>SSMA presente onde as decisões acontecem.</h2>
+        </div>
+        <div class="about-principles" data-reveal>
+            <article><span>01</span><div><h3>Da operação à estratégia.</h3><p>O domínio técnico ganha força quando se conecta ao contexto, às pessoas e às prioridades do negócio.</p></div></article>
+            <article><span>02</span><div><h3>Menos reação. Mais direção.</h3><p>A atuação preventiva pede leitura de cenário, escolhas claras e capacidade de mobilizar diferentes áreas.</p></div></article>
+            <article><span>03</span><div><h3>Influência gera mudança.</h3><p>Apresentar riscos, defender decisões e construir alianças são competências essenciais para transformar conhecimento em ação.</p></div></article>
+        </div>
+    </div>
+</section>
+
+<section class="section method-section method-expanded about-method">
+    <div class="container method-intro">
+        <div class="method-copy" data-reveal>
+            <span class="eyebrow eyebrow-light">Método D.E.S.T.A.Q.U.E.</span>
+            <h2>Uma estrutura para ampliar a atuação consultiva.</h2>
+            <p>O método organiza dimensões que ajudam o profissional de SSMA a sair de respostas isoladas e construir presença, influência e continuidade.</p>
+        </div>
+        <div class="method-list" data-reveal>
+            {% for dimension in method_dimensions %}
+            <details class="method-item">
+                <summary><span>{{ dimension.letter }}</span><strong>{{ dimension.name }}</strong><i aria-hidden="true">+</i></summary>
+                <p>{{ dimension.description }}</p>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section about-audience">
+    <div class="container split-heading" data-reveal>
+        <div><span class="eyebrow">Para quem este trabalho existe</span><h2>Profissionais e organizações que querem elevar a contribuição de SSMA.</h2></div>
+        <p>O conteúdo, as formações e as conversas de desenvolvimento partem de contextos reais e respeitam a maturidade de cada pessoa ou empresa.</p>
+    </div>
+    <div class="container pathway-grid">
+        <a href="{% url 'cursos' %}" class="pathway-item" data-reveal><span>Profissionais</span><strong>Formações para desenvolver repertório e aplicação.</strong><i aria-hidden="true">→</i></a>
+        <a href="{% url 'para_empresas' %}" class="pathway-item pathway-dark" data-reveal><span>Organizações</span><strong>Desenvolvimento conectado à cultura e às decisões.</strong><i aria-hidden="true">→</i></a>
+    </div>
+</section>
+{% endblock %}

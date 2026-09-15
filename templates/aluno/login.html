@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="account-section">
+    <div class="container account-grid">
+        <div class="account-intro" data-reveal>
+            <span class="eyebrow"><i></i> Área do aluno</span>
+            <h1>Acesse suas formações.</h1>
+            <p>Entre com o e-mail e a senha utilizados no cadastro.</p>
+        </div>
+        <div class="contact-form-card" data-reveal>
+            <h2>Entrar</h2>
+            {% if form.errors %}<p class="form-alert" role="alert">E-mail ou senha inválidos. Confira os dados e tente novamente.</p>{% endif %}
+            <form method="post" class="contact-form" data-loading>
+                {% csrf_token %}
+                <div class="form-field"><label for="id_username">E-mail ou usuário</label>{{ form.username }}</div>
+                <div class="form-field"><label for="id_password">Senha</label>{{ form.password }}</div>
+                {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+                <button type="submit" class="button button-primary form-submit">Entrar na área do aluno</button>
+            </form>
+            <p class="account-note">Ainda não possui cadastro? <a href="{% url 'cadastro' %}">Criar conta</a>.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

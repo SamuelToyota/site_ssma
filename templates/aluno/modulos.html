@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero"><div class="container"><a href="{% url 'aluno_dashboard' %}" class="back-link">← Área do aluno</a><h1>Módulos{% if curso %} — {{ curso.titulo }}{% endif %}</h1></div></section>
+<section class="section student-section"><div class="container">
+    {% if tem_matricula and modulos %}
+    <div class="student-list">{% for modulo in modulos %}<a href="{% url 'aluno_modulo_detalhe' modulo.id %}"><span>Módulo {{ modulo.ordem }}</span><strong>{{ modulo.titulo }}</strong><small>{{ modulo.descricao }}</small></a>{% endfor %}</div>
+    {% else %}<div class="empty-state"><h2>Nenhum módulo disponível.</h2><p>Os módulos aparecerão aqui quando a matrícula e o conteúdo estiverem liberados.</p></div>{% endif %}
+</div></section>
+{% endblock %}

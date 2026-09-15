@@ -1,0 +1,24 @@
+<form method="post" class="contact-form" data-loading novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        {% if field.name == "website" %}
+            <div class="honeypot" aria-hidden="true">{{ field }}</div>
+        {% elif field.name == "consentimento" %}
+            <div class="form-consent">
+                {{ field }}
+                <label for="{{ field.id_for_label }}">Li e concordo com a <a href="{% url 'privacidade' %}" target="_blank" rel="noopener">Política de Privacidade</a>.</label>
+                {% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
+            </div>
+        {% else %}
+            <div class="form-field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<small class="field-help">{{ field.help_text }}</small>{% endif %}
+                {% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    <button type="submit" class="button button-primary form-submit" data-analytics="{{ analytics_event|default:'envio_formulario' }}">{{ submit_label|default:"Enviar solicitação" }}</button>
+    <small class="form-note">Os dados serão usados para responder à solicitação, conforme a Política de Privacidade.</small>
+</form>

@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Solicitação enviada | Consultor Interno{% endblock %}
-
 {% block content %}
 <section class="success-section">
     <div class="container">
         <div class="success-card" data-reveal>
             <div class="success-icon" aria-hidden="true">✓</div>
-            <span class="eyebrow">Mensagem recebida</span>
+            <span class="eyebrow">Solicitação recebida</span>
             <h1>Obrigado pelo contato.</h1>
-            <p>Sua solicitação foi enviada. Em breve você receberá um retorno para conversarmos sobre o seu momento profissional.</p>
+            {% if origin == 'empresas' %}
+            <p>O contexto da sua organização foi registrado para avaliação. O próximo contato servirá para entender o desafio e verificar o melhor encaminhamento.</p>
+            {% elif origin == 'mentoria' %}
+            <p>Seu momento profissional foi registrado. O próximo contato servirá para entender o contexto e verificar se a mentoria é adequada ao objetivo.</p>
+            {% else %}
+            <p>Sua mensagem foi registrada e será direcionada conforme o assunto selecionado.</p>
+            {% endif %}
             <div class="success-actions">
                 <a href="{% url 'home' %}" class="button button-primary">Voltar ao início</a>
-                <a href="{% url 'cursos' %}" class="button button-secondary">Ver formações</a>
+                <a href="{% url 'conteudos' %}" class="button button-secondary">Acessar conteúdos</a>
             </div>
         </div>
     </div>

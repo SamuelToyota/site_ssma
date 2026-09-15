@@ -1,0 +1,18 @@
+{% if faqs %}
+<section class="section faq-section">
+    <div class="container narrow-container">
+        <div class="section-heading" data-reveal>
+            <span class="eyebrow">Perguntas frequentes</span>
+            <h2>Informações para decidir com clareza.</h2>
+        </div>
+        <div class="faq-list">
+            {% for faq in faqs %}
+            <details data-reveal>
+                <summary>{{ faq.pergunta }}<span aria-hidden="true">+</span></summary>
+                <div>{{ faq.resposta|linebreaks }}</div>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

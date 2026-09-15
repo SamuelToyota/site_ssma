@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-hero compact-page-hero">
+    <div class="container narrow-container">
+        <span class="eyebrow"><i></i> Condições de uso</span>
+        <h1>Termos de Uso</h1>
+        <p>Regras gerais para acesso ao site e aos conteúdos do Consultor Interno.</p>
+    </div>
+</section>
+<article class="section legal-content">
+    <div class="container narrow-container prose">
+        <h2>1. Finalidade do site</h2>
+        <p>O site apresenta conteúdos, formações, diagnósticos, mentoria e possibilidades de desenvolvimento relacionadas a SSMA, liderança, cultura de segurança e carreira.</p>
+
+        <h2>2. Conteúdo informativo</h2>
+        <p>Os conteúdos possuem finalidade educacional e não substituem análise técnica, jurídica, médica ou normativa específica para cada organização ou situação.</p>
+
+        <h2>3. Produtos e serviços</h2>
+        <p>Condições comerciais, formato, acesso, suporte e políticas aplicáveis a cada produto são aquelas apresentadas na página de contratação correspondente. Informações ainda não publicadas devem ser confirmadas antes da contratação.</p>
+
+        <h2>4. Propriedade intelectual</h2>
+        <p>A marca, o método, os textos, materiais e elementos originais do Consultor Interno não podem ser reproduzidos comercialmente sem autorização.</p>
+
+        <h2>5. Uso adequado</h2>
+        <p>Não é permitido tentar comprometer a segurança do site, acessar áreas sem autorização, copiar dados ou utilizar formulários para envio de conteúdo malicioso ou não solicitado.</p>
+
+        <h2>6. Serviços externos</h2>
+        <p>Algumas ações podem direcionar a plataformas de pagamento ou redes sociais. Esses serviços possuem termos e políticas próprios.</p>
+
+        <h2>7. Contato</h2>
+        <p>Dúvidas sobre estes termos podem ser encaminhadas pela <a href="{% url 'contato' %}">página de contato</a>.</p>
+    </div>
+</article>
+{% endblock %}

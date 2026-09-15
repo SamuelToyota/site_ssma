@@ -1,70 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Mentoria D.E.S.T.A.Q.U.E.™ | Consultor Interno{% endblock %}
-
 {% block content %}
-<section class="contact-hero">
+<section class="contact-hero general-contact-hero">
     <div class="container contact-hero-grid">
         <div class="contact-intro" data-reveal>
-            <span class="eyebrow"><i></i> Mentoria individual em SSMA</span>
-            <h1>Clareza para transformar experiência em influência.</h1>
-            <p>A Mentoria D.E.S.T.A.Q.U.E.™ organiza seu posicionamento, suas prioridades e um plano de ação conectado ao seu contexto profissional.</p>
-            <div class="contact-points">
-                <div><span>01</span><p><strong>Diagnóstico</strong> do momento e da percepção profissional.</p></div>
-                <div><span>02</span><p><strong>Estratégia</strong> para comunicar valor e ampliar presença.</p></div>
-                <div><span>03</span><p><strong>Plano de 90 dias</strong> com prioridades claras para executar.</p></div>
+            <span class="eyebrow"><i></i> Contato</span>
+            <h1>Comece pela conversa certa.</h1>
+            <p>Selecione o assunto e compartilhe apenas o contexto necessário. Assim a resposta pode ser direcionada para formação, mentoria ou uma necessidade da empresa.</p>
+            <div class="contact-intent-list" aria-label="Assuntos atendidos">
+                <span>Formações</span><span>Mentoria</span><span>Treinamento para empresas</span><span>Palestras</span><span>Outros assuntos</span>
             </div>
         </div>
 
         <div class="contact-form-card" data-reveal>
-            <span class="course-type">Solicite uma conversa</span>
-            <h2>Conte brevemente seu momento.</h2>
-            <p>Preencha os dados abaixo. O contato será feito para entender se a mentoria é adequada ao seu objetivo.</p>
-
-            <form method="post" class="contact-form">
-                {% csrf_token %}
-                {{ form.non_field_errors }}
-
-                <div class="form-field">
-                    <label for="{{ form.nome.id_for_label }}">Nome completo</label>
-                    {{ form.nome }}
-                    {% for error in form.nome.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-                </div>
-                <div class="form-field">
-                    <label for="{{ form.email.id_for_label }}">E-mail</label>
-                    {{ form.email }}
-                    {% for error in form.email.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-                </div>
-                <div class="form-field">
-                    <label for="{{ form.mensagem.id_for_label }}">O que você deseja desenvolver?</label>
-                    {{ form.mensagem }}
-                    {% for error in form.mensagem.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-                </div>
-                <button type="submit" class="button button-primary form-submit">Enviar solicitação</button>
-                <small class="form-note">Seus dados serão usados apenas para responder a esta solicitação.</small>
-            </form>
+            <span class="course-type">Fale com o Consultor Interno</span>
+            <h2>Qual é o seu objetivo?</h2>
+            <p>Os campos de empresa e cargo são opcionais para contatos individuais.</p>
+            {% include 'components/contact_form.html' with submit_label='Enviar contato' analytics_event='envio_contato' %}
         </div>
-    </div>
-</section>
-
-<section class="section mentoring-process">
-    <div class="container">
-        <div class="section-heading split-heading" data-reveal>
-            <div><span class="eyebrow">A jornada</span><h2>Um processo individual, direto e aplicável.</h2></div>
-            <p>Cada encontro parte de situações reais do seu trabalho e termina com uma decisão ou ação concreta.</p>
-        </div>
-        <div class="process-grid">
-            <article data-reveal><span>Encontro 01</span><h3>Cenário e posicionamento</h3><p>Leitura do momento profissional, desafios e forma como sua atuação é percebida.</p></article>
-            <article data-reveal><span>Encontros 02–04</span><h3>Influência em prática</h3><p>Comunicação, alianças, projeto estratégico e demonstração de valor.</p></article>
-            <article data-reveal><span>Encontro 05</span><h3>Plano de continuidade</h3><p>Prioridades, próximos passos e acompanhamento do plano de 90 dias.</p></article>
-        </div>
-    </div>
-</section>
-
-<section class="direct-contact-section">
-    <div class="container direct-contact" data-reveal>
-        <div><span class="eyebrow eyebrow-light">Prefere uma conversa rápida?</span><h2>Fale diretamente pelo WhatsApp.</h2></div>
-        <a href="https://wa.me/5517997074900?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20mentoria%20D.E.S.T.A.Q.U.E." target="_blank" rel="noopener noreferrer" class="button button-light">Iniciar conversa</a>
     </div>
 </section>
 {% endblock %}

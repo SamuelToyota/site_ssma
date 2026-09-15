@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero"><div class="container"><a href="{% url 'aluno_dashboard' %}" class="back-link">← Área do aluno</a><h1>Mentorias da formação</h1></div></section>
+<section class="section student-section"><div class="container">
+    {% if tem_matricula and mentorias %}<div class="student-list">{% for mentoria in mentorias %}<a href="{{ mentoria.link_gravacao|default:'#' }}" {% if mentoria.link_gravacao %}target="_blank" rel="noopener"{% endif %}><span>{{ mentoria.data_referencia|date:'d/m/Y'|default:'Mentoria' }}</span><strong>{{ mentoria.titulo }}</strong><small>{{ mentoria.descricao }}</small></a>{% endfor %}</div>
+    {% else %}<div class="empty-state"><h2>Nenhuma mentoria disponível.</h2><p>Encontros e gravações vinculados à formação aparecerão aqui.</p></div>{% endif %}
+</div></section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero"><div class="container"><a href="{% url 'aluno_modulo_detalhe' aula.modulo.id %}" class="back-link">← {{ aula.modulo.titulo }}</a><span class="eyebrow">Aula {{ aula.ordem }}</span><h1>{{ aula.titulo }}</h1><p>{{ aula.descricao }}</p></div></section>
+<section class="section student-section"><div class="container narrow-container">
+    {% if embed_url %}<div class="video-frame"><iframe src="{{ embed_url }}" title="{{ aula.titulo }}" loading="lazy" allowfullscreen></iframe></div>{% else %}<div class="empty-state"><h2>Vídeo ainda não disponível.</h2><p>O conteúdo será exibido aqui quando estiver publicado.</p></div>{% endif %}
+    <form method="post" class="lesson-complete">{% csrf_token %}<button type="submit" class="button button-primary" {% if progresso.concluida %}disabled{% endif %}>{% if progresso.concluida %}Aula concluída{% else %}Marcar como concluída{% endif %}</button></form>
+</div></section>
+{% endblock %}

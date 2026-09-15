@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.titulo|escapejs }}",
+  "description": "{{ article.resumo|escapejs }}",
+  "datePublished": "{{ article.publicado_em|date:'c' }}",
+  "dateModified": "{{ article.atualizado_em|date:'c' }}",
+  "author": {"@type": "Person", "name": "{{ article.autor|escapejs }}"},
+  "publisher": {"@type": "Organization", "name": "Consultor Interno"}{% if article.imagem_url %},
+  "image": "{{ article.imagem_url|escapejs }}"{% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article>
+    <header class="article-hero">
+        <div class="container article-hero-inner" data-reveal>
+            <a href="{% url 'conteudos' %}" class="back-link">← Todos os conteúdos</a>
+            <span class="article-meta">{{ article.categoria.nome }} · {{ article.tempo_leitura }} min de leitura</span>
+            <h1>{{ article.titulo }}</h1>
+            <p>{{ article.resumo }}</p>
+            <div class="article-byline"><strong>{{ article.autor }}</strong><span>Publicado em {{ article.publicado_em|date:'d/m/Y' }}</span></div>
+        </div>
+    </header>
+
+    {% if article.imagem_url %}
+    <div class="container article-cover" data-reveal><img src="{{ article.imagem_url }}" alt="{{ article.imagem_alt|default:article.titulo }}" fetchpriority="high" decoding="async"></div>
+    {% endif %}
+
+    <div class="container article-layout">
+        <div class="article-prose prose">{{ article.conteudo|linebreaks }}</div>
+        <aside class="article-aside">
+            <span class="eyebrow">Aplique na sua atuação</span>
+            <h2>Conhecimento técnico é o começo. Influência gera mudança.</h2>
+            <a href="{% url 'mentoria' %}" class="button button-primary">Conhecer a mentoria</a>
+        </aside>
+    </div>
+</article>
+
+{% if related_articles %}
+<section class="section related-content">
+    <div class="container"><div class="section-heading"><span class="eyebrow">Continue a leitura</span><h2>Conteúdos relacionados</h2></div><div class="content-card-grid">{% for article in related_articles %}{% include 'components/article_card.html' %}{% endfor %}</div></div>
+</section>
+{% endif %}
+{% endblock %}

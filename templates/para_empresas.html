@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="service-hero business-hero">
+    <div class="container service-hero-grid">
+        <div data-reveal>
+            <span class="eyebrow"><i></i> Desenvolvimento para empresas</span>
+            <h1>Segurança precisa aparecer no comportamento e nas decisões.</h1>
+            <p>Uma frente de conversa para organizações que querem desenvolver lideranças e profissionais capazes de conectar SSMA, cultura, operação e resultado.</p>
+            <div class="hero-actions"><a href="#projeto" class="button button-primary" data-analytics="cta_form_empresas">Conversar sobre um projeto</a><a href="#frentes" class="button button-secondary">Ver frentes de atuação</a></div>
+        </div>
+        <div class="service-context-image" data-reveal><img src="{% static 'images/safety-team-real.jpg' %}" alt="Profissionais de segurança alinhando decisões no ambiente de trabalho" width="1600" height="1067" fetchpriority="high" decoding="async"><span>SSMA · Liderança · Cultura · Negócio</span></div>
+    </div>
+</section>
+
+<section class="section organization-problems">
+    <div class="container problem-grid">
+        <div class="problem-copy" data-reveal><span class="eyebrow">Desafios organizacionais</span><h2>Política escrita não garante comportamento consistente.</h2><p>O desenvolvimento precisa considerar a forma como líderes, equipes e áreas tomam decisões todos os dias.</p></div>
+        <div class="reality-list" data-reveal><div><span>01</span><p>Baixa adesão da liderança às prioridades de segurança.</p></div><div><span>02</span><p>Comunicação técnica que não mobiliza a operação.</p></div><div><span>03</span><p>Ações isoladas sem continuidade ou responsabilidade clara.</p></div><div><span>04</span><p>Distância entre política, percepção de risco e comportamento.</p></div></div>
+    </div>
+</section>
+
+<section class="section service-lines-section" id="frentes">
+    <div class="container"><div class="split-heading" data-reveal><div><span class="eyebrow">Frentes de conversa</span><h2>Desenvolvimento alinhado ao contexto da organização.</h2></div><p>O escopo é definido após entender público, desafio e aplicação esperada. Nenhum formato é imposto antes desse diagnóstico.</p></div>
+    <div class="service-lines">
+        <article data-reveal><span>01</span><h3>Cultura de Segurança</h3><p>Valores, comportamento, percepção de risco e consistência entre discurso e prática.</p></article>
+        <article data-reveal><span>02</span><h3>Liderança em Segurança</h3><p>Responsabilidade, comunicação e decisões que tornam a segurança parte da gestão.</p></article>
+        <article data-reveal><span>03</span><h3>Comunicação de Riscos</h3><p>Capacidade de traduzir informação técnica em prioridade, escolha e ação coordenada.</p></article>
+        <article data-reveal><span>04</span><h3>Desenvolvimento de SSMA</h3><p>Visão de negócio, influência e atuação consultiva para técnicos, engenheiros e gestores.</p></article>
+    </div></div>
+</section>
+
+<section class="section b2b-process">
+    <div class="container process-layout"><div data-reveal><span class="eyebrow">Construção do projeto</span><h2>Primeiro o problema. Depois o formato.</h2><p>A conversa inicial serve para compreender o contexto e verificar se existe aderência entre o desafio e a experiência do Consultor Interno.</p></div><ol class="process-list" data-reveal><li><span>01</span><div><strong>Contexto</strong><p>Público, cenário, objetivo e restrições da organização.</p></div></li><li><span>02</span><div><strong>Recorte</strong><p>Definição do problema que o desenvolvimento precisa trabalhar.</p></div></li><li><span>03</span><div><strong>Proposta</strong><p>Escopo, formato e próximos passos apresentados para validação.</p></div></li></ol></div>
+</section>
+
+{% if cases %}
+<section class="section cases-section"><div class="container"><div class="section-heading"><span class="eyebrow">Cases</span><h2>Aplicação em contextos reais.</h2></div><div class="case-grid">{% for case in cases %}<article><span>{{ case.setor }}</span><h3>{{ case.titulo }}</h3><p><strong>Situação:</strong> {{ case.situacao|truncatewords:28 }}</p><p><strong>Resultado:</strong> {{ case.resultado|truncatewords:28 }}</p></article>{% endfor %}</div></div></section>
+{% endif %}
+
+<section class="section authority-strip"><div class="container authority-strip-grid"><img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async"><div><span class="eyebrow">Experiência que orienta</span><h2>Alan Silvério</h2><p>Engenheiro de Segurança com mais de 20 anos de atuação em SSMA e experiência em organizações nacionais e multinacionais.</p><a href="{% url 'sobre' %}" class="text-link">Conhecer a trajetória <span aria-hidden="true">→</span></a></div></div></section>
+
+<section class="contact-embedded" id="projeto"><div class="container contact-embedded-grid"><div data-reveal><span class="eyebrow eyebrow-light">Contato B2B</span><h2>Qual desafio sua organização precisa trabalhar?</h2><p>Compartilhe empresa, função e contexto. A resposta inicial serve para avaliar aderência e definir uma conversa mais objetiva.</p></div><div class="contact-form-card" data-reveal><h3>Conversar sobre um projeto</h3>{% include 'components/contact_form.html' with submit_label='Enviar contexto' analytics_event='envio_b2b' %}</div></div></section>
+
+{% include 'components/faq.html' %}
+{% endblock %}

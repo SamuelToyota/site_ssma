@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="error-page">
+    <div class="container narrow-container">
+        <div class="error-card" data-reveal>
+            <span class="error-code">404</span>
+            <span class="eyebrow">Página não encontrada</span>
+            <h1>Este endereço não leva a uma página ativa.</h1>
+            <p>Você pode voltar ao início, conhecer as formações ou acessar os conteúdos do Consultor Interno.</p>
+            <div class="hero-actions">
+                <a href="{% url 'home' %}" class="button button-primary">Voltar ao início</a>
+                <a href="{% url 'cursos' %}" class="button button-secondary">Ver formações</a>
+                <a href="{% url 'conteudos' %}" class="text-link">Acessar conteúdos <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

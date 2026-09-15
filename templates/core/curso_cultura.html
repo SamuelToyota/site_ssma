@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Especialista em Cultura de Segurança | Consultor Interno{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"Especialista em Cultura de Segurança","description":"Formação para profissionais de SSMA que querem diagnosticar, mobilizar lideranças e sustentar uma cultura de segurança além do compliance.","provider":{"@type":"Organization","name":"Consultor Interno"}}
+</script>
+{% endblock %}
 
 {% block content %}
 <section class="product-hero">
@@ -12,12 +16,12 @@
             <h1>Especialista em Cultura de Segurança</h1>
             <p>Construa uma abordagem de segurança orientada por valores, comportamento e liderança — além do compliance.</p>
             <div class="hero-actions">
-                <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" rel="noopener noreferrer" class="button button-primary">Garantir acesso</a>
+                <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" rel="noopener noreferrer" class="button button-primary" data-analytics="checkout_cultura">Garantir acesso</a>
                 <a href="#programa" class="button button-secondary">Ver programa</a>
             </div>
         </div>
         <div class="product-media" data-reveal>
-            <img src="{% static 'images/course_1.png' %}" alt="Formação Especialista em Cultura de Segurança">
+            <img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" fetchpriority="high" decoding="async">
             <span>Formação aplicada à realidade das organizações</span>
         </div>
     </div>
@@ -26,6 +30,13 @@
         <div><strong>24/7</strong><span>acesso às aulas</span></div>
         <div><strong>02</strong><span>mentorias ao vivo</span></div>
         <div><strong>Prática</strong><span>exercícios aplicados</span></div>
+    </div>
+</section>
+
+<section class="section instructor-section">
+    <div class="container authority-strip-grid" data-reveal>
+        <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async">
+        <div><span class="eyebrow">Condução</span><h2>Experiência aplicada à realidade de SSMA.</h2><p>Alan Silvério é Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança, com mais de 20 anos de atuação.</p><a href="{% url 'sobre' %}" class="text-link">Sobre Alan <span aria-hidden="true">→</span></a></div>
     </div>
 </section>
 
@@ -75,7 +86,8 @@
 <section class="section purchase-section">
     <div class="container purchase-box" data-reveal>
         <div><span class="eyebrow eyebrow-light">Inscrições</span><h2>Fortaleça a cultura de segurança onde você atua.</h2><p>Acesse a formação e avance com método, orientação e foco na prática.</p></div>
-        <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" rel="noopener noreferrer" class="button button-light">Quero fazer a formação</a>
+        <a href="https://chk.eduzz.com/39VEGE5BWR" target="_blank" rel="noopener noreferrer" class="button button-light" data-analytics="checkout_cultura_final">Quero fazer a formação</a>
     </div>
 </section>
+{% include 'components/faq.html' %}
 {% endblock %}

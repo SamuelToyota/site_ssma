@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero">
+    <div class="container">
+        <span class="eyebrow"><i></i> Área do aluno</span>
+        <h1>Olá, {{ request.user.first_name|default:request.user.username }}.</h1>
+        {% if tem_matricula %}<p>Continue sua formação e acompanhe seu progresso.</p>{% else %}<p>Sua conta está ativa, mas ainda não há uma matrícula liberada.</p>{% endif %}
+    </div>
+</section>
+<section class="section student-section">
+    <div class="container">
+        {% if tem_matricula %}
+        <div class="student-summary">
+            <div><span>Formação</span><strong>{{ curso.titulo }}</strong></div>
+            <div><span>Progresso</span><strong>{{ progresso_percentual }}%</strong></div>
+            <div><span>Aulas concluídas</span><strong>{{ concluidas }} de {{ total_aulas }}</strong></div>
+            <div><span>Materiais</span><strong>{{ materiais_count }}</strong></div>
+        </div>
+        <nav class="student-nav" aria-label="Navegação da área do aluno">
+            <a href="{% url 'aluno_modulos' %}" class="button button-primary">Ver módulos</a>
+            <a href="{% url 'aluno_materiais' %}" class="button button-secondary">Materiais</a>
+            <a href="{% url 'aluno_mentorias' %}" class="button button-secondary">Mentorias</a>
+            <a href="{% url 'aluno_perfil' %}" class="button button-secondary">Meu perfil</a>
+        </nav>
+        {% if proxima_aula %}<a href="{% url 'aluno_aula' proxima_aula.id %}" class="student-next"><span>Próxima aula</span><strong>{{ proxima_aula.titulo }}</strong></a>{% endif %}
+        {% else %}
+        <div class="empty-state"><h2>Nenhuma formação liberada.</h2><p>Se você já realizou uma compra, entre em contato para verificarmos a liberação.</p><a href="{% url 'contato' %}" class="button button-primary">Falar com a equipe</a></div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

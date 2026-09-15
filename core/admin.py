@@ -1,13 +1,20 @@
 from django.contrib import admin
 
 from .models import (
+    Artigo,
     Aula,
+    Case,
+    CategoriaConteudo,
     Curso,
+    Depoimento,
+    FAQ,
     Material,
+    MaterialGratuito,
     Matricula,
     MentoriaAula,
     MentoriaContato,
     Modulo,
+    NewsletterLead,
     PerfilAluno,
     ProgressoAula,
 )
@@ -29,10 +36,69 @@ class AulaInline(admin.TabularInline):
 
 @admin.register(MentoriaContato)
 class MentoriaContatoAdmin(admin.ModelAdmin):
-    list_display = ("nome", "email", "criado_em")
-    search_fields = ("nome", "email", "mensagem")
-    list_filter = ("criado_em",)
+    list_display = ("nome", "tipo_interesse", "empresa", "email", "criado_em")
+    search_fields = ("nome", "email", "empresa", "cargo", "mensagem")
+    list_filter = ("tipo_interesse", "criado_em")
     ordering = ("-criado_em",)
+
+
+@admin.register(NewsletterLead)
+class NewsletterLeadAdmin(admin.ModelAdmin):
+    list_display = ("nome", "email", "ativo", "origem", "consentimento_em")
+    search_fields = ("nome", "email")
+    list_filter = ("ativo", "origem", "consentimento_em")
+    ordering = ("-consentimento_em",)
+
+
+@admin.register(CategoriaConteudo)
+class CategoriaConteudoAdmin(admin.ModelAdmin):
+    list_display = ("nome", "slug", "ativa")
+    list_filter = ("ativa",)
+    search_fields = ("nome", "descricao")
+    prepopulated_fields = {"slug": ("nome",)}
+
+
+@admin.register(Artigo)
+class ArtigoAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "categoria", "publicado", "publicado_em")
+    list_filter = ("publicado", "categoria", "publicado_em")
+    search_fields = ("titulo", "resumo", "conteudo", "autor")
+    prepopulated_fields = {"slug": ("titulo",)}
+    autocomplete_fields = ("categoria",)
+    date_hierarchy = "publicado_em"
+
+
+@admin.register(Depoimento)
+class DepoimentoAdmin(admin.ModelAdmin):
+    list_display = ("nome", "cargo", "empresa", "ativo", "ordem")
+    list_editable = ("ativo", "ordem")
+    list_filter = ("ativo",)
+    search_fields = ("nome", "cargo", "empresa", "texto")
+
+
+@admin.register(Case)
+class CaseAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "setor", "publicado", "ordem", "atualizado_em")
+    list_editable = ("publicado", "ordem")
+    list_filter = ("publicado", "setor")
+    search_fields = ("titulo", "setor", "situacao", "problema", "resultado")
+    prepopulated_fields = {"slug": ("titulo",)}
+
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ("pergunta", "pagina", "ativa", "ordem")
+    list_editable = ("ativa", "ordem")
+    list_filter = ("pagina", "ativa")
+    search_fields = ("pergunta", "resposta")
+
+
+@admin.register(MaterialGratuito)
+class MaterialGratuitoAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "ativo", "criado_em")
+    list_filter = ("ativo",)
+    search_fields = ("titulo", "descricao")
+    prepopulated_fields = {"slug": ("titulo",)}
 
 
 @admin.register(PerfilAluno)

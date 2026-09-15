@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero"><div class="container"><a href="{% url 'aluno_modulos' %}" class="back-link">← Todos os módulos</a><span class="eyebrow">Módulo {{ modulo.ordem }}</span><h1>{{ modulo.titulo }}</h1><p>{{ modulo.descricao }}</p></div></section>
+<section class="section student-section"><div class="container">
+    {% if aulas %}<div class="student-list">{% for aula in aulas %}<a href="{% url 'aluno_aula' aula.id %}"><span>Aula {{ aula.ordem }}</span><strong>{{ aula.titulo }}</strong><small>{% if aula.id in aulas_concluidas_ids %}Concluída{% else %}Disponível{% endif %}</small></a>{% endfor %}</div>
+    {% else %}<div class="empty-state"><h2>Nenhuma aula publicada.</h2><p>As aulas deste módulo ainda não estão disponíveis.</p></div>{% endif %}
+</div></section>
+{% endblock %}

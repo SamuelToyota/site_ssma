@@ -1,28 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Consultor Interno | SSMA que influencia decisões{% endblock %}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Consultor Interno",
+  "url": "{{ site_url }}/",
+  "description": "{{ page_description }}",
+  "inLanguage": "pt-BR"
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <section class="hero">
     <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-            <span class="eyebrow"><i></i> Formação e mentoria em SSMA</span>
+            <span class="eyebrow"><i></i> Para profissionais de Segurança do Trabalho e SSMA</span>
             <h1>Segurança do trabalho com voz nas decisões.</h1>
-            <p>Desenvolva repertório, método e influência para conectar SSMA à estratégia — sem abandonar a consistência técnica.</p>
+            <p>Formação e mentoria para transformar riscos, dados e conhecimento técnico em argumentos que orientam lideranças e aproximam SSMA da estratégia do negócio.</p>
             <div class="hero-actions">
-                <a href="{% url 'cursos' %}" class="button button-primary">Conhecer formações</a>
-                <a href="{% url 'contato' %}" class="button button-secondary">Agendar mentoria <span aria-hidden="true">↗</span></a>
+                <a href="{% url 'cursos' %}" class="button button-primary" data-analytics="cta_formacoes_hero">Ver formações</a>
+                <a href="#metodo" class="button button-secondary" data-analytics="cta_metodo_hero">Conhecer o método <span aria-hidden="true">↓</span></a>
             </div>
-            <div class="hero-proof" aria-label="Diferenciais">
+            <div class="hero-proof" aria-label="Prova de experiência">
                 <div><strong>20+ anos</strong><span>de experiência em SSMA</span></div>
-                <div><strong>Aplicação real</strong><span>na rotina das organizações</span></div>
+                <div><strong>Alan Silvério</strong><span>Engenheiro de Segurança e mentor</span></div>
             </div>
         </div>
         <div class="hero-visual" data-reveal>
             <div class="hero-image-wrap">
-                <img src="{% static 'images/safety-engineer-tablet-real.jpg' %}" alt="Engenheira de segurança analisando informações em um tablet na obra">
-                <div class="image-note"><span class="note-icon" aria-hidden="true">✓</span><div><strong>Da operação à estratégia</strong><small>Decisões mais seguras começam com influência.</small></div></div>
+                <img src="{% static 'images/safety-engineer-tablet-real.jpg' %}" alt="Engenheira de segurança analisando informações em um tablet na obra" width="1600" height="1067" fetchpriority="high" decoding="async">
+                <div class="image-note"><span class="note-icon" aria-hidden="true">✓</span><div><strong>Da operação à estratégia</strong><small>Decisões mais seguras começam antes da ocorrência.</small></div></div>
             </div>
             <span class="vertical-label">Saúde · Segurança · Meio ambiente</span>
         </div>
@@ -33,61 +44,137 @@
     <div class="container trust-items"><span>Cultura de segurança</span><i></i><span>Liderança</span><i></i><span>Gestão de riscos</span><i></i><span>ESG</span></div>
 </section>
 
+<section class="section problem-section">
+    <div class="container problem-grid">
+        <div class="problem-copy" data-reveal>
+            <span class="eyebrow">O ponto de tensão</span>
+            <h2>Dominar a técnica nem sempre garante espaço nas decisões.</h2>
+            <p>O conhecimento perde força quando chega à liderança sem contexto, prioridade ou conexão com a operação.</p>
+        </div>
+        <div class="reality-list" data-reveal>
+            <div><span>01</span><p>Você apresenta um risco relevante, mas não consegue mobilizar apoio.</p></div>
+            <div><span>02</span><p>Propõe melhorias consistentes, mas a adesão termina depois da reunião.</p></div>
+            <div><span>03</span><p>A área é chamada para reagir ao problema, não para ajudar a preveni-lo.</p></div>
+            <div><span>04</span><p>Indicadores técnicos são entregues, mas não orientam a decisão de investimento.</p></div>
+        </div>
+    </div>
+</section>
+
 <section class="section section-light">
     <div class="container">
         <div class="section-heading split-heading" data-reveal>
-            <div><span class="eyebrow">Desenvolvimento profissional</span><h2>Conhecimento técnico é o começo. Influência gera mudança.</h2></div>
-            <p>Uma abordagem prática para profissionais que precisam traduzir riscos, mobilizar lideranças e sustentar resultados.</p>
+            <div><span class="eyebrow">Da técnica à influência</span><h2>Conhecimento técnico é o começo. Influência gera mudança.</h2></div>
+            <p>Desenvolva capacidades que aparecem em situações concretas da rotina — da análise do risco à conversa com a diretoria.</p>
         </div>
         <div class="value-grid">
-            <article class="value-card" data-reveal><span class="card-index">01</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m8 10V5m8 14v-7M2 19h20"/></svg></div><h3>Leitura estratégica</h3><p>Enxergue além da ocorrência e conecte risco, cultura, operação e impacto no negócio.</p></article>
-            <article class="value-card featured" data-reveal><span class="card-index">02</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 15v4h4l9-9-4-4-9 9Zm11-11 4 4 1.5-1.5a2 2 0 0 0-4-4L15 4Z"/></svg></div><h3>Comunicação que mobiliza</h3><p>Apresente prioridades com clareza e conquiste apoio para iniciativas relevantes.</p></article>
-            <article class="value-card" data-reveal><span class="card-index">03</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></svg></div><h3>Resultado sustentável</h3><p>Transforme boas práticas em sistemas consistentes, mensuráveis e reconhecidos.</p></article>
+            <article class="value-card" data-reveal><span class="card-index">01</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m8 10V5m8 14v-7M2 19h20"/></svg></div><h3>Leitura estratégica</h3><p>Conecte ocorrências, indicadores, cultura e operação para identificar o que realmente exige decisão.</p><small class="application-note">Na prática: priorizar riscos e estruturar planos de ação.</small></article>
+            <article class="value-card featured" data-reveal><span class="card-index">02</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 15v4h4l9-9-4-4-9 9Zm11-11 4 4 1.5-1.5a2 2 0 0 0-4-4L15 4Z"/></svg></div><h3>Comunicação que mobiliza</h3><p>Transforme informação técnica em argumentos claros para defender prioridades e investimentos.</p><small class="application-note">Na prática: apresentar propostas e conduzir conversas difíceis.</small></article>
+            <article class="value-card" data-reveal><span class="card-index">03</span><div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></svg></div><h3>Resultado sustentável</h3><p>Converta boas iniciativas em rotinas, responsabilidades e comportamentos que permanecem.</p><small class="application-note">Na prática: mobilizar gestores e acompanhar indicadores relevantes.</small></article>
         </div>
     </div>
 </section>
 
 <section class="section field-section">
     <div class="container field-grid">
-        <div class="field-image" data-reveal><img src="{% static 'images/safety-team-real.jpg' %}" alt="Profissionais de segurança discutindo procedimentos no local de trabalho"><div class="field-tag"><span>SSMA</span> presente onde as decisões acontecem</div></div>
+        <div class="field-image" data-reveal><img src="{% static 'images/safety-team-real.jpg' %}" alt="Profissionais de segurança discutindo procedimentos no local de trabalho" width="1600" height="1067" loading="lazy" decoding="async"><div class="field-tag"><span>Consultor Interno</span>uma postura, não apenas um cargo</div></div>
         <div class="field-copy" data-reveal>
-            <span class="eyebrow">Uma nova forma de atuar</span><h2>Menos reação. Mais direção.</h2>
-            <p>O Consultor Interno amplia a capacidade de prevenção porque participa da conversa antes que o problema aconteça.</p>
-            <ul class="check-list">
-                <li><span>01</span><div><strong>Conecta áreas</strong><small>Constrói alianças entre operação, liderança e SSMA.</small></div></li>
-                <li><span>02</span><div><strong>Traduz impacto</strong><small>Apresenta riscos em uma linguagem que orienta decisões.</small></div></li>
-                <li><span>03</span><div><strong>Sustenta cultura</strong><small>Transforma ações isoladas em comportamento consistente.</small></div></li>
+            <span class="eyebrow">O conceito da marca</span><h2>Menos reação. Mais direção.</h2>
+            <p>Atuar como Consultor Interno é compreender o negócio, diagnosticar o contexto e ajudar diferentes áreas a tomar decisões melhores. Em SSMA, isso significa participar antes que o problema aconteça.</p>
+            <ul class="check-list concept-list">
+                <li><span>01</span><div><strong>Compreende o negócio</strong><small>Lê operação, prioridades e impactos além da obrigação legal.</small></div></li>
+                <li><span>02</span><div><strong>Traduz risco em decisão</strong><small>Apresenta dados técnicos em uma linguagem útil para a liderança.</small></div></li>
+                <li><span>03</span><div><strong>Constrói alianças</strong><small>Conecta SSMA, operação, gestão e pessoas para tirar ações do papel.</small></div></li>
             </ul>
-            <a href="{% url 'contato' %}" class="text-link">Entender a mentoria <span aria-hidden="true">→</span></a>
+            <a href="{% url 'mentoria' %}" class="text-link" data-analytics="cta_mentoria_conceito">Desenvolver essa atuação <span aria-hidden="true">→</span></a>
         </div>
     </div>
 </section>
 
 <section class="section courses-section">
     <div class="container">
-        <div class="section-heading courses-heading" data-reveal><div><span class="eyebrow">Formações</span><h2>Escolha seu próximo avanço.</h2></div><a href="{% url 'cursos' %}" class="text-link">Ver todas as opções <span aria-hidden="true">→</span></a></div>
+        <div class="section-heading courses-heading" data-reveal><div><span class="eyebrow">Formações e desenvolvimento</span><h2>Escolha a frente que responde ao seu momento.</h2></div><a href="{% url 'cursos' %}" class="text-link">Ver todas as opções <span aria-hidden="true">→</span></a></div>
         <div class="course-grid">
-            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_1.png' %}" alt="Formação Especialista em Cultura de Segurança"></div><div class="course-body"><span class="course-type">Formação</span><h3>Especialista em Cultura de Segurança</h3><p>Valores, comportamento e liderança para construir uma cultura que permanece.</p><a href="{% url 'curso_cultura' %}" class="text-link">Conhecer formação <span aria-hidden="true">→</span></a></div></article>
-            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_2.png' %}" alt="Teste de Perfil Profissional, Valores Pessoais e Carreira"></div><div class="course-body"><span class="course-type">Diagnóstico</span><h3>Perfil, Valores Pessoais &amp; Carreira</h3><p>Autoconhecimento e devolutiva personalizada para orientar escolhas profissionais.</p><a href="{% url 'curso_teste' %}" class="text-link">Conhecer diagnóstico <span aria-hidden="true">→</span></a></div></article>
+            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" loading="lazy" decoding="async"></div><div class="course-body"><span class="course-type">Formação em SSMA</span><h3>Especialista em Cultura de Segurança</h3><p>Valores, comportamento e liderança para construir uma cultura que permanece.</p><a href="{% url 'curso_cultura' %}" class="text-link" data-analytics="cta_curso_cultura_home">Conhecer formação <span aria-hidden="true">→</span></a></div></article>
+            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil Profissional, Valores Pessoais e Carreira" width="1427" height="777" loading="lazy" decoding="async"></div><div class="course-body"><span class="course-type">Desenvolvimento profissional</span><h3>Perfil, Valores Pessoais &amp; Carreira</h3><p>Autoconhecimento e devolutiva personalizada para orientar escolhas profissionais.</p><a href="{% url 'curso_teste' %}" class="text-link" data-analytics="cta_diagnostico_home">Conhecer diagnóstico <span aria-hidden="true">→</span></a></div></article>
+        </div>
+        <div class="pathway-grid">
+            <a href="{% url 'mentoria' %}" class="pathway-item" data-reveal data-analytics="cta_mentoria_home"><span>Mentoria individual</span><strong>Organize posicionamento, prioridades e conversas decisivas.</strong><i aria-hidden="true">→</i></a>
+            <a href="{% url 'para_empresas' %}" class="pathway-item pathway-dark" data-reveal data-analytics="cta_empresas_home"><span>Para empresas</span><strong>Desenvolva lideranças, profissionais e cultura de segurança.</strong><i aria-hidden="true">→</i></a>
         </div>
     </div>
 </section>
 
-<section class="method-band">
-    <div class="container method-grid">
-        <div class="method-copy" data-reveal><span class="eyebrow eyebrow-light">Método próprio</span><h2>D.E.S.T.A.Q.U.E.™</h2><p>Oito dimensões integradas para diagnosticar o cenário, fortalecer sua presença e comunicar valor com consistência.</p><a href="{% url 'contato' %}" class="button button-light">Conhecer a mentoria</a></div>
-        <div class="method-letters" aria-label="Método D.E.S.T.A.Q.U.E." data-reveal><span>D</span><span>E</span><span>S</span><span>T</span><span>A</span><span>Q</span><span>U</span><span>E</span></div>
+<section class="method-band method-expanded" id="metodo">
+    <div class="container method-intro">
+        <div class="method-copy" data-reveal><span class="eyebrow eyebrow-light">Metodologia própria</span><h2>D.E.S.T.A.Q.U.E.™</h2><p>Oito dimensões conectam leitura de contexto, influência, execução e desenvolvimento. Abra cada dimensão para entender sua aplicação.</p><a href="{% url 'mentoria' %}" class="button button-light" data-analytics="cta_mentoria_metodo">Conhecer a mentoria</a></div>
+        <div class="method-list" data-reveal>
+            {% for dimension in method_dimensions %}
+            <details class="method-item">
+                <summary><span>{{ dimension.letter }}</span><strong>{{ dimension.name }}</strong><i aria-hidden="true">+</i></summary>
+                <p>{{ dimension.description }}</p>
+            </details>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
 <section class="section mentor-section">
     <div class="container mentor-grid">
-        <div class="mentor-photo" data-reveal><img src="{% static 'images/alan.png' %}" alt="Alan Silvério, engenheiro de segurança e mentor"></div>
-        <div class="mentor-copy" data-reveal><span class="eyebrow">Experiência que orienta</span><h2>Alan Silvério</h2><p class="mentor-role">Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança.</p><p>Mais de duas décadas de atuação prática transformadas em um método direto para quem quer ampliar relevância sem perder a profundidade técnica.</p><div class="mentor-detail"><span>20+</span><p><strong>anos de experiência</strong> em organizações nacionais e multinacionais.</p></div></div>
+        <div class="mentor-photo" data-reveal><img src="{% static 'images/alan.webp' %}" alt="Alan Silvério, engenheiro de segurança e mentor" width="1000" height="1000" loading="lazy" decoding="async"></div>
+        <div class="mentor-copy" data-reveal><span class="eyebrow">Consultor Interno, por Alan Silvério</span><h2>Experiência prática sem perder profundidade técnica.</h2><p class="mentor-role">Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança.</p><p>Mais de duas décadas de atuação em organizações nacionais e multinacionais formam a base de uma abordagem voltada a situações reais: risco, liderança, cultura, comunicação e decisão.</p><div class="mentor-detail"><span>20+</span><p><strong>anos de experiência</strong> conectando segurança, pessoas e contexto organizacional.</p></div><a href="{% url 'sobre' %}" class="text-link">Conhecer Alan e a proposta <span aria-hidden="true">→</span></a></div>
+    </div>
+</section>
+
+{% if testimonials %}
+<section class="section social-proof-section">
+    <div class="container">
+        <div class="section-heading" data-reveal><span class="eyebrow">Experiências reais</span><h2>O que profissionais dizem sobre o trabalho.</h2></div>
+        <div class="testimonial-grid">{% for testimonial in testimonials %}<figure data-reveal><blockquote>“{{ testimonial.texto }}”</blockquote><figcaption><strong>{{ testimonial.nome }}</strong>{% if testimonial.cargo or testimonial.empresa %}<span>{{ testimonial.cargo }}{% if testimonial.cargo and testimonial.empresa %} · {% endif %}{{ testimonial.empresa }}</span>{% endif %}</figcaption></figure>{% endfor %}</div>
+    </div>
+</section>
+{% endif %}
+
+<section class="business-section">
+    <div class="container business-panel" data-reveal>
+        <div><span class="eyebrow eyebrow-light">Desenvolvimento para empresas</span><h2>Segurança ganha força quando liderança, operação e SSMA trabalham na mesma direção.</h2><p>Converse sobre treinamentos, palestras e projetos de desenvolvimento alinhados ao contexto da organização.</p></div>
+        <a href="{% url 'para_empresas' %}" class="button button-light" data-analytics="cta_empresas_faixa">Conversar sobre um projeto</a>
+    </div>
+</section>
+
+<section class="section content-section" id="newsletter">
+    <div class="container content-newsletter-grid">
+        <div data-reveal>
+            <span class="eyebrow">Conteúdo para aplicar</span>
+            <h2>Ideias para levar SSMA às conversas que importam.</h2>
+            {% if latest_articles %}
+            <div class="home-article-list">{% for article in latest_articles %}{% include 'components/article_card.html' %}{% endfor %}</div>
+            {% else %}
+            <p>O espaço editorial está preparado para análises sobre cultura de segurança, liderança, riscos, comunicação e carreira.</p>
+            <div class="topic-cloud" aria-label="Linhas editoriais">{% for topic in editorial_topics %}<span>{{ topic }}</span>{% endfor %}</div>
+            {% endif %}
+            <a href="{% url 'conteudos' %}" class="text-link">Conhecer a área de conteúdos <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="newsletter-card" data-reveal>
+            <span class="course-type">Receba os próximos conteúdos</span>
+            <h3>Análises práticas, sem excesso de e-mails.</h3>
+            <p>Inscreva-se para acompanhar publicações sobre SSMA, liderança, cultura e atuação estratégica.</p>
+            {% if request.GET.newsletter == 'ok' %}
+            <p class="newsletter-success" role="status">Inscrição recebida. Obrigado por acompanhar o Consultor Interno.</p>
+            {% endif %}
+            <form method="post" class="newsletter-form" data-loading novalidate>
+                {% csrf_token %}<input type="hidden" name="form_type" value="newsletter">
+                <div class="honeypot" aria-hidden="true">{{ newsletter_form.website }}</div>
+                <div class="form-field"><label for="{{ newsletter_form.nome.id_for_label }}">Nome</label>{{ newsletter_form.nome }}{% for error in newsletter_form.nome.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
+                <div class="form-field"><label for="{{ newsletter_form.email.id_for_label }}">E-mail</label>{{ newsletter_form.email }}{% for error in newsletter_form.email.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
+                <div class="form-consent">{{ newsletter_form.consentimento }}<label for="{{ newsletter_form.consentimento.id_for_label }}">Aceito receber conteúdos e posso cancelar a qualquer momento.</label>{% for error in newsletter_form.consentimento.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
+                {{ newsletter_form.non_field_errors }}
+                <button type="submit" class="button button-primary" data-analytics="inscricao_newsletter">Quero acompanhar</button>
+            </form>
+        </div>
     </div>
 </section>
 
 <section class="section final-cta-section">
-    <div class="container"><div class="final-cta" data-reveal><div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Seu conhecimento pode ocupar mais espaço.</h2><p>Escolha uma formação ou converse sobre o seu momento profissional.</p></div><div class="final-actions"><a href="{% url 'cursos' %}" class="button button-light">Explorar formações</a><a href="{% url 'contato' %}" class="button button-ghost-light">Solicitar mentoria</a></div></div></div>
+    <div class="container"><div class="final-cta" data-reveal><div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Escolha onde essa conversa precisa começar.</h2><p>Formação para aprofundar competências, mentoria para trabalhar seu contexto ou desenvolvimento para a empresa.</p></div><div class="final-actions"><a href="{% url 'cursos' %}" class="button button-light">Ver formações</a><a href="{% url 'contato' %}" class="button button-ghost-light">Falar com a equipe</a></div></div></div>
 </section>
 {% endblock %}

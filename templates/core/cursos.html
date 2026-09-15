@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Formações | Consultor Interno{% endblock %}
-
 {% block content %}
 <section class="page-hero">
     <div class="container page-hero-grid">
@@ -11,8 +9,8 @@
             <h1>Formações para ampliar sua atuação.</h1>
         </div>
         <div class="page-hero-aside" data-reveal>
-            <p>Escolha entre aprofundar sua capacidade de transformar cultura ou ganhar clareza para decisões de carreira.</p>
-            <span>Conteúdo aplicável · orientação especializada</span>
+            <p>Duas experiências com objetivos diferentes: uma formação para ampliar sua atuação em cultura e um diagnóstico para organizar decisões de carreira.</p>
+            <span>Escolha pelo objetivo, não pelo formato</span>
         </div>
     </div>
 </section>
@@ -21,13 +19,13 @@
     <div class="container program-stack">
         <article class="program-card" data-reveal>
             <div class="program-media">
-                <img src="{% static 'images/course_1.png' %}" alt="Formação Especialista em Cultura de Segurança">
+                <img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" loading="eager" decoding="async">
                 <span class="media-number">01</span>
             </div>
             <div class="program-copy">
                 <span class="course-type">Formação principal</span>
                 <h2>Especialista em Cultura de Segurança</h2>
-                <p>Para quem quer transformar normas e iniciativas isoladas em comportamento, engajamento e valor organizacional.</p>
+                <p>Para profissionais de SSMA e lideranças que querem compreender a cultura atual, mobilizar pessoas e sustentar decisões além do compliance.</p>
                 <ul class="feature-list">
                     <li>Diagnóstico da cultura atual</li>
                     <li>Engajamento de líderes e equipes</li>
@@ -42,13 +40,13 @@
 
         <article class="program-card program-card-reverse" data-reveal>
             <div class="program-media">
-                <img src="{% static 'images/course_2.png' %}" alt="Teste de Perfil, Valores Pessoais e Carreira">
+                <img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil, Valores Pessoais e Carreira" width="1427" height="777" loading="lazy" decoding="async">
                 <span class="media-number">02</span>
             </div>
             <div class="program-copy">
                 <span class="course-type">Diagnóstico individual</span>
                 <h2>Perfil, Valores Pessoais &amp; Carreira</h2>
-                <p>Para organizar escolhas profissionais com mais consciência sobre o que orienta suas prioridades e decisões.</p>
+                <p>Para quem vive uma transição, avalia oportunidades ou precisa compreender o que orienta suas escolhas profissionais.</p>
                 <ul class="feature-list">
                     <li>Mapeamento de valores pessoais</li>
                     <li>Relatório individual</li>
@@ -63,6 +61,13 @@
     </div>
 </section>
 
+<section class="section catalog-authority">
+    <div class="container authority-strip-grid" data-reveal>
+        <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async">
+        <div><span class="eyebrow">Quem conduz</span><h2>Alan Silvério</h2><p>Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança, com mais de 20 anos de atuação em organizações nacionais e multinacionais.</p><a href="{% url 'sobre' %}" class="text-link">Conhecer a trajetória <span aria-hidden="true">→</span></a></div>
+    </div>
+</section>
+
 <section class="guidance-section">
     <div class="container guidance-box" data-reveal>
         <div><span class="eyebrow">Precisa de direção?</span><h2>Converse antes de escolher.</h2></div>
@@ -70,4 +75,5 @@
         <a href="{% url 'contato' %}" class="button button-primary">Falar com um especialista</a>
     </div>
 </section>
+{% include 'components/faq.html' %}
 {% endblock %}

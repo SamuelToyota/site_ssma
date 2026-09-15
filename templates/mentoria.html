@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="service-hero">
+    <div class="container service-hero-grid">
+        <div data-reveal>
+            <span class="eyebrow"><i></i> Mentoria para profissionais de SSMA</span>
+            <h1>Trabalhe seu contexto, não uma resposta genérica.</h1>
+            <p>Uma conversa individual para organizar posicionamento, prioridades e ações quando o conhecimento técnico precisa ganhar clareza, influência e direção.</p>
+            <div class="hero-actions"><a href="#solicitar" class="button button-primary" data-analytics="cta_form_mentoria">Solicitar uma conversa</a><a href="#como-funciona" class="button button-secondary">Entender a proposta</a></div>
+            <p class="service-note">Formato, agenda e escopo são confirmados na conversa inicial.</p>
+        </div>
+        <div class="service-portrait" data-reveal><img src="{% static 'images/alan.webp' %}" alt="Alan Silvério, engenheiro de segurança e mentor" width="1000" height="1000" loading="eager" decoding="async"><div><strong>Alan Silvério</strong><span>20+ anos de experiência em SSMA</span></div></div>
+    </div>
+</section>
+
+<section class="section recognition-section">
+    <div class="container split-heading" data-reveal><div><span class="eyebrow">Para quem faz sentido</span><h2>Quando a capacidade técnica já existe, mas a atuação ainda encontra barreiras.</h2></div><p>A mentoria parte de situações reais da rotina e busca transformar análise em ação aplicável.</p></div>
+    <div class="container scenario-grid">
+        <article data-reveal><span>01</span><h3>Riscos sem apoio</h3><p>Você identifica o problema, mas precisa construir um argumento que mobilize a liderança.</p></article>
+        <article data-reveal><span>02</span><h3>Atuação reativa</h3><p>A rotina consome o tempo e impede uma participação mais preventiva e estratégica.</p></article>
+        <article data-reveal><span>03</span><h3>Posicionamento difuso</h3><p>As entregas existem, mas o valor da sua contribuição ainda não é percebido com clareza.</p></article>
+        <article data-reveal><span>04</span><h3>Próximo passo incerto</h3><p>Você quer assumir mais responsabilidade, mas precisa organizar prioridades e escolhas.</p></article>
+    </div>
+</section>
+
+<section class="section process-section" id="como-funciona">
+    <div class="container process-layout">
+        <div data-reveal><span class="eyebrow">Como a conversa evolui</span><h2>Diagnóstico antes de prescrição.</h2><p>A proposta não parte de uma fórmula pronta. Primeiro é preciso compreender o momento, as relações e o resultado que precisa ser construído.</p></div>
+        <ol class="process-list" data-reveal><li><span>01</span><div><strong>Contexto</strong><p>Leitura do momento profissional e das situações que exigem decisão.</p></div></li><li><span>02</span><div><strong>Prioridades</strong><p>Definição dos pontos que merecem foco e do que pode ser aplicado.</p></div></li><li><span>03</span><div><strong>Desenvolvimento</strong><p>Trabalho sobre comunicação, influência, relações e execução.</p></div></li><li><span>04</span><div><strong>Continuidade</strong><p>Organização dos próximos passos de acordo com o escopo validado.</p></div></li></ol>
+    </div>
+</section>
+
+<section class="section mentoring-capabilities">
+    <div class="container"><div class="section-heading" data-reveal><span class="eyebrow">Competências em foco</span><h2>Da análise técnica à participação nas decisões.</h2></div><div class="capability-lines" data-reveal><span>Apresentar riscos para a liderança</span><span>Defender prioridades e investimentos</span><span>Transformar dados em argumentos</span><span>Conduzir conversas difíceis</span><span>Construir alianças internas</span><span>Estruturar planos de ação</span></div></div>
+</section>
+
+<section class="contact-embedded" id="solicitar">
+    <div class="container contact-embedded-grid">
+        <div data-reveal><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Conte o que está acontecendo na sua rotina.</h2><p>O formulário serve para avaliar o contexto. Ele não representa contratação nem garante que a mentoria seja a solução indicada.</p></div>
+        <div class="contact-form-card" data-reveal><h3>Solicitar conversa sobre mentoria</h3>{% include 'components/contact_form.html' with submit_label='Enviar solicitação' analytics_event='envio_mentoria' %}</div>
+    </div>
+</section>
+
+{% include 'components/faq.html' %}
+{% endblock %}

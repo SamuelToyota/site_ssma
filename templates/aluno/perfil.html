@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="student-hero"><div class="container"><a href="{% url 'aluno_dashboard' %}" class="back-link">← Área do aluno</a><h1>Meu perfil</h1></div></section>
+<section class="section student-section"><div class="container narrow-container"><dl class="profile-list"><div><dt>Nome</dt><dd>{{ perfil.nome_exibicao|default:request.user.get_full_name|default:request.user.username }}</dd></div><div><dt>E-mail</dt><dd>{{ request.user.email }}</dd></div><div><dt>Telefone</dt><dd>{{ perfil.telefone|default:'Não informado' }}</dd></div><div><dt>Acesso</dt><dd>{% if perfil.acesso_ativo %}Ativo{% else %}Aguardando liberação{% endif %}</dd></div></dl><a href="{% url 'logout' %}" class="button button-secondary">Sair da conta</a></div></section>
+{% endblock %}

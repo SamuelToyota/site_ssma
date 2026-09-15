@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="content-hub-hero">
+    <div class="container content-hub-grid">
+        <div data-reveal>
+            <span class="eyebrow"><i></i> Conteúdos</span>
+            <h1>Ideias para uma atuação mais estratégica em SSMA.</h1>
+        </div>
+        <div data-reveal>
+            <p>Artigos sobre cultura de segurança, liderança, riscos, comunicação, carreira e o espaço de SSMA nas decisões do negócio.</p>
+            <div class="topic-cloud" aria-label="Temas editoriais">{% for topic in editorial_topics %}<span>{{ topic }}</span>{% endfor %}</div>
+        </div>
+    </div>
+</section>
+
+<section class="section content-library">
+    <div class="container">
+        {% if categories %}
+        <nav class="content-filters" aria-label="Filtrar conteúdos por categoria" data-reveal>
+            <a href="{% url 'conteudos' %}"{% if not selected_category %} class="is-active" aria-current="page"{% endif %}>Todos</a>
+            {% for category in categories %}
+            <a href="{% url 'conteudos' %}?categoria={{ category.slug }}"{% if selected_category == category %} class="is-active" aria-current="page"{% endif %}>{{ category.nome }}</a>
+            {% endfor %}
+        </nav>
+        {% endif %}
+
+        {% if articles %}
+        <div class="content-card-grid">
+            {% for article in articles %}{% include 'components/article_card.html' %}{% endfor %}
+        </div>
+        {% else %}
+        <div class="content-empty" data-reveal>
+            <span class="eyebrow">Em preparação</span>
+            <h2>Os primeiros conteúdos serão publicados aqui.</h2>
+            <p>Enquanto isso, conheça as formações ou converse sobre o momento profissional que você está vivendo.</p>
+            <div class="hero-actions"><a href="{% url 'cursos' %}" class="button button-primary">Ver formações</a><a href="{% url 'contato' %}" class="button button-secondary">Entrar em contato</a></div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

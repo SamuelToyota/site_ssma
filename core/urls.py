@@ -4,10 +4,23 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("formacoes/", views.formacoes, name="formacoes"),
     path("formacao/", views.formacao, name="formacao"),
     path("videos/", views.videos, name="videos"),
     path("modulos/", views.modulos, name="modulos"),
     path("contato/", views.contato, name="contato"),
+    path("mentoria/", views.mentoria, name="mentoria"),
+    path("para-empresas/", views.para_empresas, name="para_empresas"),
+    path("sobre/", views.sobre, name="sobre"),
+    path("conteudos/", views.conteudos, name="conteudos"),
+    path("conteudos/<slug:slug>/", views.artigo_detalhe, name="artigo_detalhe"),
+    path(
+        "politica-de-privacidade/",
+        views.politica_privacidade,
+        name="privacidade",
+    ),
+    path("termos/", views.termos, name="termos"),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
     path("sucesso/", views.sucesso, name="sucesso"),
     path("cadastro/", views.cadastro, name="cadastro"),
     path('curso/cultura-seguranca/', views.curso_cultura, name='curso_cultura'),
