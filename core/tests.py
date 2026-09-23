@@ -1,4 +1,5 @@
 from datetime import timedelta
+import re
 
 from django.contrib.auth.models import User
 from django.core import mail
@@ -76,6 +77,56 @@ class PublicPagesTests(TestCase):
         )
         self.assertContains(response, 'property="og:title"')
         self.assertContains(response, 'type="application/ld+json"')
+
+    def test_primary_navigation_has_only_the_four_requested_destinations(self):
+        response = self.client.get(reverse("home"))
+        html = response.content.decode()
+        navigation = re.search(
+            r'<nav class="navbar"[^>]*>(.*?)</nav>',
+            html,
+            flags=re.DOTALL,
+        )
+        self.assertIsNotNone(navigation)
+        labels = re.findall(r">\s*([^<]+?)\s*</a>", navigation.group(1))
+        self.assertEqual(labels, ["Início", "Cursos", "Mentoria", "Sobre"])
+
+    def test_about_page_concentrates_alan_authority_content(self):
+        home = self.client.get(reverse("home"))
+        about = self.client.get(reverse("sobre"))
+        moved_heading = "Profundidade técnica para lidar com situações reais."
+
+        self.assertNotContains(home, moved_heading)
+        self.assertContains(about, moved_heading)
+        self.assertContains(about, '"@type": "ProfilePage"')
+        self.assertContains(about, '"knowsAbout"')
+
+    def test_public_search_pages_have_unique_titles_and_descriptions(self):
+        route_names = [
+            "home",
+            "cursos",
+            "curso_cultura",
+            "curso_teste",
+            "mentoria",
+            "para_empresas",
+            "sobre",
+            "conteudos",
+            "contato",
+        ]
+        titles = []
+        for route_name in route_names:
+            with self.subTest(route=route_name):
+                html = self.client.get(reverse(route_name)).content.decode()
+                title = re.search(r"<title>(.*?)</title>", html, flags=re.DOTALL)
+                description = re.search(
+                    r'<meta name="description" content="([^"]+)">',
+                    html,
+                )
+                self.assertIsNotNone(title)
+                self.assertIsNotNone(description)
+                self.assertGreater(len(description.group(1)), 70)
+                titles.append(title.group(1).strip())
+
+        self.assertEqual(len(titles), len(set(titles)))
 
     @override_settings(DEBUG=False)
     def test_custom_404_page(self):

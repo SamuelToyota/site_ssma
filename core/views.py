@@ -196,10 +196,10 @@ def home(request):
         request,
         "home.html",
         context,
-        title="Formação e Mentoria em SSMA | Consultor Interno",
+        title="Alan Silvério | Segurança do Trabalho e SSMA Estratégico",
         description=(
-            "Formação, mentoria e desenvolvimento para profissionais de Segurança do Trabalho "
-            "e SSMA que querem participar das decisões do negócio."
+            "Cursos, mentoria e conteúdo de Alan Silvério para profissionais de Segurança do "
+            "Trabalho e SSMA que querem participar das decisões do negócio."
         ),
     )
 
@@ -208,10 +208,10 @@ def curso_cultura(request):
         request,
         "core/curso_cultura.html",
         {"faqs": FAQ.objects.filter(pagina="curso_cultura", ativa=True)},
-        title="Especialista em Cultura de Segurança | Consultor Interno",
+        title="Curso de Cultura de Segurança | Alan Silvério",
         description=(
-            "Formação para profissionais de SSMA que querem diagnosticar, mobilizar lideranças "
-            "e sustentar uma cultura de segurança além do compliance."
+            "Curso para profissionais de Segurança do Trabalho e SSMA que querem diagnosticar, "
+            "mobilizar lideranças e fortalecer a cultura de segurança."
         ),
     )
 
@@ -220,10 +220,10 @@ def curso_teste(request):
         request,
         "core/curso_teste.html",
         {"faqs": FAQ.objects.filter(pagina="curso_teste", ativa=True)},
-        title="Perfil, Valores Pessoais e Carreira | Consultor Interno",
+        title="Teste de Perfil Profissional e Carreira | Alan Silvério",
         description=(
-            "Diagnóstico individual para compreender valores, organizar critérios e tomar "
-            "decisões profissionais com mais clareza."
+            "Teste de perfil e valores pessoais para compreender prioridades, organizar "
+            "critérios e tomar decisões profissionais com mais clareza."
         ),
     )
 
@@ -232,10 +232,10 @@ def cursos(request):
         request,
         "core/cursos.html",
         {"faqs": FAQ.objects.filter(pagina="cursos", ativa=True)},
-        title="Formações em SSMA e Desenvolvimento Profissional | Consultor Interno",
+        title="Cursos de Segurança do Trabalho e SSMA | Alan Silvério",
         description=(
-            "Conheça as formações e diagnósticos do Consultor Interno para cultura de segurança, "
-            "influência e desenvolvimento profissional."
+            "Conheça os cursos de Alan Silvério para profissionais de Segurança do Trabalho e "
+            "SSMA: cultura de segurança, influência e desenvolvimento profissional."
         ),
     )
 
@@ -249,10 +249,10 @@ def mentoria(request):
         request,
         form_class=MentoriaContatoForm,
         template_name="mentoria.html",
-        title="Mentoria para Profissionais de SSMA | Consultor Interno",
+        title="Mentoria em Segurança do Trabalho e SSMA | Alan Silvério",
         description=(
-            "Mentoria individual para profissionais de SSMA que precisam organizar prioridades, "
-            "comunicar valor e ampliar sua participação nas decisões."
+            "Mentoria individual com Alan Silvério para profissionais de Segurança do Trabalho e "
+            "SSMA que querem comunicar valor e ampliar sua participação nas decisões."
         ),
         origin="mentoria",
         extra_context={
@@ -266,10 +266,10 @@ def para_empresas(request):
         request,
         form_class=EmpresaContatoForm,
         template_name="para_empresas.html",
-        title="Treinamentos e Desenvolvimento em SSMA para Empresas | Consultor Interno",
+        title="Treinamentos de SSMA para Empresas | Alan Silvério",
         description=(
-            "Desenvolvimento de lideranças e profissionais para conectar segurança, cultura, "
-            "comportamento e decisões organizacionais."
+            "Treinamentos e desenvolvimento para empresas conectarem liderança, cultura de "
+            "segurança, comportamento e decisões de SSMA."
         ),
         origin="empresas",
         extra_context={
@@ -285,10 +285,10 @@ def sobre(request):
         request,
         "sobre.html",
         {"method_dimensions": METHOD_DIMENSIONS},
-        title="Alan Silvério e o Consultor Interno | Sobre",
+        title="Alan Silvério | Especialista em SSMA e Cultura de Segurança",
         description=(
-            "Conheça Alan Silvério, engenheiro de segurança com mais de 20 anos de atuação em "
-            "SSMA, ESG e Cultura de Segurança."
+            "Conheça Alan Silvério, engenheiro de segurança, mentor e especialista com mais de "
+            "20 anos de atuação em SSMA, ESG e Cultura de Segurança."
         ),
     )
 
@@ -314,10 +314,10 @@ def conteudos(request):
             "selected_category": selected_category,
             "editorial_topics": EDITORIAL_TOPICS,
         },
-        title="Conteúdos sobre SSMA, Liderança e Cultura de Segurança",
+        title="Artigos sobre Segurança do Trabalho e SSMA | Alan Silvério",
         description=(
-            "Artigos de Alan Silvério sobre SSMA estratégico, cultura de segurança, liderança, "
-            "gestão de riscos, comunicação e carreira."
+            "Artigos de Alan Silvério sobre Segurança do Trabalho, SSMA estratégico, cultura de "
+            "segurança, liderança, gestão de riscos e carreira."
         ),
     )
 
@@ -336,7 +336,7 @@ def artigo_detalhe(request, slug):
         request,
         "conteudos/detalhe.html",
         {"article": article, "related_articles": related},
-        title=article.meta_titulo or f"{article.titulo} | Consultor Interno",
+        title=article.meta_titulo or f"{article.titulo} | Alan Silvério",
         description=article.meta_descricao or article.resumo,
         og_type="article",
     )
@@ -414,10 +414,10 @@ def contato(request):
         request,
         "contato.html",
         {"form": form},
-        title="Contato | Consultor Interno",
+        title="Contato com Alan Silvério | Cursos, Mentoria e Empresas",
         description=(
-            "Fale sobre formações, mentoria, palestras, treinamentos corporativos ou outros "
-            "projetos relacionados a SSMA."
+            "Fale com Alan Silvério sobre cursos, mentoria, palestras, treinamentos corporativos "
+            "e projetos relacionados a Segurança do Trabalho e SSMA."
         ),
     )
 

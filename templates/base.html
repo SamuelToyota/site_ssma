@@ -74,10 +74,8 @@
             <div class="nav-area" id="main-nav" data-nav>
                 <nav class="navbar" aria-label="Navegação principal">
                     <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Início</a>
-                    <a href="{% url 'cursos' %}" {% if request.resolver_match.url_name == 'cursos' or request.resolver_match.url_name == 'curso_cultura' or request.resolver_match.url_name == 'curso_teste' %}aria-current="page"{% endif %}>Formações</a>
-                    <a href="{% url 'conteudos' %}" {% if request.resolver_match.url_name == 'conteudos' or request.resolver_match.url_name == 'artigo_detalhe' %}aria-current="page"{% endif %}>Conteúdos</a>
+                    <a href="{% url 'cursos' %}" {% if request.resolver_match.url_name == 'cursos' or request.resolver_match.url_name == 'curso_cultura' or request.resolver_match.url_name == 'curso_teste' %}aria-current="page"{% endif %}>Cursos</a>
                     <a href="{% url 'mentoria' %}" {% if request.resolver_match.url_name == 'mentoria' %}aria-current="page"{% endif %}>Mentoria</a>
-                    <a href="{% url 'para_empresas' %}" {% if request.resolver_match.url_name == 'para_empresas' %}aria-current="page"{% endif %}>Para empresas</a>
                     <a href="{% url 'sobre' %}" {% if request.resolver_match.url_name == 'sobre' %}aria-current="page"{% endif %}>Sobre</a>
                 </nav>
                 <a href="{% url 'contato' %}" class="button button-primary header-cta" data-analytics="cta_contato_header">Conversar</a>

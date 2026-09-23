@@ -9,7 +9,7 @@
   "description": "{{ article.resumo|escapejs }}",
   "datePublished": "{{ article.publicado_em|date:'c' }}",
   "dateModified": "{{ article.atualizado_em|date:'c' }}",
-  "author": {"@type": "Person", "name": "{{ article.autor|escapejs }}"},
+  "author": {"@type": "Person", "name": "{{ article.autor|escapejs }}"{% if article.autor == 'Alan Silvério' %}, "@id": "{{ site_url }}/#alan-silverio", "url": "{{ site_url }}{% url 'sobre' %}"{% endif %}},
   "publisher": {"@type": "Organization", "name": "Consultor Interno"}{% if article.imagem_url %},
   "image": "{{ article.imagem_url|escapejs }}"{% endif %}
 }
