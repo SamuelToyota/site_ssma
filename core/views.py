@@ -192,8 +192,8 @@ def home(request):
         "latest_articles": Artigo.objects.publicados().select_related("categoria")[:3],
         "testimonials": Depoimento.objects.filter(ativo=True)[:3],
         "newsletter_form": newsletter_form,
-        "default_og_image": f"{settings.SITE_URL}{static('images/alan.png')}",
-        "og_image_alt": "Alan Silvério, engenheiro de segurança e mentor do Consultor Interno",
+        "default_og_image": f"{settings.SITE_URL}{static('images/hero-dialogo-ssma.jpg')}",
+        "og_image_alt": "Profissionais com capacetes e coletes de segurança analisando um tablet em uma operação logística",
     }
     return _render_page(
         request,

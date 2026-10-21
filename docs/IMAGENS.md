@@ -2,9 +2,14 @@
 
 ## Hero atual do Consultor Interno — outubro de 2026
 
-- Retrato real de Alan Silvério já fornecido no projeto.
-- Arquivo usado na página: `static/images/alan.webp`.
-- Arquivo usado em prévias de compartilhamento: `static/images/alan.png`.
+- Descrição: dois profissionais com capacetes e coletes de segurança analisando um tablet em uma operação logística.
+- Fotógrafo: Haris Illahi.
+- Fonte: https://unsplash.com/photos/two-workers-in-hard-hats-discuss-plans-near-shipping-containers-V89PqZteK-k
+- Licença informada na origem: Unsplash License (https://unsplash.com/license).
+- Arquivo usado na página: `static/images/hero-dialogo-ssma.webp` (1400 × 933).
+- Arquivo usado em prévias de compartilhamento: `static/images/hero-dialogo-ssma.jpg`.
+- Fotografia ilustrativa de banco: as pessoas retratadas não são identificadas como Alan Silvério, alunos ou clientes do Consultor Interno.
+- O retrato original de Alan permanece disponível para a página Sobre e os demais conteúdos do projeto.
 - A hero usa somente a identidade Consultor Interno. A marca, a composição e os arquivos da EHS Cultura pertencem a outro projeto.
 
 ## Fotografia da hero anterior
