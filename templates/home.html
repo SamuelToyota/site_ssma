@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block body_class %}ehs-home{% endblock %}
-
 {% block extra_head %}
-<link rel="preload" as="image" href="{% static 'images/ehs/hero-artwork.png' %}">
-<link rel="stylesheet" href="{% static 'css/ehs-hero.css' %}?v=20261020">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "EHS Cultura",
+  "name": "Consultor Interno",
   "url": "{{ site_url }}/",
   "description": "{{ page_description }}",
   "inLanguage": "pt-BR"
@@ -18,31 +14,31 @@
 </script>
 {% endblock %}
 
-{% block header %}
-<header class="site-header ehs-header" data-header>
-    <div class="ehs-header-inner">
-        <a href="{% url 'home' %}" class="ehs-brand" aria-label="EHS Cultura — página inicial">
-            {% include 'components/ehs_mark.html' %}
-            <span><strong>EHS</strong><small>CULTURA</small></span>
-        </a>
-        <button class="nav-toggle ehs-menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
-            <span></span><span></span><span class="sr-only" data-nav-label>Abrir menu</span>
-        </button>
-        <div class="nav-area ehs-nav-area" id="main-nav" data-nav>
-            <nav class="navbar" aria-label="Navegação principal">
-                <a href="{% url 'home' %}" aria-current="page">Início</a>
-                <a href="{% url 'cursos' %}">Cursos</a>
-                <a href="{% url 'mentoria' %}">Mentoria</a>
-                <a href="{% url 'sobre' %}">Sobre</a>
-            </nav>
-            <a href="{% url 'contato' %}" class="ehs-contact" data-analytics="cta_contato_header">Falar com especialistas <span aria-hidden="true">⟶</span></a>
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+            <span class="eyebrow"><i></i> Para profissionais de Segurança do Trabalho e SSMA</span>
+            <h1>Segurança do trabalho com voz nas decisões.</h1>
+            <p>Formação e mentoria para transformar riscos, dados e conhecimento técnico em argumentos que orientam lideranças e aproximam SSMA da estratégia do negócio.</p>
+            <div class="hero-actions">
+                <a href="{% url 'cursos' %}" class="button button-primary" data-analytics="cta_formacoes_hero">Ver formações</a>
+                <a href="#metodo" class="button button-secondary" data-analytics="cta_metodo_hero">Conhecer o método <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-proof" aria-label="Prova de experiência">
+                <div><strong>20+ anos</strong><span>de experiência em SSMA</span></div>
+                <div><strong>Alan Silvério</strong><span>Engenheiro de Segurança e mentor</span></div>
+            </div>
+        </div>
+        <div class="hero-visual" data-reveal>
+            <div class="hero-image-wrap">
+                <img src="{% static 'images/hero-profissionais-real.webp' %}" alt="Duas profissionais com capacetes analisando uma planta de projeto" width="1800" height="1200" fetchpriority="high" decoding="async">
+                <div class="image-note"><span class="note-icon" aria-hidden="true">✓</span><div><strong>Da operação à estratégia</strong><small>Decisões mais seguras começam antes da ocorrência.</small></div></div>
+            </div>
+            <span class="vertical-label">Saúde · Segurança · Meio ambiente</span>
         </div>
     </div>
-</header>
-{% endblock %}
-
-{% block content %}
-{% include 'components/ehs_hero.html' %}
+</section>
 
 <section class="trust-bar" aria-label="Áreas de atuação">
     <div class="container trust-items"><span>Cultura de segurança</span><i></i><span>Liderança</span><i></i><span>Gestão de riscos</span><i></i><span>ESG</span></div>
@@ -174,8 +170,4 @@
 <section class="section final-cta-section">
     <div class="container"><div class="final-cta" data-reveal><div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Escolha onde essa conversa precisa começar.</h2><p>Formação para aprofundar competências, mentoria para trabalhar seu contexto ou desenvolvimento para a empresa.</p></div><div class="final-actions"><a href="{% url 'cursos' %}" class="button button-light">Ver formações</a><a href="{% url 'contato' %}" class="button button-ghost-light">Falar com a equipe</a></div></div></div>
 </section>
-{% endblock %}
-
-{% block extra_scripts %}
-<script src="{% static 'js/ehs-hero.js' %}?v=20261020" defer></script>
 {% endblock %}

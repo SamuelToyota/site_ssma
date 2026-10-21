@@ -196,10 +196,10 @@ def home(request):
         request,
         "home.html",
         context,
-        title="EHS Cultura | Segurança também constrói futuro",
+        title="Alan Silvério | Segurança do Trabalho e SSMA Estratégico",
         description=(
-            "Pessoas, processos e ambientes seguros para organizações mais fortes, sustentáveis "
-            "e preparadas para o futuro. Conheça a EHS Cultura."
+            "Cursos, mentoria e conteúdo de Alan Silvério para profissionais de Segurança do "
+            "Trabalho e SSMA que querem participar das decisões do negócio."
         ),
     )
 

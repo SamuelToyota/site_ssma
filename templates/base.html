@@ -60,7 +60,6 @@
 <body class="{% block body_class %}{% endblock %}">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    {% block header %}
     <header class="site-header" data-header>
         <div class="container nav-shell">
             <a href="{% url 'home' %}" class="brand" aria-label="Consultor Interno — página inicial">
@@ -83,7 +82,6 @@
             </div>
         </div>
     </header>
-    {% endblock %}
 
     {% if messages %}
     <div class="site-messages container" aria-live="polite">
