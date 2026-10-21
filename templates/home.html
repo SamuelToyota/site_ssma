@@ -5,7 +5,7 @@
 
 {% block extra_head %}
 <link rel="preload" as="image" href="{% static 'images/ehs/hero-artwork.png' %}">
-<link rel="stylesheet" href="{% static 'css/ehs-hero.css' %}?v=20261020">
+<link rel="stylesheet" href="{% static 'css/ehs-hero.css' %}?v=20261020-2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -174,8 +174,4 @@
 <section class="section final-cta-section">
     <div class="container"><div class="final-cta" data-reveal><div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>Escolha onde essa conversa precisa começar.</h2><p>Formação para aprofundar competências, mentoria para trabalhar seu contexto ou desenvolvimento para a empresa.</p></div><div class="final-actions"><a href="{% url 'cursos' %}" class="button button-light">Ver formações</a><a href="{% url 'contato' %}" class="button button-ghost-light">Falar com a equipe</a></div></div></div>
 </section>
-{% endblock %}
-
-{% block extra_scripts %}
-<script src="{% static 'js/ehs-hero.js' %}?v=20261020" defer></script>
 {% endblock %}

@@ -46,53 +46,33 @@
 .ehs-pillars li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .ehs-pillars li + li::before { content: ""; position: absolute; left: 0; bottom: 0; height: 55px; width: 1px; background: #c3d2b736; }
 .ehs-pillars li:first-child { padding-left: 0; }
-.ehs-pillars svg { width: 38px; height: 38px; overflow: visible; stroke: var(--ehs-ivory); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s ease; }
-.ehs-pillars li:hover svg { transform: translateY(-5px) rotate(-5deg); }
+.ehs-pillars svg { width: 38px; height: 38px; overflow: visible; stroke: var(--ehs-ivory); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .ehs-pillars span { font-size: 10px; letter-spacing: .19em; line-height: 1.5; text-transform: uppercase; }
 
 .ehs-art { position: absolute; z-index: 1; inset: 0 0 0 40.4%; pointer-events: none; }
-.ehs-art-parallax { position: absolute; inset: 0; transform: translate3d(var(--ehs-x,0px),var(--ehs-y,0px),0); transition: transform .9s cubic-bezier(.2,.65,.25,1); }
-.ehs-tile { position: absolute; overflow: hidden; animation: ehs-tile-in 1.4s cubic-bezier(.2,.7,.25,1) both; }
-.ehs-photo { display: block; width: 100%; height: 100%; max-width: none; }
-.ehs-tile-leaves { left: 22.5%; top: -1%; width: 35.5%; height: 40.6%; border-radius: 55% 0 42% 0; animation-delay: .15s; }
-.ehs-tile-leaves .ehs-photo { transform-origin: 55% 60%; }
-.ehs-tile-building { left: 0; top: 41.4%; width: 44.5%; height: 58.7%; border-radius: 0 48% 0 70%; animation-delay: .3s; }
-.ehs-tile-concrete { left: 46.3%; top: 29.2%; width: 25.2%; height: 41.6%; clip-path: polygon(100% 0,100% 38%,0 100%,0 62%); animation-delay: .5s; }
-.ehs-tile-river { left: 46.4%; top: 49.4%; width: 25.5%; height: 26.9%; clip-path: polygon(100% 0,100% 100%,0 100%,0 63%); animation-delay: .6s; }
-.ehs-tile-forest { left: 73.7%; top: 41.5%; width: 26.5%; height: 34.8%; border-radius: 0 0 60% 0; animation-delay: .7s; }
-.ehs-tile-outline { left: 0; top: 19.8%; width: 20.5%; height: 19.8%; border: 1px solid #9dbd9b50; border-radius: 100% 0 0 0; background: linear-gradient(130deg,#1d4a3333,transparent); animation-delay: .7s; }
+.ehs-art-stage { position: absolute; inset: 0; }
+.ehs-tile { position: absolute; overflow: hidden; }
+.ehs-photo { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.ehs-tile-leaves { left: 22.5%; top: -1%; width: 35.5%; height: 40.6%; border-radius: 55% 0 42% 0; }
+.ehs-tile-professional { left: 0; top: 41.4%; width: 44.5%; height: 58.7%; border-radius: 0 32% 0 48%; }
+.ehs-tile-professional .ehs-photo { object-position: 64% center; filter: saturate(.72) brightness(.86); }
+.ehs-tile-accent { left: 46.3%; top: 29.2%; width: 25.2%; height: 41.6%; clip-path: polygon(100% 0,100% 38%,0 100%,0 62%); background: linear-gradient(155deg,#80997a,#41694d); }
+.ehs-tile-forest { left: 47.5%; top: 47%; width: 52.5%; height: 41%; border-radius: 55% 0 48% 0; }
+.ehs-tile-forest .ehs-photo { object-position: 60% center; }
+.ehs-tile-outline { left: 0; top: 19.8%; width: 20.5%; height: 19.8%; border: 1px solid #9dbd9b50; border-radius: 100% 0 0 0; background: linear-gradient(130deg,#1d4a3333,transparent); }
 .ehs-tile-outline span { position: absolute; width: 150%; height: 1px; right: -30%; top: 50%; background: #9dbd9b16; transform: rotate(-44deg); }
-.ehs-tile-ghost { left: -16.5%; bottom: -13%; width: 48%; height: 34%; opacity: .13; border: 1px solid #9dbd9b90; border-radius: 70% 0 0 0; transform: rotate(40deg); animation: ehs-ghost-in 1.5s ease .4s both; }
+.ehs-tile-ghost { left: -16.5%; bottom: -13%; width: 48%; height: 34%; opacity: .13; border: 1px solid #9dbd9b90; border-radius: 70% 0 0 0; transform: rotate(40deg); }
 .ehs-tile-ghost .ehs-photo { opacity: .22; }
 .ehs-art-caption { position: absolute; left: 76%; top: 22%; margin: 0; color: #d5d9c9; font-size: clamp(10px,.82vw,13px); font-weight: 400; letter-spacing: .28em; line-height: 1.85; text-transform: uppercase; animation: ehs-fade-in 1.5s ease .9s both; }
 .ehs-art-caption > span { display: block; width: 38px; height: 1px; margin-bottom: 23px; background: #ccd6be9c; }
-.ehs-principles { position: absolute; right: 4.2%; bottom: 8.7%; left: 51.5%; display: grid; grid-template-columns: repeat(3,1fr); margin: 0; padding: 0; list-style: none; animation: ehs-fade-in 1.5s ease 1s both; }
-.ehs-principles::before { content: ""; position: absolute; top: -32px; left: 0; width: 38px; height: 1px; background: #d1d8c18c; }
-.ehs-principles li { padding: 0 12px 0 22px; border-left: 1px solid #bdccb447; }
-.ehs-principles li:first-child { padding-left: 0; border: 0; }
-.ehs-principles li > span { display: block; margin-bottom: 7px; color: var(--ehs-sage); font-size: clamp(26px,2.1vw,36px); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
-.ehs-principles p { margin: 0; color: var(--ehs-ivory); font-size: clamp(8px,.64vw,11px); letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; }
 .ehs-enter { animation-name: ehs-fade-in; animation-duration: 1.2s; animation-timing-function: ease; animation-fill-mode: both; }
-.ehs-ambient { animation: ehs-breathe 13s ease-in-out 1.5s infinite alternate; }
-.ehs-tile-building .ehs-ambient { animation-duration: 18s; }
-.ehs-tile-forest .ehs-ambient { animation-delay: 2.5s; }
-.ehs-motion-toggle { position: absolute; z-index: 3; right: 6%; bottom: 22px; display: inline-flex; align-items: center; gap: 7px; padding: 5px 0; color: #c0cebc; border: 0; background: transparent; font-size: 9px; letter-spacing: .08em; cursor: pointer; }
-.ehs-motion-toggle[hidden] { display: none; }
-.ehs-motion-toggle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.3; }
-.ehs-play-icon { display: none; }
-.ehs-motion-toggle[aria-pressed="true"] .ehs-pause-icon { display: none; }
-.ehs-motion-toggle[aria-pressed="true"] .ehs-play-icon { display: block; }
-.ehs-hero[data-motion="paused"] .ehs-ambient, .ehs-hero[data-offscreen] .ehs-ambient { animation-play-state: paused; }
-.ehs-home :is(.ehs-brand,.ehs-contact,.ehs-primary-cta,.ehs-motion-toggle,.ehs-menu-toggle,.ehs-header .navbar a):focus-visible { outline: 2px solid #c5dcb6; outline-offset: 7px; }
+.ehs-home :is(.ehs-brand,.ehs-contact,.ehs-primary-cta,.ehs-menu-toggle,.ehs-header .navbar a):focus-visible { outline: 2px solid #c5dcb6; outline-offset: 7px; }
 .ehs-home .whatsapp-float { width: 46px; height: 46px; min-width: 0; right: 20px; bottom: 20px; justify-content: center; padding: 0; color: var(--ehs-deep); background: var(--ehs-ivory); box-shadow: 0 8px 28px #001b132b; }
 .ehs-home .whatsapp-float span { display: none; }
 .ehs-home .whatsapp-float svg { width: 22px; }
 
 @keyframes ehs-text-in { from { opacity: 0; transform: translateY(105%); } to { opacity: 1; transform: translateY(0); } }
 @keyframes ehs-fade-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes ehs-tile-in { from { opacity: 0; transform: translateY(55px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-@keyframes ehs-ghost-in { from { opacity: 0; } to { opacity: .13; } }
-@keyframes ehs-breathe { from { transform: scale(1); } to { transform: scale(1.065); } }
 
 @media (min-width: 1800px) { .ehs-copy { padding-top: 215px; } .ehs-hero { min-height: 1040px; } }
 @media (max-width: 1180px) and (min-width: 861px) {
@@ -130,19 +110,13 @@
     .ehs-pillars { margin-top: 32px; }
     .ehs-pillars span { font-size: 9px; }
     .ehs-art { position: relative; inset: auto; width: 100%; height: 600px; margin-top: -35px; }
-    .ehs-tile-building { left: 13%; top: 30%; width: 39%; height: 70%; }
+    .ehs-tile-professional { left: 13%; top: 30%; width: 39%; height: 70%; }
     .ehs-tile-leaves { left: 39%; top: 0; width: 30%; height: 40%; }
     .ehs-tile-outline { left: 15%; top: 9%; width: 21%; height: 18%; }
-    .ehs-tile-concrete { left: 54%; top: 29%; width: 21%; height: 40%; }
-    .ehs-tile-river { left: 54%; top: 49%; width: 21%; height: 26%; }
-    .ehs-tile-forest { left: 78%; top: 41%; width: 23%; height: 34%; }
+    .ehs-tile-accent { left: 54%; top: 29%; width: 21%; height: 40%; }
+    .ehs-tile-forest { left: 54%; top: 45%; width: 46%; height: 41%; }
     .ehs-tile-ghost { left: -12%; width: 55%; }
     .ehs-art-caption { left: 77%; top: 11%; font-size: 10px; letter-spacing: .2em; }
-    .ehs-principles { left: 57%; right: 4%; bottom: 8%; }
-    .ehs-principles li { padding-left: 12px; padding-right: 7px; }
-    .ehs-principles li > span { font-size: 26px; }
-    .ehs-principles p { font-size: 7px; letter-spacing: .08em; }
-    .ehs-motion-toggle { right: 24px; bottom: 20px; }
 }
 @media (max-width: 540px) {
     .ehs-header.site-header { height: 94px; }
@@ -161,24 +135,14 @@
     .ehs-pillars span { font-size: 8px; letter-spacing: .14em; }
     .ehs-pillars li + li::before { height: 43px; }
     .ehs-art { height: 430px; margin-top: 28px; }
-    .ehs-tile-building { left: 5%; width: 45%; }
+    .ehs-tile-professional { left: 5%; width: 45%; }
     .ehs-tile-leaves { left: 29%; width: 37%; }
     .ehs-tile-outline { left: 5%; width: 21%; }
-    .ehs-tile-concrete { left: 53%; width: 24%; }
-    .ehs-tile-river { left: 53%; width: 24%; }
-    .ehs-tile-forest { left: 80%; width: 26%; }
+    .ehs-tile-accent { left: 53%; width: 24%; }
+    .ehs-tile-forest { left: 53%; width: 47%; }
     .ehs-art-caption { left: 72%; top: 8%; font-size: 7px; letter-spacing: .16em; }
     .ehs-art-caption > span { width: 25px; margin-bottom: 12px; }
-    .ehs-principles { left: 54%; right: 3%; bottom: 7.5%; }
-    .ehs-principles li { padding-left: 8px; padding-right: 4px; }
-    .ehs-principles::before { top: -17px; width: 25px; }
-    .ehs-principles li > span { font-size: 22px; }
-    .ehs-principles p { font-size: 6px; letter-spacing: .04em; }
-    .ehs-motion-toggle { bottom: 8px; right: 22px; font-size: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
     .ehs-hero *, .ehs-hero *::before, .ehs-hero *::after { animation: none !important; transition: none !important; }
-    .ehs-art-parallax { transform: none; }
-    .ehs-motion-toggle { display: none; }
-    .ehs-tile-ghost { opacity: .13; }
 }
