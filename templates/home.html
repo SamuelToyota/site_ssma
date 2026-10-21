@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block body_class %}ci-home{% endblock %}
+
 {% block extra_head %}
+<link rel="preload" as="image" href="{% static 'images/alan.webp' %}">
+<link rel="stylesheet" href="{% static 'css/consultor-hero.css' %}?v=20261020">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -15,34 +19,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-            <span class="eyebrow"><i></i> Para profissionais de Segurança do Trabalho e SSMA</span>
-            <h1>Segurança do trabalho com voz nas decisões.</h1>
-            <p>Formação e mentoria para transformar riscos, dados e conhecimento técnico em argumentos que orientam lideranças e aproximam SSMA da estratégia do negócio.</p>
-            <div class="hero-actions">
-                <a href="{% url 'cursos' %}" class="button button-primary" data-analytics="cta_formacoes_hero">Ver formações</a>
-                <a href="#metodo" class="button button-secondary" data-analytics="cta_metodo_hero">Conhecer o método <span aria-hidden="true">↓</span></a>
-            </div>
-            <div class="hero-proof" aria-label="Prova de experiência">
-                <div><strong>20+ anos</strong><span>de experiência em SSMA</span></div>
-                <div><strong>Alan Silvério</strong><span>Engenheiro de Segurança e mentor</span></div>
-            </div>
-        </div>
-        <div class="hero-visual" data-reveal>
-            <div class="hero-image-wrap">
-                <img src="{% static 'images/hero-profissionais-real.webp' %}" alt="Duas profissionais com capacetes analisando uma planta de projeto" width="1800" height="1200" fetchpriority="high" decoding="async">
-                <div class="image-note"><span class="note-icon" aria-hidden="true">✓</span><div><strong>Da operação à estratégia</strong><small>Decisões mais seguras começam antes da ocorrência.</small></div></div>
-            </div>
-            <span class="vertical-label">Saúde · Segurança · Meio ambiente</span>
-        </div>
-    </div>
-</section>
-
-<section class="trust-bar" aria-label="Áreas de atuação">
-    <div class="container trust-items"><span>Cultura de segurança</span><i></i><span>Liderança</span><i></i><span>Gestão de riscos</span><i></i><span>ESG</span></div>
-</section>
+{% include 'components/consultor_hero.html' %}
 
 <section class="section problem-section">
     <div class="container problem-grid">

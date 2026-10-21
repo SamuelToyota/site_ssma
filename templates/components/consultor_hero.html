@@ -1,0 +1,39 @@
+{% load static %}
+<section class="ci-hero" aria-labelledby="ci-hero-title">
+    <div class="ci-hero-shell">
+        <div class="ci-hero-copy">
+            <div class="ci-hero-kicker"><span class="ci-kicker-rule" aria-hidden="true"></span> Formação &amp; mentoria em SSMA</div>
+            <h1 id="ci-hero-title">Sua experiência<br>merece <em>voz</em><br>nas decisões<span class="ci-title-dot">.</span></h1>
+            <div class="ci-hero-description">
+                <span class="ci-description-marker" aria-hidden="true">↳</span>
+                <p>Transforme conhecimento técnico em influência, clareza e visão de negócio. Para profissionais de Segurança do Trabalho e SSMA que querem ampliar sua contribuição.</p>
+            </div>
+            <div class="ci-hero-actions">
+                <a href="{% url 'cursos' %}" class="ci-primary-action" data-analytics="cta_formacoes_hero">Explorar formações <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+                <a href="{% url 'mentoria' %}" class="ci-secondary-action" data-analytics="cta_mentoria_hero">Conhecer a mentoria <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="ci-experience-proof">
+                <strong>20<span>+</span></strong>
+                <p><b>Anos de experiência em SSMA.</b><br>Repertório real para decisões que importam.</p>
+            </div>
+        </div>
+
+        <figure class="ci-hero-portrait">
+            <div class="ci-portrait-photo">
+                <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério, engenheiro de segurança e mentor" width="1000" height="1000" fetchpriority="high" decoding="async">
+                <span class="ci-portrait-overline">Técnica. Contexto. Influência.</span>
+                <a href="{% url 'sobre' %}" class="ci-portrait-more" aria-label="Conhecer a trajetória de Alan Silvério"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+                <div class="ci-portrait-word" aria-hidden="true">presença.</div>
+            </div>
+            <figcaption class="ci-portrait-caption">
+                <div><span class="ci-caption-label">Quem conduz essa evolução</span><strong>Alan Silvério</strong></div>
+                <span class="ci-caption-role">Engenheiro de Segurança<br>Mentor · SSMA · Cultura de Segurança</span>
+            </figcaption>
+            <span class="ci-portrait-side" aria-hidden="true">Consultor Interno / por Alan Silvério</span>
+        </figure>
+    </div>
+    <div class="ci-hero-bottom">
+        <div><span class="ci-bottom-symbol" aria-hidden="true">✳</span><p>Conhecimento técnico é o começo.<br><strong>Influência gera mudança.</strong></p></div>
+        <a href="#metodo" data-analytics="cta_metodo_hero">Uma estrutura para avançar <span>Conheça o método D.E.S.T.A.Q.U.E. <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></span></a>
+    </div>
+</section>

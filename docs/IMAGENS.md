@@ -1,6 +1,13 @@
 # Origem das imagens
 
-## Hero da página inicial
+## Hero atual do Consultor Interno — outubro de 2026
+
+- Retrato real de Alan Silvério já fornecido no projeto.
+- Arquivo usado na página: `static/images/alan.webp`.
+- Arquivo usado em prévias de compartilhamento: `static/images/alan.png`.
+- A hero usa somente a identidade Consultor Interno. A marca, a composição e os arquivos da EHS Cultura pertencem a outro projeto.
+
+## Fotografia da hero anterior
 
 - Descrição: duas profissionais com capacetes analisando uma planta de projeto.
 - Fotógrafo: Fiqih Alfarish.

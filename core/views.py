@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.templatetags.static import static
 from django.urls import reverse
 
 from .forms import (
@@ -191,6 +192,8 @@ def home(request):
         "latest_articles": Artigo.objects.publicados().select_related("categoria")[:3],
         "testimonials": Depoimento.objects.filter(ativo=True)[:3],
         "newsletter_form": newsletter_form,
+        "default_og_image": f"{settings.SITE_URL}{static('images/alan.png')}",
+        "og_image_alt": "Alan Silvério, engenheiro de segurança e mentor do Consultor Interno",
     }
     return _render_page(
         request,
