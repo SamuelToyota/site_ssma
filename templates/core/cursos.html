@@ -5,25 +5,30 @@
 <section class="page-hero">
     <div class="container page-hero-grid">
         <div data-reveal>
-            <span class="eyebrow"><i></i> Desenvolvimento em SSMA</span>
-            <h1>Formações para ampliar sua atuação.</h1>
+            <span class="eyebrow"><i></i> Desenvolvimento em SSMA, ESG e Sustentabilidade</span>
+            <h1>Formações para atuar como consultor interno.</h1>
         </div>
         <div class="page-hero-aside" data-reveal>
-            <p>Duas experiências com objetivos diferentes: uma formação para ampliar sua atuação em cultura e um diagnóstico para organizar decisões de carreira.</p>
-            <span>Escolha pelo objetivo, não pelo formato</span>
+            <p>Conheça a Trilha Consultor Interno: três cursos para diagnosticar uma demanda real, desenvolver uma intervenção e defender seu projeto. Veja também as opções em cultura de segurança e carreira.</p>
+            <span>Trilha Consultor Interno · 48 horas em 12 semanas</span>
         </div>
     </div>
 </section>
 
-<section class="catalog-section">
+{% include 'components/trilha_programa.html' with show_syllabus=True %}
+
+<section class="section catalog-section" id="ofertas-avulsas" aria-labelledby="ofertas-title">
+    <div class="container section-heading">
+        <span class="eyebrow">Fora da trilha</span>
+        <h2 id="ofertas-title">Formação e diagnóstico avulsos.</h2>
+    </div>
     <div class="container program-stack">
         <article class="program-card" data-reveal>
             <div class="program-media">
                 <img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" loading="eager" decoding="async">
-                <span class="media-number">01</span>
             </div>
             <div class="program-copy">
-                <span class="course-type">Formação principal</span>
+                <span class="course-type">Formação em cultura de segurança</span>
                 <h2>Especialista em Cultura de Segurança</h2>
                 <p>Para profissionais de SSMA e lideranças que querem compreender a cultura atual, mobilizar pessoas e sustentar decisões além do compliance.</p>
                 <ul class="feature-list">
@@ -41,7 +46,6 @@
         <article class="program-card program-card-reverse" data-reveal>
             <div class="program-media">
                 <img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil, Valores Pessoais e Carreira" width="1427" height="777" loading="lazy" decoding="async">
-                <span class="media-number">02</span>
             </div>
             <div class="program-copy">
                 <span class="course-type">Diagnóstico individual</span>
@@ -61,6 +65,8 @@
     </div>
 </section>
 
+{% include 'components/faq.html' with faqs=trilha_faqs faq_eyebrow='Perguntas sobre a trilha' faq_heading='Antes de começar.' %}
+
 <section class="section catalog-authority">
     <div class="container authority-strip-grid" data-reveal>
         <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async">
@@ -71,7 +77,7 @@
 <section class="guidance-section">
     <div class="container guidance-box" data-reveal>
         <div><span class="eyebrow">Precisa de direção?</span><h2>Converse antes de escolher.</h2></div>
-        <p>Compartilhe seu momento profissional e entenda qual caminho faz mais sentido para o seu objetivo.</p>
+        <p>Converse sobre qual caminho faz sentido para o seu objetivo ou consulte a equipe sobre turmas e condições da trilha.</p>
         <a href="{% url 'contato' %}" class="button button-primary">Falar com um especialista</a>
     </div>
 </section>

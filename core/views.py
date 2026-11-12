@@ -18,6 +18,7 @@ from .forms import (
     MentoriaContatoForm,
     NewsletterLeadForm,
 )
+from .metodo import METHOD_DIMENSIONS
 from .models import (
     Artigo,
     Aula,
@@ -32,51 +33,9 @@ from .models import (
     NewsletterLead,
     ProgressoAula,
 )
+from .trilha import TRILHA_COURSES, TRILHA_FAQS
 
 logger = logging.getLogger(__name__)
-
-METHOD_DIMENSIONS = [
-    {
-        "letter": "D",
-        "name": "Diagnóstico Estratégico",
-        "description": "Enxergar riscos, causas e oportunidades além da demanda imediata da operação.",
-    },
-    {
-        "letter": "E",
-        "name": "Enquadramento",
-        "description": "Organizar a leitura do contexto e posicionar a contribuição de SSMA para o negócio.",
-    },
-    {
-        "letter": "S",
-        "name": "Sistemas de Impacto",
-        "description": "Estruturar rotinas, indicadores e práticas que tornem o avanço visível e sustentável.",
-    },
-    {
-        "letter": "T",
-        "name": "Táticas de Influência",
-        "description": "Apresentar prioridades, conduzir conversas e construir apoio para decisões relevantes.",
-    },
-    {
-        "letter": "A",
-        "name": "Alianças",
-        "description": "Conectar áreas e pessoas capazes de transformar uma proposta em ação coordenada.",
-    },
-    {
-        "letter": "Q",
-        "name": "Quebra de Crenças",
-        "description": "Revisar padrões que limitam a presença, a comunicação e a atuação consultiva.",
-    },
-    {
-        "letter": "U",
-        "name": "Ultravalor",
-        "description": "Traduzir entregas técnicas em impacto sobre risco, operação, cultura e resultado.",
-    },
-    {
-        "letter": "E",
-        "name": "Evolução",
-        "description": "Transformar aprendizado em um plano contínuo de desenvolvimento e aplicação.",
-    },
-]
 
 EDITORIAL_TOPICS = [
     "Cultura de Segurança",
@@ -188,8 +147,7 @@ def home(request):
 
     context = {
         "method_dimensions": METHOD_DIMENSIONS,
-        "editorial_topics": EDITORIAL_TOPICS,
-        "latest_articles": Artigo.objects.publicados().select_related("categoria")[:3],
+        "trilha_courses": TRILHA_COURSES,
         "testimonials": Depoimento.objects.filter(ativo=True)[:3],
         "newsletter_form": newsletter_form,
         "default_og_image": f"{settings.SITE_URL}{static('images/hero-dialogo-ssma.jpg')}",
@@ -199,10 +157,10 @@ def home(request):
         request,
         "home.html",
         context,
-        title="Alan Silvério | Segurança do Trabalho e SSMA Estratégico",
+        title="Consultor Interno | Alan Silvério — Formação em SSMA e ESG",
         description=(
-            "Cursos, mentoria e conteúdo de Alan Silvério para profissionais de Segurança do "
-            "Trabalho e SSMA que querem participar das decisões do negócio."
+            "Deixe de ser acionado. Passe a ser consultado. Formação de Alan Silvério em Segurança do "
+            "Trabalho, SSMA e ESG: 48 horas em 12 semanas, com um projeto real."
         ),
     )
 
@@ -234,11 +192,15 @@ def cursos(request):
     return _render_page(
         request,
         "core/cursos.html",
-        {"faqs": FAQ.objects.filter(pagina="cursos", ativa=True)},
+        {
+            "faqs": FAQ.objects.filter(pagina="cursos", ativa=True),
+            "trilha_courses": TRILHA_COURSES,
+            "trilha_faqs": TRILHA_FAQS,
+        },
         title="Cursos de Segurança do Trabalho e SSMA | Alan Silvério",
         description=(
-            "Conheça os cursos de Alan Silvério para profissionais de Segurança do Trabalho e "
-            "SSMA: cultura de segurança, influência e desenvolvimento profissional."
+            "Conheça a Trilha Consultor Interno de Alan Silvério: 48 horas em SSMA e ESG, com um projeto real. "
+            "Veja também as ofertas em cultura de segurança e carreira."
         ),
     )
 

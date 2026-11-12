@@ -41,7 +41,7 @@
             <span class="eyebrow"><i></i> Sobre Alan Silvério</span>
             <h1>Alan Silvério: experiência técnica com visão de negócio.</h1>
             <p class="about-lead">Engenheiro de Segurança, mentor e especialista em SSMA, ESG e Cultura de Segurança, com mais de 20 anos de atuação em organizações nacionais e multinacionais.</p>
-            <p>O Consultor Interno nasce de uma convicção: conhecimento técnico é o começo. Para transformar ambientes, o profissional também precisa compreender relações, comunicar prioridades e participar das decisões.</p>
+            <p>O Consultor Interno nasce de uma convicção: conhecimento técnico é o começo. Para transformar ambientes, o profissional também precisa compreender relações, comunicar prioridades e participar das decisões, sem abrir mão do rigor da função.</p>
             <div class="hero-actions">
                 <a href="{% url 'mentoria' %}" class="button button-primary">Conhecer a mentoria</a>
                 <a href="{% url 'contato' %}" class="button button-secondary">Entrar em contato</a>
@@ -59,7 +59,7 @@
         </div>
         <div class="experience-copy" data-reveal>
             <p>Mais de duas décadas de atuação em organizações nacionais e multinacionais formam a base de um trabalho voltado a desafios concretos: identificar riscos, dialogar com lideranças, fortalecer a cultura e transformar recomendações técnicas em decisões possíveis.</p>
-            <p>A proposta de Alan é ajudar profissionais de Segurança do Trabalho e SSMA a ampliar repertório, influência e clareza sem abrir mão da consistência técnica.</p>
+            <p>A proposta de Alan é ajudar profissionais de Segurança do Trabalho, SSMA, ESG e Sustentabilidade a construir parceria com o negócio sem abrir mão da independência técnica.</p>
             <div class="experience-topics" aria-label="Áreas de especialidade">
                 <span>Segurança do Trabalho</span>
                 <span>SSMA estratégico</span>
@@ -86,23 +86,7 @@
     </div>
 </section>
 
-<section class="section method-section method-expanded about-method">
-    <div class="container method-intro">
-        <div class="method-copy" data-reveal>
-            <span class="eyebrow eyebrow-light">Método D.E.S.T.A.Q.U.E.</span>
-            <h2>Uma estrutura para ampliar a atuação consultiva.</h2>
-            <p>O método organiza dimensões que ajudam o profissional de SSMA a sair de respostas isoladas e construir presença, influência e continuidade.</p>
-        </div>
-        <div class="method-list" data-reveal>
-            {% for dimension in method_dimensions %}
-            <details class="method-item">
-                <summary><span>{{ dimension.letter }}</span><strong>{{ dimension.name }}</strong><i aria-hidden="true">+</i></summary>
-                <p>{{ dimension.description }}</p>
-            </details>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+{% include 'components/metodo_destaque.html' %}
 
 <section class="section about-audience">
     <div class="container split-heading" data-reveal>

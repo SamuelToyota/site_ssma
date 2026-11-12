@@ -1,0 +1,30 @@
+<section class="section destaque-method" id="metodo" aria-labelledby="destaque-title">
+    <div class="container destaque-grid">
+        <div class="destaque-intro">
+            <span class="eyebrow eyebrow-light">Método D.E.S.T.A.Q.U.E.</span>
+            <h2 id="destaque-title">Do risco observado à decisão da liderança.</h2>
+            <p>Oito dimensões para investigar um problema, negociar uma solução e acompanhar o que muda no trabalho real.</p>
+            <div class="destaque-case">
+                <span>Exemplo em SSMA</span>
+                <h3>Quase acidentes na expedição</h3>
+                <p>Pedestres e empilhadeiras se cruzam no mesmo corredor. Como levar esse risco à liderança com evidências e uma proposta de mudança?</p>
+            </div>
+            <a href="{% url 'mentoria' %}" class="destaque-link">Aplicar ao meu contexto na mentoria <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="destaque-steps">
+            {% for dimension in method_dimensions %}
+            <details class="destaque-step" name="destaque-step"{% if forloop.first %} open{% endif %}>
+                <summary>
+                    <span class="destaque-letter" aria-hidden="true">{{ dimension.letter }}</span>
+                    <strong>{{ dimension.name }}</strong>
+                    <span class="destaque-toggle" aria-hidden="true"></span>
+                </summary>
+                <div class="destaque-detail">
+                    <p>{{ dimension.action }}</p>
+                    <p class="destaque-output"><strong>O que você entrega</strong>{{ dimension.output }}</p>
+                </div>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>

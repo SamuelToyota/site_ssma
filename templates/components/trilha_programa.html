@@ -1,0 +1,42 @@
+<section class="section trilha-programa" id="trilha" aria-labelledby="trilha-title">
+    <div class="container">
+        <div class="trilha-heading" data-reveal>
+            <div>
+                <span class="eyebrow">Trilha Consultor Interno</span>
+                <h2 id="trilha-title">Três cursos.<br> Um projeto real.</h2>
+            </div>
+            <div class="trilha-summary">
+                <p>Traga uma demanda de SSMA, ESG ou Sustentabilidade da sua rotina. Você sai do diagnóstico, desenha uma intervenção e pratica como defendê-la perante a liderança.</p>
+                <strong>48 horas em 12 semanas</strong>
+            </div>
+        </div>
+        <ol class="trilha-list">
+            {% for course in trilha_courses %}
+            <li class="trilha-row" data-reveal>
+                <div class="trilha-index"><span>Curso</span><strong>{{ forloop.counter|stringformat:"02d" }}</strong></div>
+                <div class="trilha-course">
+                    <p class="trilha-weeks">{{ course.weeks }} <span aria-hidden="true">·</span> 16h</p>
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                    {% if show_syllabus %}
+                    <details class="trilha-syllabus">
+                        <summary>Ver módulos e materiais</summary>
+                        <div>{{ course.syllabus|linebreaks }}</div>
+                    </details>
+                    {% endif %}
+                </div>
+                <div class="trilha-deliverable"><span>Entrega do curso</span><strong>{{ course.deliverable }}</strong></div>
+            </li>
+            {% endfor %}
+        </ol>
+        <div class="trilha-next">
+            {% if show_syllabus %}
+            <p>Quer saber sobre próximas turmas e condições?</p>
+            <a href="{% url 'contato' %}" class="button button-primary">Conversar sobre a trilha</a>
+            {% else %}
+            <p>As três etapas acompanham o mesmo projeto, do primeiro diagnóstico à apresentação final.</p>
+            <a href="{% url 'cursos' %}#trilha" class="button button-primary">Ver programa completo</a>
+            {% endif %}
+        </div>
+    </div>
+</section>

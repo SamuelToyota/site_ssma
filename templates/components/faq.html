@@ -1,9 +1,9 @@
 {% if faqs %}
-<section class="section faq-section">
+<section class="section faq-section"{% if faq_id %} id="{{ faq_id }}"{% endif %}>
     <div class="container narrow-container">
         <div class="section-heading" data-reveal>
-            <span class="eyebrow">Perguntas frequentes</span>
-            <h2>Informações para decidir com clareza.</h2>
+            <span class="eyebrow">{{ faq_eyebrow|default:"Perguntas frequentes" }}</span>
+            <h2>{{ faq_heading|default:"Informações para decidir com clareza." }}</h2>
         </div>
         <div class="faq-list">
             {% for faq in faqs %}
