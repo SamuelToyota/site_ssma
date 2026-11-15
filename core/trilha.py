@@ -64,6 +64,7 @@ TRILHA_COURSES = (
     },
     {
         "title": "Influência e Business Case",
+        "route": "curso_business_case",
         "subtitle": "Como defender um projeto",
         "weeks": "Semanas 9–12",
         "schedule": "Prepare a defesa do projeto e apresente-a em banca simulada na última semana.",

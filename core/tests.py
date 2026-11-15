@@ -34,6 +34,7 @@ class PublicPagesTests(TestCase):
             "cursos",
             "curso_cultura",
             "curso_teste",
+            "curso_business_case",
             "mentoria",
             "para_empresas",
             "sobre",
@@ -101,6 +102,23 @@ class PublicPagesTests(TestCase):
             self.assertContains(courses, f"{stage} —")
         self.assertContains(courses, f'href="{reverse("contato")}?interesse=formacao"')
 
+    def test_business_case_has_catalog_entry_cover_and_interest_instead_of_checkout(self):
+        course_path = reverse("curso_business_case")
+        catalog = self.client.get(reverse("cursos"))
+        self.assertContains(catalog, '<article class="program-card', count=3)
+        self.assertContains(catalog, f'href="{course_path}"')
+        self.assertContains(catalog, 'images/course-business-case.svg')
+        self.assertContains(self.client.get(reverse("sitemap")), course_path)
+
+        detail = self.client.get(course_path)
+        self.assertContains(detail, "Influência e Business Case")
+        self.assertContains(detail, 'aria-label="Módulos de Influência e Business Case"')
+        self.assertContains(detail, 'images/course-business-case.svg')
+        self.assertNotContains(detail, "chk.eduzz.com")
+        inquiry = f"{reverse('contato')}?interesse=formacao&curso=influencia-business-case"
+        self.assertContains(detail, inquiry.replace("&", "&amp;"))
+        self.assertContains(self.client.get(inquiry), "Tenho interesse no curso Influência e Business Case.")
+
     def test_about_retains_the_destaque_method_with_practical_deliverables(self):
         for route in ("home", "sobre"):
             response = self.client.get(reverse(route))
@@ -136,6 +154,7 @@ class PublicPagesTests(TestCase):
             "cursos",
             "curso_cultura",
             "curso_teste",
+            "curso_business_case",
             "mentoria",
             "para_empresas",
             "sobre",

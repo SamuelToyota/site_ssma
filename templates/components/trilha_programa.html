@@ -28,6 +28,9 @@
                         </div>
                     </details>
                     {% endif %}
+                    {% if course.route %}
+                    <a href="{% url course.route %}" class="text-link trilha-course-link">Conhecer o curso <span aria-hidden="true">→</span></a>
+                    {% endif %}
                 </div>
                 <div class="trilha-deliverable"><span>Entrega do curso</span><strong>{{ course.deliverable }}</strong></div>
             </li>

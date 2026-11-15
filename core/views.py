@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.templatetags.static import static
 from django.urls import reverse
 
+from .catalogo import BUSINESS_CASE_COURSE, BUSINESS_CASE_COVER, BUSINESS_CASE_INQUIRY, COURSE_CATALOG
 from .forms import (
     CadastroAlunoForm,
     ContatoForm,
@@ -194,13 +195,31 @@ def cursos(request):
         "core/cursos.html",
         {
             "faqs": FAQ.objects.filter(pagina="cursos", ativa=True),
+            "course_catalog": COURSE_CATALOG,
             "trilha_courses": TRILHA_COURSES,
             "trilha_faqs": TRILHA_FAQS,
         },
         title="Cursos de Segurança do Trabalho e SSMA | Alan Silvério",
         description=(
             "Conheça a Trilha Consultor Interno de Alan Silvério: 48 horas em SSMA e ESG, com um projeto real. "
-            "Veja também as ofertas em cultura de segurança e carreira."
+            "Explore Cultura de Segurança, Perfil e Carreira e Influência e Business Case."
+        ),
+    )
+
+
+def curso_business_case(request):
+    return _render_page(
+        request,
+        "core/curso_business_case.html",
+        {
+            "course": BUSINESS_CASE_COURSE,
+            "course_cover": BUSINESS_CASE_COVER,
+            "interest_url": f"{reverse('contato')}?interesse=formacao&curso={BUSINESS_CASE_INQUIRY}",
+        },
+        title="Curso de Influência e Business Case em SSMA | Alan Silvério",
+        description=(
+            "Conheça o curso de Influência e Business Case: calcule o custo da inação, demonstre "
+            "o valor de projetos em SSMA e pratique sua defesa em uma banca simulada."
         ),
     )
 
@@ -362,11 +381,12 @@ def modulos(request):
 def contato(request):
     initial_interest = request.GET.get("interesse", "")
     allowed_interests = {choice[0] for choice in MentoriaContatoForm.Meta.model.INTERESSE_CHOICES}
+    initial = {"tipo_interesse": initial_interest if initial_interest in allowed_interests else "mentoria"}
+    if initial_interest == "formacao" and request.GET.get("curso") == BUSINESS_CASE_INQUIRY:
+        initial["mensagem"] = "Tenho interesse no curso Influência e Business Case. Gostaria de saber mais sobre as próximas turmas."
     form = ContatoForm(
         request.POST or None,
-        initial={
-            "tipo_interesse": initial_interest if initial_interest in allowed_interests else "mentoria"
-        },
+        initial=initial,
     )
     if request.method == "POST" and form.is_valid():
         contact = form.save(commit=False)

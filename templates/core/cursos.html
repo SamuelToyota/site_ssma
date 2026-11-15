@@ -9,59 +9,44 @@
             <h1>Formações para atuar como consultor interno.</h1>
         </div>
         <div class="page-hero-aside" data-reveal>
-            <p>Conheça a Trilha Consultor Interno: três cursos para diagnosticar uma demanda real, desenvolver uma intervenção e defender seu projeto. Veja também as opções em cultura de segurança e carreira.</p>
+            <p>Conheça a Trilha Consultor Interno e explore o catálogo: Cultura de Segurança, Perfil e Carreira e Influência e Business Case.</p>
             <span>Trilha Consultor Interno · 48 horas em 12 semanas</span>
         </div>
     </div>
+    <nav class="container catalog-course-nav" aria-label="Páginas dos cursos">
+        {% for entry in course_catalog %}
+        <a href="{% url entry.route %}">{{ entry.label }} <span aria-hidden="true">↗</span></a>
+        {% endfor %}
+    </nav>
 </section>
 
 {% include 'components/trilha_programa.html' with show_syllabus=True %}
 
 <section class="section catalog-section" id="ofertas-avulsas" aria-labelledby="ofertas-title">
     <div class="container section-heading">
-        <span class="eyebrow">Fora da trilha</span>
-        <h2 id="ofertas-title">Formação e diagnóstico avulsos.</h2>
+        <span class="eyebrow">Catálogo de cursos</span>
+        <h2 id="ofertas-title">Formações e desenvolvimento.</h2>
     </div>
     <div class="container program-stack">
-        <article class="program-card" data-reveal>
+        {% for entry in course_catalog %}
+        <article class="program-card{% if forloop.counter|divisibleby:'2' %} program-card-reverse{% endif %}" data-reveal>
             <div class="program-media">
-                <img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" loading="eager" decoding="async">
+                <img src="{% static entry.cover %}" alt="" width="{{ entry.width }}" height="{{ entry.height }}" loading="lazy" decoding="async">
             </div>
             <div class="program-copy">
-                <span class="course-type">Formação em cultura de segurança</span>
-                <h2>Especialista em Cultura de Segurança</h2>
-                <p>Para profissionais de SSMA e lideranças que querem compreender a cultura atual, mobilizar pessoas e sustentar decisões além do compliance.</p>
+                <span class="course-type">{{ entry.category }}</span>
+                <h3>{{ entry.title }}</h3>
+                <p>{{ entry.description }}</p>
                 <ul class="feature-list">
-                    <li>Diagnóstico da cultura atual</li>
-                    <li>Engajamento de líderes e equipes</li>
-                    <li>Métodos para demonstrar impacto</li>
+                    {% for highlight in entry.highlights %}<li>{{ highlight }}</li>{% endfor %}
                 </ul>
                 <div class="card-actions">
-                    <a href="{% url 'curso_cultura' %}" class="button button-primary">Ver formação</a>
-                    <span>4 a 6 semanas · online</span>
+                    <a href="{% url entry.route %}" class="button button-primary" aria-label="Ver detalhes: {{ entry.title }}">Ver detalhes</a>
+                    <span>{{ entry.duration }}</span>
                 </div>
             </div>
         </article>
-
-        <article class="program-card program-card-reverse" data-reveal>
-            <div class="program-media">
-                <img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil, Valores Pessoais e Carreira" width="1427" height="777" loading="lazy" decoding="async">
-            </div>
-            <div class="program-copy">
-                <span class="course-type">Diagnóstico individual</span>
-                <h2>Perfil, Valores Pessoais &amp; Carreira</h2>
-                <p>Para quem vive uma transição, avalia oportunidades ou precisa compreender o que orienta suas escolhas profissionais.</p>
-                <ul class="feature-list">
-                    <li>Mapeamento de valores pessoais</li>
-                    <li>Relatório individual</li>
-                    <li>Devolutiva personalizada</li>
-                </ul>
-                <div class="card-actions">
-                    <a href="{% url 'curso_teste' %}" class="button button-primary">Ver diagnóstico</a>
-                    <span>Experiência individual</span>
-                </div>
-            </div>
-        </article>
+        {% endfor %}
     </div>
 </section>
 

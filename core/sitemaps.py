@@ -12,6 +12,7 @@ class StaticViewSitemap(Sitemap):
         "cursos": (0.9, "weekly"),
         "curso_cultura": (0.9, "monthly"),
         "curso_teste": (0.8, "monthly"),
+        "curso_business_case": (0.9, "monthly"),
         "mentoria": (0.9, "monthly"),
         "para_empresas": (0.9, "monthly"),
         "conteudos": (0.8, "weekly"),

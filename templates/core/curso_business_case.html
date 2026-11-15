@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "{{ course.title|escapejs }}",
+  "description": "{{ page_description|escapejs }}",
+  "url": "{{ canonical_url|escapejs }}",
+  "inLanguage": "pt-BR",
+  "timeRequired": "PT16H",
+  "provider": {"@id": "{{ site_url|escapejs }}/#organization"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="product-hero">
+    <div class="container product-hero-grid">
+        <div class="product-copy" data-reveal>
+            <a href="{% url 'cursos' %}#ofertas-avulsas" class="back-link">← Catálogo de cursos</a>
+            <span class="eyebrow"><i></i> Curso 03 · Trilha Consultor Interno</span>
+            <h1>{{ course.title }}</h1>
+            <p>{{ course.description }}</p>
+            <div class="hero-actions">
+                <a href="{{ interest_url }}" class="button button-primary" data-analytics="interesse_business_case">Tenho interesse</a>
+                <a href="#programa" class="button button-secondary">Ver programa</a>
+            </div>
+        </div>
+        <div class="product-media product-media-cover" data-reveal>
+            <img src="{% static course_cover %}" alt="Capa do curso Influência e Business Case: Defesa de projetos em SSMA" width="1480" height="800" fetchpriority="high" decoding="async">
+        </div>
+    </div>
+    <div class="container product-facts product-facts-three" data-reveal>
+        <div><strong>16 horas</strong><span>carga horária do curso</span></div>
+        <div><strong>{{ course.weeks }}</strong><span>etapa final da trilha</span></div>
+        <div><strong>Banca simulada</strong><span>defesa do projeto com feedback</span></div>
+    </div>
+</section>
+
+<section class="section curriculum-section" id="programa" aria-labelledby="programa-title">
+    <div class="container curriculum-grid">
+        <div class="curriculum-heading" data-reveal>
+            <span class="eyebrow">Programa do curso</span>
+            <h2 id="programa-title">Do custo da inação à defesa do projeto.</h2>
+            <p>Transforme uma proposta técnica em um business case que mostra o problema, as opções e o valor de agir.</p>
+        </div>
+        <div data-reveal>{% include 'components/trilha_modulos.html' %}</div>
+    </div>
+</section>
+
+<section class="section instructor-section">
+    <div class="container authority-strip-grid" data-reveal>
+        <img src="{% static 'images/alan.webp' %}" alt="Alan Silvério" width="1000" height="1000" loading="lazy" decoding="async">
+        <div><span class="eyebrow">Quem conduz</span><h2>Alan Silvério</h2><p>Engenheiro de Segurança e mentor, com mais de 20 anos de atuação em SSMA.</p><a href="{% url 'sobre' %}" class="text-link">Conhecer a trajetória <span aria-hidden="true">→</span></a></div>
+    </div>
+</section>
+
+<section class="section purchase-section">
+    <div class="container purchase-box" data-reveal>
+        <div><span class="eyebrow eyebrow-light">Próximas turmas</span><h2>Quer conhecer as condições de participação?</h2><p>Envie seu interesse para conversar com a equipe. O contato não confirma vaga nem gera cobrança.</p></div>
+        <a href="{{ interest_url }}" class="button button-light" data-analytics="interesse_business_case_final">Tenho interesse</a>
+    </div>
+</section>
+{% endblock %}

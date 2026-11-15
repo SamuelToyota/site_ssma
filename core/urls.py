@@ -25,6 +25,7 @@ urlpatterns = [
     path("cadastro/", views.cadastro, name="cadastro"),
     path('curso/cultura-seguranca/', views.curso_cultura, name='curso_cultura'),
     path('curso/teste-perfil/', views.curso_teste, name='curso_teste'),
+    path('curso/influencia-business-case/', views.curso_business_case, name='curso_business_case'),
     path('cursos/', views.cursos, name='cursos'),
 
     path("aluno/", views.aluno_dashboard, name="aluno_dashboard"),
