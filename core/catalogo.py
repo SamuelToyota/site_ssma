@@ -3,7 +3,7 @@
 from .trilha import TRILHA_COURSES
 
 BUSINESS_CASE_COURSE = next(course for course in TRILHA_COURSES if course.get("route") == "curso_business_case")
-BUSINESS_CASE_COVER = "images/course-business-case.svg"
+BUSINESS_CASE_COVER = "images/capa-influencia-business-case.svg"
 BUSINESS_CASE_INQUIRY = "influencia-business-case"
 
 COURSE_CATALOG = (
@@ -18,6 +18,8 @@ COURSE_CATALOG = (
         "width": 1470,
         "height": 759,
         "duration": "4 a 6 semanas · online",
+        "home_description": "Valores, comportamento e liderança para construir uma cultura que permanece.",
+        "home_analytics": "cta_curso_cultura_home",
     },
     {
         "route": "curso_teste",
@@ -30,6 +32,8 @@ COURSE_CATALOG = (
         "width": 1427,
         "height": 777,
         "duration": "Experiência individual",
+        "home_description": "Autoconhecimento e devolutiva personalizada para orientar escolhas profissionais.",
+        "home_analytics": "cta_diagnostico_home",
     },
     {
         "route": BUSINESS_CASE_COURSE["route"],
@@ -42,5 +46,7 @@ COURSE_CATALOG = (
         "width": 1480,
         "height": 800,
         "duration": "16h · Semanas 9 a 12 da trilha",
+        "home_description": "Calcule o custo da inação e pratique a defesa de projetos em uma banca simulada.",
+        "home_analytics": "cta_business_case_home",
     },
 )

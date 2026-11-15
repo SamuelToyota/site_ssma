@@ -1,30 +1,46 @@
+{% load static %}
 <section class="section destaque-method" id="metodo" aria-labelledby="destaque-title">
     <div class="container destaque-grid">
         <div class="destaque-intro">
             <span class="eyebrow eyebrow-light">Método D.E.S.T.A.Q.U.E.</span>
-            <h2 id="destaque-title">Do risco observado à decisão da liderança.</h2>
-            <p>Oito dimensões para investigar um problema, negociar uma solução e acompanhar o que muda no trabalho real.</p>
+            <h2 id="destaque-title">Do risco à decisão.</h2>
+            <p>Veja como oito dimensões do método ajudam a transformar um problema da operação em uma proposta para a liderança.</p>
             <div class="destaque-case">
-                <span>Exemplo em SSMA</span>
+                <span>Caso ilustrativo · SSMA</span>
                 <h3>Quase acidentes na expedição</h3>
-                <p>Pedestres e empilhadeiras se cruzam no mesmo corredor. Como levar esse risco à liderança com evidências e uma proposta de mudança?</p>
+                <p>Pedestres e empilhadeiras se cruzam no mesmo corredor. Como demonstrar o risco e propor uma mudança de rota com evidências?</p>
             </div>
-            <a href="{% url 'mentoria' %}" class="destaque-link">Aplicar ao meu contexto na mentoria <span aria-hidden="true">↗</span></a>
+            <a href="{% url 'mentoria' %}" class="destaque-link">Aplicar o método na mentoria <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="destaque-steps">
-            {% for dimension in method_dimensions %}
-            <details class="destaque-step" name="destaque-step"{% if forloop.first %} open{% endif %}>
-                <summary>
-                    <span class="destaque-letter" aria-hidden="true">{{ dimension.letter }}</span>
-                    <strong>{{ dimension.name }}</strong>
-                    <span class="destaque-toggle" aria-hidden="true"></span>
-                </summary>
-                <div class="destaque-detail">
-                    <p>{{ dimension.action }}</p>
-                    <p class="destaque-output"><strong>O que você entrega</strong>{{ dimension.output }}</p>
+        <div class="destaque-workbench" data-destaque>
+            <div class="destaque-navigation" data-destaque-navigation hidden>
+                <p>Explore as oito dimensões</p>
+                <div class="destaque-picker" role="group" aria-label="Dimensões do método D.E.S.T.A.Q.U.E.">
+                    {% for dimension in method_dimensions %}
+                    <button type="button" aria-label="{{ dimension.name }}" aria-controls="destaque-etapa-{{ forloop.counter }}" aria-pressed="false">{{ dimension.letter }}</button>
+                    {% endfor %}
                 </div>
-            </details>
-            {% endfor %}
+            </div>
+            <div class="destaque-steps" aria-live="polite">
+                {% for dimension in method_dimensions %}
+                <details id="destaque-etapa-{{ forloop.counter }}" class="destaque-step" name="destaque-step"{% if forloop.first %} open{% endif %}>
+                    <summary>
+                        <span class="destaque-letter" aria-hidden="true">{{ dimension.letter }}</span>
+                        <strong>{{ dimension.name }}</strong>
+                        <span class="destaque-toggle" aria-hidden="true"></span>
+                    </summary>
+                    <div class="destaque-detail">
+                        <div class="destaque-panel-heading">
+                            <span>Dimensão {{ forloop.counter|stringformat:"02d" }} / {{ method_dimensions|length|stringformat:"02d" }}</span>
+                            <h3>{{ dimension.name }}</h3>
+                        </div>
+                        <p>{{ dimension.action }}</p>
+                        <p class="destaque-output"><strong>O que você entrega</strong>{{ dimension.output }}</p>
+                    </div>
+                </details>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
+<script src="{% static 'js/metodo-destaque.js' %}?v=1" defer></script>

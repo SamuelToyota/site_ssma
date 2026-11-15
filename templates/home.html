@@ -42,10 +42,22 @@
 
 <section class="section courses-section">
     <div class="container">
-        <div class="section-heading courses-heading" data-reveal><div><span class="eyebrow">Fora da trilha</span><h2>Formação e diagnóstico avulsos.</h2></div><a href="{% url 'cursos' %}#ofertas-avulsas" class="text-link">Ver opções avulsas <span aria-hidden="true">→</span></a></div>
+        <div class="section-heading courses-heading" data-reveal>
+            <div><span class="eyebrow">Formação e desenvolvimento</span><h2>Explore os cursos.</h2></div>
+            <a href="{% url 'cursos' %}#ofertas-avulsas" class="text-link">Ver catálogo completo <span aria-hidden="true">→</span></a>
+        </div>
         <div class="course-grid">
-            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_1.webp' %}" alt="Formação Especialista em Cultura de Segurança" width="1470" height="759" loading="lazy" decoding="async"></div><div class="course-body"><span class="course-type">Formação em SSMA</span><h3>Especialista em Cultura de Segurança</h3><p>Valores, comportamento e liderança para construir uma cultura que permanece.</p><a href="{% url 'curso_cultura' %}" class="text-link" data-analytics="cta_curso_cultura_home">Conhecer formação <span aria-hidden="true">→</span></a></div></article>
-            <article class="course-card" data-reveal><div class="course-image"><img src="{% static 'images/course_2.webp' %}" alt="Teste de Perfil Profissional, Valores Pessoais e Carreira" width="1427" height="777" loading="lazy" decoding="async"></div><div class="course-body"><span class="course-type">Desenvolvimento profissional</span><h3>Perfil, Valores Pessoais &amp; Carreira</h3><p>Autoconhecimento e devolutiva personalizada para orientar escolhas profissionais.</p><a href="{% url 'curso_teste' %}" class="text-link" data-analytics="cta_diagnostico_home">Conhecer diagnóstico <span aria-hidden="true">→</span></a></div></article>
+            {% for entry in course_catalog %}
+            <article class="course-card" data-reveal>
+                <div class="course-image"><img src="{% static entry.cover %}" alt="" width="{{ entry.width }}" height="{{ entry.height }}" loading="lazy" decoding="async"></div>
+                <div class="course-body">
+                    <span class="course-type">{{ entry.category }}</span>
+                    <h3>{{ entry.title }}</h3>
+                    <p>{{ entry.home_description }}</p>
+                    <a href="{% url entry.route %}" class="text-link" aria-label="Ver detalhes: {{ entry.title }}" data-analytics="{{ entry.home_analytics }}">Ver detalhes <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+            {% endfor %}
         </div>
     </div>
 </section>

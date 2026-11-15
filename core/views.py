@@ -148,6 +148,7 @@ def home(request):
 
     context = {
         "method_dimensions": METHOD_DIMENSIONS,
+        "course_catalog": COURSE_CATALOG,
         "trilha_courses": TRILHA_COURSES,
         "testimonials": Depoimento.objects.filter(ativo=True)[:3],
         "newsletter_form": newsletter_form,

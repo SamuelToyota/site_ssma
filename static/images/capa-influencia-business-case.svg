@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1480" height="800" viewBox="0 0 1480 800" role="img" aria-labelledby="title desc">
-  <title id="title">Curso 03: Influência e Business Case</title>
+  <title id="title">Influência e Business Case</title>
   <desc id="desc">Capa verde-escura com tipografia verde-lima, detalhes laranja e a chamada Defesa de projetos em SSMA.</desc>
   <defs>
     <linearGradient id="background" x2="1" y2="1">
@@ -19,13 +19,12 @@
   <rect width="1480" height="800" fill="url(#background)"/>
   <rect width="1480" height="800" fill="url(#dots)" mask="url(#dot-mask)"/>
   <g font-family="Arial, Helvetica, sans-serif" font-weight="700">
-    <text x="86" y="169" fill="#ff8719" font-size="126" letter-spacing="-5">Curso 03:</text>
-    <text x="80" y="350" fill="#dbfaa9" font-size="163" letter-spacing="-8">Influência e</text>
-    <text x="80" y="530" fill="#dbfaa9" font-size="163" letter-spacing="-8">Business Case</text>
-    <rect x="86" y="625" width="816" height="104" rx="30" fill="#081e17" stroke="#d4f4a1" stroke-width="3"/>
-    <g transform="translate(118 650)" fill="none" stroke="#ff8719" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <text x="80" y="285" fill="#dbfaa9" font-size="180" letter-spacing="-8">Influência e</text>
+    <text x="80" y="477" fill="#dbfaa9" font-size="180" letter-spacing="-8">Business Case</text>
+    <rect x="86" y="570" width="816" height="104" rx="30" fill="#081e17" stroke="#d4f4a1" stroke-width="3"/>
+    <g transform="translate(118 595)" fill="none" stroke="#ff8719" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M4 4v46h53M15 40l15-15 11 6L58 11M42 11h16v15"/>
     </g>
-    <text x="201" y="693" fill="#ff8719" font-size="47" letter-spacing="-1.8">Defesa de projetos em SSMA</text>
+    <text x="201" y="638" fill="#ff8719" font-size="47" letter-spacing="-1.8">Defesa de projetos em SSMA</text>
   </g>
 </svg>
