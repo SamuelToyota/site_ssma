@@ -78,31 +78,35 @@ class PublicPagesTests(TestCase):
         self.assertContains(response, 'property="og:title"')
         self.assertContains(response, 'type="application/ld+json"')
 
-    def test_home_introduces_the_trilha_and_links_to_its_curriculum(self):
+    def test_trilha_shows_all_three_courses_and_the_full_curriculum(self):
         home = self.client.get(reverse("home"))
-        courses_url = reverse("cursos")
+        courses = self.client.get(reverse("cursos"))
 
         self.assertContains(home, "Deixe de ser acionado. Passe a ser")
-        self.assertContains(home, f'href="{courses_url}#trilha"')
-        courses = self.client.get(courses_url)
+        self.assertContains(home, f'href="{reverse("cursos")}#trilha"')
         for response in (home, courses):
             self.assertContains(response, 'id="trilha"', count=1)
             self.assertContains(response, 'class="trilha-row"', count=3)
             self.assertContains(response, "48 horas em 12 semanas")
-            self.assertContains(response, "<h3>O Consultor Interno</h3>", html=True)
-            self.assertContains(response, "<h3>Gestão de Mudança e Aprendizagem</h3>", html=True)
-            self.assertContains(response, "<h3>Influência e Business Case</h3>", html=True)
+            for title in ("O Consultor Interno", "Gestão de Mudança e Aprendizagem", "Influência e Business Case"):
+                self.assertContains(response, f"<h3>{title}</h3>", html=True)
+                self.assertContains(courses, f'aria-label="Módulos de {title}"')
         self.assertContains(courses, "Ver módulos e materiais", count=3)
         self.assertContains(courses, f'href="{reverse("curso_cultura")}"')
         self.assertContains(courses, f'href="{reverse("curso_teste")}"')
 
-    def test_destaque_method_uses_one_case_and_eight_deliverables(self):
-        for route_name in ("home", "sobre"):
-            with self.subTest(route=route_name):
-                response = self.client.get(reverse(route_name))
-                self.assertContains(response, "Quase acidentes na expedição")
-                self.assertContains(response, 'class="destaque-step"', count=8)
-                self.assertContains(response, "O que você entrega", count=8)
+    def test_courses_show_the_consulting_cycle_and_link_to_inquiry(self):
+        courses = self.client.get(reverse("cursos"))
+        for stage in ("Contratar", "Diagnosticar", "Devolver", "Implementar", "Sustentar"):
+            self.assertContains(courses, f"{stage} —")
+        self.assertContains(courses, f'href="{reverse("contato")}?interesse=formacao"')
+
+    def test_about_retains_the_destaque_method_with_practical_deliverables(self):
+        for route in ("home", "sobre"):
+            response = self.client.get(reverse(route))
+            self.assertContains(response, "Quase acidentes na expedição")
+            self.assertContains(response, 'class="destaque-step"', count=8)
+            self.assertContains(response, "O que você entrega", count=8)
 
     def test_primary_navigation_has_only_the_four_requested_destinations(self):
         response = self.client.get(reverse("home"))
@@ -295,6 +299,18 @@ class LeadCaptureTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 200)
+        self.assertFalse(NewsletterLead.objects.exists())
+
+    def test_newsletter_shows_validation_near_fields_and_requires_consent(self):
+        response = self.client.post(
+            reverse("home"),
+            {"form_type": "newsletter", "nome": "Maria Silva", "email": "invalido"},
+        )
+
+        self.assertContains(response, 'action="/#newsletter"')
+        self.assertContains(response, 'id="id_email_error"')
+        self.assertContains(response, 'id="id_consentimento_error"')
+        self.assertContains(response, 'role="alert"')
         self.assertFalse(NewsletterLead.objects.exists())
 
     def test_general_contact_is_saved_and_notified(self):

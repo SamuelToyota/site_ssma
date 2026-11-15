@@ -140,6 +140,7 @@ class NewsletterLeadForm(HoneypotMixin, forms.ModelForm):
     consentimento = forms.BooleanField(
         required=True,
         label="Aceito receber conteúdos e posso cancelar a qualquer momento.",
+        error_messages={"required": "Marque a caixa para confirmar que quer receber os artigos."},
     )
 
     class Meta:
@@ -147,8 +148,8 @@ class NewsletterLeadForm(HoneypotMixin, forms.ModelForm):
         fields = ["nome", "email"]
         labels = {"nome": "Nome", "email": "E-mail"}
         widgets = {
-            "nome": forms.TextInput(attrs={"autocomplete": "name"}),
-            "email": forms.EmailInput(attrs={"autocomplete": "email"}),
+            "nome": forms.TextInput(attrs={"autocomplete": "name", "placeholder": "Seu nome"}),
+            "email": forms.EmailInput(attrs={"autocomplete": "email", "placeholder": "voce@exemplo.com"}),
         }
 
     def validate_unique(self):

@@ -59,28 +59,6 @@
 </section>
 {% endif %}
 
-<section class="home-newsletter" id="newsletter" aria-labelledby="newsletter-title">
-    <div class="container home-newsletter-grid">
-        <div>
-            <span class="eyebrow">Conteúdo do Consultor Interno</span>
-            <h2 id="newsletter-title">Receba os próximos artigos.</h2>
-            <a href="{% url 'conteudos' %}" class="text-link">Ler artigos publicados <span aria-hidden="true">→</span></a>
-        </div>
-        <div>
-            {% if request.GET.newsletter == 'ok' %}
-            <p class="newsletter-success" role="status">Inscrição recebida. Obrigado por acompanhar o Consultor Interno.</p>
-            {% endif %}
-            <form method="post" class="newsletter-form" data-loading novalidate>
-                {% csrf_token %}<input type="hidden" name="form_type" value="newsletter">
-                <div class="honeypot" aria-hidden="true">{{ newsletter_form.website }}</div>
-                <div class="form-field"><label for="{{ newsletter_form.nome.id_for_label }}">Nome</label>{{ newsletter_form.nome }}{% for error in newsletter_form.nome.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
-                <div class="form-field"><label for="{{ newsletter_form.email.id_for_label }}">E-mail</label>{{ newsletter_form.email }}{% for error in newsletter_form.email.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
-                <div class="form-consent">{{ newsletter_form.consentimento }}<label for="{{ newsletter_form.consentimento.id_for_label }}">Aceito receber conteúdos e posso cancelar a qualquer momento. <a href="{% url 'privacidade' %}">Política de privacidade</a>.</label>{% for error in newsletter_form.consentimento.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</div>
-                {{ newsletter_form.non_field_errors }}
-                <button type="submit" class="button button-primary" data-analytics="inscricao_newsletter">Quero acompanhar</button>
-            </form>
-        </div>
-    </div>
-</section>
+{% include 'components/inscricao_boletim.html' %}
 
 {% endblock %}

@@ -6,8 +6,9 @@
                 <h2 id="trilha-title">Três cursos.<br> Um projeto real.</h2>
             </div>
             <div class="trilha-summary">
-                <p>Traga uma demanda de SSMA, ESG ou Sustentabilidade da sua rotina. Você sai do diagnóstico, desenha uma intervenção e pratica como defendê-la perante a liderança.</p>
+                <p>Traga uma demanda real de SSMA, ESG ou Sustentabilidade. Você combina a entrega com o gestor, investiga as causas e pratica como defender a solução perante a liderança.</p>
                 <strong>48 horas em 12 semanas</strong>
+                {% if show_syllabus %}<p class="trilha-ritmo">Cerca de 4 horas por semana de aulas e práticas, além da aplicação no seu projeto.</p>{% endif %}
             </div>
         </div>
         <ol class="trilha-list">
@@ -21,7 +22,10 @@
                     {% if show_syllabus %}
                     <details class="trilha-syllabus">
                         <summary>Ver módulos e materiais</summary>
-                        <div>{{ course.syllabus|linebreaks }}</div>
+                        <div>
+                            <p>{{ course.schedule }}</p>
+                            {% include 'components/trilha_modulos.html' %}
+                        </div>
                     </details>
                     {% endif %}
                 </div>
@@ -31,8 +35,8 @@
         </ol>
         <div class="trilha-next">
             {% if show_syllabus %}
-            <p>Quer saber sobre próximas turmas e condições?</p>
-            <a href="{% url 'contato' %}" class="button button-primary">Conversar sobre a trilha</a>
+            <p>Consulte a equipe sobre próximas turmas, valores e condições de inscrição.</p>
+            <a href="{% url 'contato' %}?interesse=formacao" class="button button-primary">Conversar sobre a trilha</a>
             {% else %}
             <p>As três etapas acompanham o mesmo projeto, do primeiro diagnóstico à apresentação final.</p>
             <a href="{% url 'cursos' %}#trilha" class="button button-primary">Ver programa completo</a>

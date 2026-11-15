@@ -1,0 +1,15 @@
+<div class="curriculum-table-wrap" role="region" aria-label="Módulos, duração e prática" tabindex="0">
+    <table class="curriculum-table" aria-label="Módulos de {{ course.title }}">
+        <thead><tr><th scope="col">Módulo</th><th scope="col">Carga</th><th scope="col">Prática</th></tr></thead>
+        <tbody>
+            {% for title, description, hours, practice in course.modules %}
+            <tr>
+                <th scope="row"><strong>{{ title }}</strong><span>{{ description }}</span></th>
+                <td>{{ hours }}h</td>
+                <td>{{ practice }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<p class="curriculum-materials"><strong>Você leva:</strong> {{ course.materials }}</p>

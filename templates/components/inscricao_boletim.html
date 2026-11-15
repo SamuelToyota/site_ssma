@@ -1,0 +1,64 @@
+<section class="home-newsletter" id="newsletter" aria-labelledby="newsletter-title">
+    <div class="container home-newsletter-grid">
+        <div class="newsletter-intro">
+            <div class="newsletter-kicker">
+                <span class="newsletter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+                </span>
+                <span>Boletim do Consultor Interno</span>
+            </div>
+            <h2 id="newsletter-title">Da operação<br> à liderança.</h2>
+            <p>Artigos sobre cultura de segurança, gestão de riscos e atuação consultiva em SSMA.</p>
+            <a href="{% url 'conteudos' %}" class="newsletter-articles">Ler artigos publicados <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="newsletter-signup">
+            <h3 id="newsletter-form-title">Receba os próximos artigos.</h3>
+            {% if request.GET.newsletter == 'ok' and not newsletter_form.is_bound %}
+            <div class="newsletter-success" role="status">
+                <strong>Inscrição confirmada!</strong>
+                <p>Você vai receber os próximos artigos no seu e-mail.</p>
+            </div>
+            {% else %}
+            <p>Preencha seus dados para acompanhar as próximas publicações.</p>
+            <form method="post" action="{% url 'home' %}#newsletter" class="newsletter-form" aria-labelledby="newsletter-form-title" data-loading novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="newsletter">
+                <div class="honeypot" aria-hidden="true">{{ newsletter_form.website }}</div>
+                {% if newsletter_form.errors %}
+                <div class="form-alert" role="alert">
+                    {% if newsletter_form.non_field_errors or newsletter_form.website.errors %}
+                    Não foi possível concluir a inscrição. Revise os dados e tente novamente.
+                    {% else %}
+                    Revise os campos indicados abaixo.
+                    {% endif %}
+                </div>
+                {% endif %}
+                <div class="newsletter-fields">
+                    <div class="form-field">
+                        <label for="{{ newsletter_form.nome.id_for_label }}">Nome</label>
+                        {{ newsletter_form.nome }}
+                        {{ newsletter_form.nome.errors }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ newsletter_form.email.id_for_label }}">E-mail</label>
+                        {{ newsletter_form.email }}
+                        {{ newsletter_form.email.errors }}
+                    </div>
+                </div>
+                <div class="form-consent">
+                    {{ newsletter_form.consentimento }}
+                    <div>
+                        <label for="{{ newsletter_form.consentimento.id_for_label }}">Aceito receber os artigos por e-mail. Posso cancelar quando quiser.</label>
+                        <a href="{% url 'privacidade' %}">Política de privacidade</a>
+                        {{ newsletter_form.consentimento.errors }}
+                    </div>
+                </div>
+                <button type="submit" class="button button-primary" data-analytics="inscricao_newsletter">
+                    Quero receber os artigos <span aria-hidden="true">→</span>
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</section>
